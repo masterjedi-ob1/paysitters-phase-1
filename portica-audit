@@ -1,0 +1,718 @@
+# RECOVER Portica — UX/UI Audit
+
+## Date: April 7, 2026
+## URL: https://recover.dev.portica.nevado.ai/
+## Auditor: Claude Sonnet 4.6 (automated)
+
+---
+
+## 1. Application Overview
+
+**PaySitters RECOVER** is a self-service consumer-facing arrears resolution portal built by Nevado AI on the Portica platform. It allows consumers who have past-due balances to independently resolve their debt through three mechanisms: a lump-sum settlement offer (at a discount), a fixed 3-installment plan, or a fully custom payment schedule they build themselves with a 1–12 month slider. The product is positioned as a non-adversarial, "no phone calls, no judgment" alternative to traditional collection calls.
+
+The entry point is an SMS link sent by the collection agency (Southwest Recovery Services / SWRS in the demo). Consumers tap the link on their phone, verify their identity, confirm their contact info, select a resolution plan, connect a payment method (ACH or debit card), and are then shown a post-enrollment dashboard.
+
+**Primary users:** Consumers with past-due telecom/utility balances receiving outreach from a debt collection agency.
+**Secondary users:** Collection agencies (creditors) who configure and brand the portal (B2B view — not accessible in this build).
+
+---
+
+## 2. Site Map & Navigation
+
+### Route Inventory (from JS bundle analysis)
+
+| Route | Behavior in Dev |
+|---|---|
+| `/` | Root — renders the SMS Mockup screen (demo entry point) |
+| `/splash` | Redirects → `/` |
+| `/r/:token` | Consumer recovery flow (e.g. `/r/m4r1a`, `/r/demo`) |
+| `/r/demo` | Redirects → `/r/m4r1a` (demo alias) |
+| `/cover/:linkId` | CoverLink referral screen — expired link shows error state |
+| `/onboarding` | Redirects → `/` (not accessible standalone) |
+| `/onboarding/bank-bills` | Not accessible standalone |
+| `/dashboard` | Redirects → `/` (not accessible standalone; reached via SPA state) |
+| `/benefits` | Not accessible standalone |
+| `/create-profile` | Not accessible standalone |
+| `/signin` | Not accessible standalone |
+| `/verify` | Not accessible standalone |
+| `/bills` | Not accessible standalone |
+| `/bills/add` | Not accessible standalone |
+| `/bills/:billId` | Not accessible standalone |
+| `/bills/:id/payment-plan` | Not accessible standalone |
+| `/plans/create` | Not accessible standalone |
+| `/paybacks` | Not accessible standalone |
+| `/paybacks/request` | Not accessible standalone |
+| `/paybacks/loan-review` | Not accessible standalone |
+| `/paybacks/confirmed` | Not accessible standalone |
+| `/savings` | Not accessible standalone |
+| `/notifications` | Not accessible standalone |
+| `/profile` | Not accessible standalone |
+| `/more` | Not accessible standalone |
+| `/payment-methods` | Not accessible standalone |
+| `/payment-schedule` | Not accessible standalone |
+| `/bank-accounts` | Not accessible standalone |
+| `/faq` | Not accessible standalone |
+| `/support` | Not accessible standalone |
+| `/terms` | Redirects → `/` |
+| `/agreement` | Not accessible standalone |
+| `/change-pin` | Not accessible standalone |
+
+The recovery consumer flow is a **multi-step SPA** at `/r/:token` — all steps share the same URL, with navigation handled in React state.
+
+### In-app Navigation Structure
+
+The dashboard shows a **bottom navigation bar** (4 tabs):
+- **Home** (active by default, renders the enrolled account dashboard)
+- **Bills** (rendered but non-functional in this build — placeholder for PaySitters main app integration)
+- **Paybacks** (rendered but non-functional in this build)
+- **More** (rendered but non-functional in this build)
+
+---
+
+## 3. Screen Inventory
+
+### Screen 0: SMS Entry Mockup (`/` or `/r/demo`)
+
+**Purpose:** Marketing demo/entry simulation — shows how the SMS deep-link looks on a consumer's iPhone.
+
+**Layout:** Full-screen iOS iMessage UI mockup. Single column. Fixed 480px max-width, centered.
+
+**Components:**
+- iOS status bar (faked): signal dots, 9:41 time, battery indicators
+- "Southwest Recovery Services — Business · SMS" sender header with initial avatar ("S")
+- Timestamp: "Today 2:47 PM"
+- SMS bubble with text copy:
+  > "Hi Maria, this is SWRS regarding your AT&T account balance of $347.50. We have a new option that lets you resolve this on your own terms — no phone calls required. Click here to see your options. This takes 2 minutes."
+- **RCS-style rich card** (dark green `#1B4D3E` background):
+  - SWRS logo
+  - "See Your Options" primary CTA button (full-width, dark green)
+  - "Resolve your AT&T balance · $347.50 · Set up a plan in 2 minutes" preview row with play icon
+- "Delivered" read receipt
+- iMessage compose bar
+
+**Interactions:** Clicking "See Your Options" or the rich card navigates to `/r/m4r1a` (the consumer flow welcome screen).
+
+**Data:** Pre-populated with demo consumer "Maria Rodriguez," account balance $347.50, agency SWRS, creditor AT&T.
+
+---
+
+### Screen 1: Welcome / Let's Get Started (`/r/m4r1a`)
+
+**Page Header Text:** "Let's get started, Maria."
+**Sub-branding:** "SWRS · PaySitters RECOVER"
+
+**Layout:** Mobile-width (480px max), vertically stacked. Dark green hero band at top, white rounded card content below.
+
+**Components:**
+
+**Hero section (dark green `#1B4D3E`, padding 32px 24px 48px):**
+- SWRS agency logo (image, top-left)
+- "SWRS · PaySitters RECOVER" text (white, 14px, right of logo)
+- H1: "Let's get started, [FirstName]." — "Maria" styled in lighter weight (font-weight 300, opacity 70% white)
+
+**Content card (white, border-radius 24px 24px 0 0, padding 24px):**
+- **Account summary card** (mint-green `#E8F5E9` background, border-radius 12px, padding 24px):
+  - AT&T logo (from brand assets)
+  - "AT&T · Account Balance" label
+  - "READY TO RESOLVE" pill badge (green outline, small caps, font-size 12px, border-radius 8px, color `#328565`)
+  - Body text: "You have an outstanding balance of **$347.50**" (bold amount)
+- H2: "We'll set up a custom plan that works for you."
+- Sub-copy: "Choose your own payment schedule, pay at your own pace. No calls, no pressure — just a clear path forward."
+- **Benefit icons list** (3 items with circular mint-green icon containers, border-radius 9999px, 8px padding):
+  - ✂ "No phone calls required" (phone-slash icon)
+  - ✓ "No credit check needed" (shield-check icon)
+  - ★ "$0 interest, $0 fees" (star icon)
+
+**Footer sticky CTA:**
+- "Get Started →" button (dark green `#1B4D3E`, white text, full-width, border-radius 9999px, has pulsing animation class `recover-welcome__pulse`)
+- Sub-text: "Takes about 2 minutes · No commitment required" (gray, 12px, centered)
+
+**Animations:** Staggered entrance animations on content sections (classes `recover-welcome__stagger-1` through `recover-welcome__stagger-5`).
+
+---
+
+### Screen 2: Identity Verification — Step 1 of 3 (`/r/m4r1a`)
+
+**Page Title (nav bar):** "Verify Your Identity"
+**Step indicator:** "STEP 1 OF 3" with a green left-border accent. Internal progress: 33%.
+**Hidden H1:** "Hey Maria, let's verify it's you"
+
+**Layout:** Single column, top-bar + scrollable body. Back arrow in nav bar.
+
+**Components:**
+
+**Motivational quote card** (dark green `#1B4D3E`, rounded corners, padding):
+- Quote icon (circle with "⊚")
+- Italic text: *"We found a better way to handle this. No calls. No judgment. Just options that actually work for you."*
+
+**Form fields (3 inputs):**
+
+| Field | Label | Input Type | Placeholder | Notes |
+|---|---|---|---|---|
+| SSN last 4 | "Last 4 of Social Security" | `type="password"` | "Last 4 of Social Security" | Masking dots. Floating label style |
+| Date of Birth | "Date of Birth" | `type="text"` | "Date of Birth" | Accepts MM/DD/YYYY format |
+| Postal Code | "Postal Code" | `type="text"` | "Postal Code" | Accepts 5-digit ZIP |
+
+**Security note:** Lock icon + "Your information is encrypted and used only to locate your account." (gray, 12px)
+
+**CTA:**
+- "Find My Account →" — disabled (muted green) when any field is empty; enabled (dark green `#1B4D3E`) when all 3 fields have any value
+
+**Error State:**
+- Pink/red alert banner: "We couldn't match your information. Please double-check and try again."
+- Color: pinkish-red background (using `--color-accent: #FF5E33` / `--color-danger`)
+- Appears below the postal code field, above the lock notice
+
+**Demo credentials:** SSN: `0000`, DOB: `00/00/0000`, ZIP: `00000`
+
+---
+
+### Screen 3: Confirm Details — Step 2 of 3 (`/r/m4r1a`)
+
+**Page Title:** "Confirm Details"
+**Step indicator:** "STEP 2 OF 3" | Progress: 66%
+
+**Layout:** Single column with top nav bar (back arrow).
+
+**Components:**
+
+**Success banner** (dark green background):
+- "We found a match in our system. Please confirm or update your information below before continuing."
+
+**Editable contact form** (4 pre-filled fields):
+
+| Field | Label | Input Type | Pre-filled Value |
+|---|---|---|---|
+| Full Name | "Full Name" | `type="text"` | Maria Rodriguez |
+| Email Address | "Email Address" | `type="email"` | maria.rodriguez@email.com |
+| Phone Number | "Phone Number" | `type="tel"` | (555) 867-5309 |
+| Address | "Address" | `type="text"` | 1234 Oak Street, Phoenix, AZ 00000 |
+
+**Terms agreement:**
+- Custom checkbox (styled with green check when active, unchecked by default)
+- Label: "I agree to the **Terms of Service** and **Privacy Policy**"
+- Links: `href="#terms"` and `href="#privacy"` — these are anchor hash links that do not yet navigate to existing elements (functionality missing or deferred)
+
+**CTA:**
+- "Confirm & Continue →" button — **disabled** (`recover-btn--disabled` class) when checkbox is unchecked; enabled when checked
+- Requires actual user interaction with checkbox (not just programmatic `checked = true` — must use native click event)
+
+---
+
+### Screen 4: Choose Resolution — "Debt Options" (`/r/m4r1a`)
+
+**Page Header (hero band):** "We found your account, Maria. / Here's what's waiting."
+**Layout:** Dark green hero at top with account card, white card section below with 3 plan options.
+
+**Account Summary Card** (inside hero, light card style):
+- AT&T logo
+- "AT&T" headline
+- "Telecommunications · Account #****4821" (partially masked account number)
+- Label: "BALANCE OWED" (overline text, gray, uppercase)
+- Amount: **$347.50** (in amber/orange `--color-accent` or gold color)
+- Status indicator: 🟠 "74 days past due · Resolving today stops further collection activity." (amber dot, warning copy)
+
+**Section headline:** "Choose how to resolve this."
+**Sub-copy:** "No phone calls. No judgment. Pick what works for you — we'll handle the rest."
+
+**Three option cards:**
+
+**Option 1 — Settle Now**
+- Trophy icon (outline, green tint)
+- Title: "Settle Now — Save 40%"
+- Amount: **$208.50** (dark, large, bold)
+- Savings tag: "saves $139.00" (green text)
+- Description: "One payment, fully resolved today."
+- Radio toggle (right side, unselected by default)
+- **On select:** Radio turns to green checkmark, reveals "Confirm Settlement →" button (dark green, full-width) inside card
+
+**Option 2 — Pay in 3 Installments** *(Default-selected / BEST VALUE)*
+- "BEST VALUE" tag badge (dark green background pill, top-left corner of card)
+- Calendar icon
+- Title: "Pay in 3 Installments"
+- Amount: **$115.84** × 3 months
+- Description: "Three equal payments. No interest. No fees."
+- Dates: "Apr 1, May 1, Jun 1"
+- Card has green border (indicating recommended/default highlight)
+- **On select:** Reveals "Confirm 3-Payment Plan →" button
+
+**Option 3 — Build Your Own Plan**
+- Sliders icon (horizontal bars with circles)
+- Title: "Build Your Own Plan"
+- Description: "Choose 1–12 months. You set the schedule."
+- "Customize →" link text (green, no button treatment)
+- **On select:** Navigates to the Build Your Plan screen
+
+**Footer legal disclaimer** (small gray text, below all options):
+> "This is an attempt to collect a debt. Any information obtained will be used for that purpose. This communication is from a debt collector."
+
+---
+
+### Screen 5: Build Your Plan — Payment Slider (`/r/m4r1a`)
+
+**Page Title:** "Build Your Plan"
+**Sub-title in nav:** "AT&T · $347.50 total balance"
+
+**Layout:** Top nav bar (back arrow + title), scrollable single-column content.
+
+**Live Calculation Card** (dark green `#1B4D3E`, white text):
+- "YOUR MONTHLY PAYMENT" label (overline, small caps, muted)
+- **Large payment amount** in amber/gold color (e.g., $57.92 at 6 months; $28.96 at 12 months; $347.50 at 1 month)
+- "N payments · starts April 1, 2026"
+- Divider
+- "Total payments: N payments of $X"
+- "Final payment date: [Month D, YYYY]"
+- "Interest / fees: $0.00" (in green, emphasizing zero fees)
+
+**Slider interaction:**
+- Label: "Choose your timeline" (left)
+- Current value: pill badge e.g. "6 months" (right, mint green `#E8F5E9` bg, green text)
+- **Range slider** (`<input type="range" min="1" max="12" step="1">`, class `recover-slider__input`)
+- Track filled green left of thumb, gray right
+- Tick marks at intervals
+- Thumb: pill/grip handle (custom styled with "|||" icon)
+- Scale labels below track: 1mo · 3mo · 6mo · 9mo · 12mo
+
+**Quick-select chip buttons** (6 pill-shaped buttons in a row):
+- 1 mo · 2 mo · 3 mo · 6 mo · 9 mo · 12 mo
+- Active button has border highlight (dark ring/outline)
+- Tapping a chip instantly snaps slider and recalculates
+
+**Motivational insight card** (mint-green `#E8F5E9` background, italicized):
+> "Why you choose, not us: Research shows self-built payment plans complete 3× more often than plans we prescribe. This is your plan — we just make it easy to build."
+
+**Summary row:**
+- Left: "N payments starting April 1, 2026"
+- Right: pill badge "$X.XX/mo · $0 fees" (mint green bg)
+
+**CTA:** "Use This Plan →" (full-width, dark green, always enabled)
+
+**Payment calculations at key intervals:**
+| Months | Monthly Payment | Total |
+|---|---|---|
+| 1 | $347.50 | $347.50 |
+| 3 | $115.84 | $347.52 |
+| 6 | $57.92 | $347.52 |
+| 9 | ~$38.61 | $347.49 |
+| 12 | $28.96 | $347.52 |
+
+---
+
+### Screen 6: Review & Pay (`/r/m4r1a`)
+
+**Page Title:** "Review & Pay"
+**Sub-title in nav:** "AT&T · $347.50 balance"
+**Progress indicator:** Dots in top-right corner (2 dots visible, step 1 of 2 active)
+
+**Layout:** Two sections with "STEP 2 OF 2" divider. Single-column, mobile-width.
+
+**Section 1 — Review Your Plan:**
+
+**Plan Summary Card:**
+- ✓ "Settlement" (or selected plan type) with checkmark icon
+- "AT&T account" sub-label
+- "$0 fees" badge (top-right, green text)
+- **Dark green data panel** (2-column grid):
+  - "MONTHLY PAYMENT" / "$208.50"
+  - "× 1 payments"
+  - "SCHEDULE" / "April 1, 2026 to April 1, 2026"
+- Line items below:
+  - "Payments" → "1 payments of $208.50"
+  - "Total balance" → "$208.50"
+  - "Interest / fees" → "$0.00" (green text)
+
+- "Change my selection >" link (left-aligned, green text, triggers navigation back to options screen)
+
+**Section 2 — Connect Your Payment Method:**
+
+**Heading:** "Connect your payment method"
+**Sub-text:** "Choose how you'll make your monthly payments. You can update this anytime."
+
+**Two payment method cards:**
+
+**Option A — Link Bank Account (ACH)** *(Recommended)*
+- Bank/building icon
+- Title: "Link Bank Account (ACH)"
+- "Recommended" badge (green outline pill)
+- Description: "Direct debit from your checking or savings account"
+- **On select expands:**
+  - "• No processing fees"
+  - "• Most reliable for recurring payments"
+- Selected state: green filled radio button, green card border
+
+**Option B — Use Debit Card**
+- Card icon
+- Title: "Use Debit Card" (muted/gray when not selected via `recover-payment__method-title--muted`)
+- Description: "Visa or Mastercard debit accepted"
+
+**Security note:** "Bank-level 256-bit encryption. We never store your full account number. Your data is protected under [...]"
+
+**Confirmation text** (after selection): "Bank account selected — no fees apply"
+
+**CTA:**
+- Unselected: "Select a payment method" (disabled/muted state, `button[type="button"]`)
+- Selected: "Set Up Payment →" (enabled, dark green)
+
+---
+
+### Screen 7: Confirmation / Success (`/r/m4r1a`)
+
+**Layout:** Dark green hero band + white card. No nav bar (back button gone).
+
+**Hero section (dark green):**
+- Large animated circle with white checkmark (✓) — success icon
+- H1: "**You're all set, Maria.**"
+- Sub-text: "Your plan is confirmed. A receipt and payment schedule have been sent to maria.rodriguez@email.com."
+
+**Plan Summary Card:**
+- "YOUR PLAN SUMMARY" label (overline)
+- "Settlement · 1 payments" (plan type)
+- Line items:
+  - Account: AT&T
+  - Total resolved: $208.50
+  - Monthly payment: **$208.50** (bold)
+  - First payment: April 1, 2026
+  - Final payment: April 1, 2026
+  - Interest / fees: **FREE** + $0.00 (green badge + green text)
+
+**CTA:** "View My Dashboard →" (full-width, dark green)
+
+**Three iconographic callouts** (icon + label row):
+- 💳 "$0 interest"
+- 📅 "Auto-scheduled"
+- 📧 "Receipt sent"
+
+---
+
+### Screen 8: Post-Enrollment Dashboard (`/r/m4r1a` — SPA state)
+
+**Layout:** Top bar (logo + notification bell + user avatar) + scrollable single-column card feed + sticky bottom navigation.
+
+**Top Bar (`recover-topbar`):**
+- SWRS logo (top-left)
+- Bell icon (notification button, right side)
+- "M" avatar circle (amber/gold background, user initial, right side)
+
+**Hero greeting section (dark green):**
+- "Good evening,"
+- "**Maria.** 👋" (large, semi-bold, with wave emoji)
+
+**Card 1 — Enrolled Account (`recover-dashboard__enrolled`)**
+- AT&T logo
+- "AT&T Wireless" title
+- "Debt resolution account" sub-label
+- "Plan Active" status badge (green dot + green text)
+- "NEXT PAYMENT DATE" label
+- **April 1, 2026** (large date)
+- "in 13 days" (gray, relative time)
+- Progress bar visualization: "Payment 1 of 1" with green dot indicator
+- "$208.50" (payment amount, right-aligned, large)
+- "UPCOMING" section label
+- "View full schedule →" link (green, non-functional in current build)
+
+**Card 2 — Spotted For You / Bill Discovery (`recover-dashboard__discovery`)**
+- "SPOTTED FOR YOU" label (amber/orange color, small caps)
+- H2: "We noticed you're paying additional bills"
+- Sub-text: "Would you like PaySitters to cover these for you?"
+- Two bill chips (side-by-side):
+  - T-Mobile (magenta T logo chip) / "Wireless"
+  - Xfinity Internet (purple X logo chip) / "Internet"
+- "Through PaySitters, you'll qualify for autopay discounts and more."
+- "Add These Bills →" button (dark green, full-width)
+
+**Card 3 — CTA Tile: Refer a Friend (`recover-dashboard__cta-tile`)**
+- Bag/basket icon (green outline)
+- "Refer a Friend"
+- "Invite a friend to join and you both earn rewards."
+- "Share Now" link/button
+
+**Card 4 — CTA Tile: Build Your Credit Score (`recover-dashboard__cta-tile`)**
+- Bar chart icon (green outline)
+- "Build Your Credit Score"
+- "Build and track your credit score using PaySitters"
+- *(No CTA button visible in current state)*
+
+**Bottom Navigation (`recover-bottom-nav`):**
+- **Home** (active — filled icon, label underlined/highlighted)
+- **Bills** (outline icon)
+- **Paybacks** (outline icon with cycle arrows)
+- **More** (three dots)
+
+*Note: Bills, Paybacks, and More tabs render but do not navigate in this RECOVER context. They are placeholders for the broader PaySitters app.*
+
+---
+
+### Screen 9: Cover Link — Expired/Invalid State (`/cover/:linkId`)
+
+**Layout:** Minimal, full-viewport. Vertically + horizontally centered content.
+
+**Components:**
+- **"PaySitters"** heading (teal/green `#328565` color, large)
+- **Warning alert box** (light peach/orange `rgba(#FF5E33, 0.1)` background):
+  - Triangle warning icon (orange)
+  - "This link is no longer available."
+
+*This is the error state for an invalid or expired CoverLink referral URL.*
+
+---
+
+## 4. User Flow Maps
+
+### Flow 1: Complete Consumer Resolution Journey
+
+```
+[SMS received on phone]
+        ↓
+[1] SMS Entry Mockup (/)
+    → Tap "See Your Options" RCS card
+        ↓
+[2] Welcome Screen (/r/m4r1a)
+    Shows: Agency branding, account balance, 3 benefit callouts
+    → Tap "Get Started →"
+        ↓
+[3] Identity Verification (Step 1/3)
+    Fill: SSN last 4 + DOB + Postal Code
+    → Tap "Find My Account →"
+        ↓ (if match found)
+[4] Confirm Details (Step 2/3)
+    Review/edit: Name, Email, Phone, Address
+    Check: Terms & Privacy checkbox
+    → Tap "Confirm & Continue →"
+        ↓
+[5] Choose Resolution (Step 3/3)
+    Select one of three paths:
+    ├── [A] Settle Now → "Confirm Settlement →"
+    ├── [B] Pay in 3 Installments → "Confirm 3-Payment Plan →"
+    └── [C] Build Your Own Plan → Slider Screen
+                ↓ (all paths)
+[6] Review & Pay
+    Review plan summary
+    Select payment method (ACH or Debit Card)
+    → Tap "Set Up Payment →"
+        ↓
+[7] Confirmation / You're All Set!
+    Shows receipt details
+    → Tap "View My Dashboard →"
+        ↓
+[8] Dashboard
+    Post-enrollment home with payment info
+```
+
+### Flow 2: Settlement Option (Option A)
+
+Step 5 → Select "Settle Now" card → Green checkmark appears on radio → "Confirm Settlement →" button animates in below card → Tap → Step 6 (Review & Pay) shows "Settlement · 1 payments" plan card with $208.50 total.
+
+### Flow 3: 3-Installment Plan (Option B)
+
+Step 5 → Select "Pay in 3 Installments" (pre-highlighted as BEST VALUE) → "Confirm 3-Payment Plan →" appears → Tap → Step 6 with 3 × $115.84 plan.
+
+### Flow 4: Custom Payment Plan Slider (Option C)
+
+Step 5 → Click "Build Your Own Plan" / "Customize →" → **Build Your Plan screen**:
+- Default: 6 months ($57.92/mo)
+- Drag slider or tap chips: 1mo / 2mo / 3mo / 6mo / 9mo / 12mo
+- Live recalculation: monthly amount and final payment date update instantly
+- Summary row updates: "N payments starting April 1, 2026 · $X.XX/mo · $0 fees"
+- Tap "Use This Plan →" → Step 6 (Review & Pay)
+
+### Flow 5: Identity Verification Failure
+
+Step 3 → Enter wrong SSN/DOB/ZIP → Tap "Find My Account →" → Network request fires → After ~2s delay: pink-red error banner appears: "We couldn't match your information. Please double-check and try again." → User can retry.
+
+### Flow 6: CoverLink / Referral
+
+- From Dashboard → Tap "Share Now" on Refer a Friend card
+- The CoverLink flow uses route `/cover/:linkId`
+- If link is valid: recipient sees a contribution UI (text in bundle: "Share Cover Link" dialog with "Share this link with family or friends. They can help pay your {billName} balance without seeing your personal financial details.")
+- If link is expired/invalid: Shows "This link is no longer available." error page
+
+### Flow 7: Bill Discovery / Add Bills
+
+From Dashboard → "Add These Bills →" CTA → Presumably leads to PaySitters main app bill-linking flow at `/bills/add` or `/onboarding/bank-bills` (not directly accessible in RECOVER module context).
+
+---
+
+## 5. Design System
+
+### Color Palette
+
+| Token | Value | Usage |
+|---|---|---|
+| `--color-primary` | `#328565` | Primary interactive color, links, success states, "Plan Active" label |
+| `--color-primary-dark` | `#153629` | Hero backgrounds, buttons (rendered as `rgb(27, 77, 62)` = `#1B4D3E`) |
+| `--color-primary-light` | `#A5FFDC` | Light green tint accents |
+| `--color-secondary` | `#FC6D5A` | Secondary buttons / warm actions |
+| `--color-accent` | `#FF5E33` | Error states, "SPOTTED FOR YOU" labels, warning banners |
+| `--color-danger` | `#D92E29` | Destructive actions |
+| `--color-error` | `var(--color-accent)` | Form validation errors (maps to orange-red) |
+| `--color-success` | `var(--color-primary)` | Success states (maps to green) |
+| `--color-warning` | `var(--color-accent)` | Warning states (maps to orange) |
+| `--color-info` | `#50BEE9` | Informational states |
+| `--color-app-bg` | `#FFFFFF` | Page background |
+| `--color-gray-bg` | `#F2F2F2` | Card backgrounds, subtle fills |
+| `--color-gray-border` | `#B3B3B3` | Borders, dividers |
+| `--color-gray-disabled` | `#BDBDBD` | Disabled elements |
+| `--color-gray-medium` | `#757575` | Secondary text, captions |
+| `--color-black` | `#000000` | Deepest text (rarely used; body text is `#1D1D1D`) |
+| `--color-white` | `#FFFFFF` | White text on dark bg |
+| Body text color | `rgb(29,29,29)` = `#1D1D1D` | Primary body text |
+| Muted body text | `rgb(102,102,102)` = `#666666` | Reassurance text, captions |
+| Mint green surface | `rgb(232,245,233)` = `#E8F5E9` | Account card bg, chip bg, benefit icon bg |
+| Amber/gold balance | Inferred amber ~`#E6A817` | Balance amounts (not a token — rendered inline) |
+| PWA Theme | `#328565` | Browser chrome color |
+
+### Typography
+
+| Token | Value |
+|---|---|
+| `--font-primary` | `"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` |
+| `--font-logo` | `"Neue Haas Grotesk Text Pro", "Inter", sans-serif` |
+| `--font-size-h1` | `48px` / line-height `56px` |
+| `--font-size-h2` | `40px` / line-height `46px` |
+| `--font-size-h3` | `36px` / line-height `42px` |
+| `--font-size-h4` | `30px` / line-height `40px` |
+| `--font-size-h5` | `24px` / line-height `34px` |
+| `--font-size-subtitle1` | `20px` / line-height `26px` |
+| `--font-size-subtitle2` | `18px` / line-height `24px` |
+| `--font-size-body1` | `16px` / line-height `24px` |
+| `--font-size-body2` | `14px` / line-height `22px` |
+| `--font-size-caption` | `12px` / line-height `16px` |
+| `--font-size-label` | `12px` |
+| `--font-size-overline` | `10px` / line-height `14px` |
+| `--font-size-cta` | `16px` |
+| `--font-size-cta-small` | `14px` |
+| `--font-size-cta-xsmall` | `12px` |
+
+**Observed typographic usage:**
+- Welcome hero greeting: 28px, font-weight 400 (white)
+- Welcome hero name highlight: 28px, font-weight 300, opacity 70%
+- Section headline: 22px, font-weight 400
+- Body text: 16px, font-weight 400
+- Overline labels: 10–12px, uppercase, font-weight 500
+- CTA buttons: 14px, font-weight 500
+- Captions/reassurance: 12px, font-weight 400, color `#666`
+
+### Spacing
+
+| Token | Value | Usage |
+|---|---|---|
+| `--space-xs` | `8px` | Compact gaps (icon padding, chip padding) |
+| `--space-sm` | `16px` | Standard content padding |
+| `--space-md` | `24px` | Card padding, section gaps |
+| `--space-lg` | `32px` | Large section spacing, hero padding-top |
+| `--space-xl` | `48px` | Hero padding-bottom |
+| `--content-padding` | `16px` | Mobile content horizontal padding |
+| `--content-padding-desktop` | `32px` | Desktop content horizontal padding |
+| `--content-max-width` | `480px` | Mobile max-width constraint |
+| `--content-max-width-desktop` | `900px` | Desktop max-width |
+| `--nav-height` / `--top-bar-height` | `56px` | Top bar height |
+| `--sidebar-width` | `240px` | (Not used in RECOVER flow) |
+| `--touch-target-min` | `44px` | Minimum touch target for accessibility |
+
+### Border Radii
+
+| Token | Value | Usage |
+|---|---|---|
+| `--radius-button` | `8px` | Standard buttons |
+| `--radius-pill` | `999px` | Pill badges, chip buttons, circular icons, CTA |
+| `--radius-card` | `12px` | Elevated cards (account card, option cards) |
+| `--radius-input` | `8px` | Form inputs |
+| `--radius-modal` | `16px` | Modals/dialogs |
+| `--radius-icon-button` | `20px` | Icon-only buttons |
+| Content card (welcome) | `24px 24px 0 0` | White overlay card rounding (top corners only) |
+
+### Shadows
+
+| Token | Value | Usage |
+|---|---|---|
+| `--shadow-button` | `0 2px 4px rgba(0,0,0,.08)` | Button elevation |
+| `--shadow-card` | `none` | Cards are flat (no shadow) |
+| `--shadow-modal` | `0 4px 16px rgba(0,0,0,.16)` | Dialogs/modals |
+| `--shadow-nav` | `0 -2px 8px rgba(0,0,0,.06)` | Bottom nav bar shadow (upward) |
+
+### Z-Index Scale
+
+| Token | Value |
+|---|---|
+| `--z-nav` | `100` |
+| `--z-modal-overlay` | `200` |
+| `--z-modal` | `300` |
+| `--z-toast` | `400` |
+
+### Icons
+
+Icons appear to be **custom SVG** or from a Lucide-compatible library. Observed icon types:
+- Phone-slash (no phone calls)
+- Shield-check (no credit check)
+- Star/sparkle (zero fees)
+- Trophy/award (Settlement offer)
+- Calendar (3-installment plan)
+- Sliders/knobs (custom plan)
+- Checkmark circle (success)
+- Lock (security/encryption)
+- Warning triangle (error)
+- Bell (notifications)
+- Bag/basket (referral)
+- Bar chart (credit score)
+- Bank/building (ACH)
+- Credit card (debit)
+- Circular avatar initial ("M")
+- Back arrow (navigation)
+
+### Component Library
+
+The app uses a **custom design system** with BEM-style class names all prefixed with `recover-`. While Material UI (MUI) is present as a dependency (evidenced by `Minified MUI error` strings), the visible components appear to be **entirely custom-styled** with the `recover-*` CSS classes overriding or wrapping MUI. Key custom components:
+
+| Component | Class Pattern | Description |
+|---|---|---|
+| Button | `recover-btn` | Full-width, pill-shaped primary CTA with optional `--disabled` modifier |
+| Card | `recover-card` | Flat card container with `--interactive` (hover/click) and `--selected` modifiers |
+| Chip/Badge | `recover-chip` | Pill-shaped status badge with `--success` modifier |
+| Slider | `recover-slider__input` | Custom-styled range input with pip markers |
+| Top Bar | `recover-topbar` | Top navigation bar with back button + title |
+| Bottom Nav | `recover-bottom-nav` | 4-tab sticky nav at page bottom |
+| Progress Step | `recover-step-indicator` | "STEP X OF Y" with colored left-border accent |
+
+### Animations & Transitions
+
+- **Staggered entrance animations**: Welcome screen sections use `recover-welcome__stagger-1` through `stagger-5` CSS classes (CSS animations, likely `@keyframes` with varying `animation-delay`)
+- **Pulse animation**: "Get Started" button has `recover-welcome__pulse` class — likely a keyframe pulse/glow effect to draw attention
+- **Slider interaction**: Instant live calculation update on slider `input` events (no debounce — React `onChange` fires on every tick)
+- **Plan card expansion**: Selected plan card expands vertically to reveal confirm CTA (likely CSS `max-height` or `height: auto` transition)
+- **Success screen**: Checkmark circle likely has a draw/scale animation on load
+
+### Brand Elements
+
+- **SWRS (Southwest Recovery Services)** logo used in the app header — demonstrates white-label/multi-tenant capability
+- **AT&T** creditor logo used in the account card — demonstrates creditor asset integration
+- **T-Mobile** and **Xfinity** brand chips in the discovery card
+- **PaySitters** brand name appears as the error page heading (fallback brand)
+- App name in PWA manifest: "PaySitters Recover" / short name "PaySitters"
+- App description: "Resolve past-due bills with dignity, flexibility, and control."
+- The design has a **warm-professional** aesthetic — dark forest green primary, clean white surfaces, gold/amber accents for monetary amounts, mint green for positive/success states
+
+---
+
+## 6. Technical Architecture
+
+### Framework & Build
+
+- **Frontend framework:** React (confirmed via `__reactContainer` fiber key on `#root` element, and `Minified React error` strings in bundle)
+- **Router:** React Router (v6+ inferred from `<Routes>` / `<Route>` / `<DataRouterContext.Provider>` references)
+- **Build tool:** **Vite** (confirmed via `<script type="module">` tag and `/assets/index-DtyxvyWu.js` Vite-style hash filename)
+- **Component library:** Material UI (MUI) present as dependency but heavily customized/overridden with `recover-*` CSS classes
+- **CSS architecture:** CSS Custom Properties (design tokens in `:root`) + BEM-inspired class naming. Custom CSS rather than Tailwind.
+- **PWA:** Yes — `/manifest.json` present, `display: "standalone"`, portrait orientation lock, theme color `#328565`, icons at 192×192 and 512×512
+
+### Bundled Assets
+
+- `/assets/index-DtyxvyWu.js` — single JS bundle (Vite-optimized)
+- `/assets/index-Cisnikx2.css` — single CSS bundle
+- Google Fonts preconnect (for Inter from fonts.googleapis.com / fonts.gstatic.com)
+- `/icon-192.png`, `/icon-512.png` — PWA icons
+
+### State Management
+
+- The consumer flow uses **React component state** (no Redux/Zustand observed in globals)
+- Session state is maintained in-memory within the SPA — no URL params change during verification/options/payment steps (all at `/r/m4r1a`)
+- **Local storage:** `sc
