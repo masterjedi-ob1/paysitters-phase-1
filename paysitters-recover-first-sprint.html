@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PaySitters RECOVER-First Sprint</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ps-bg: #0F1F1F;
+  --ps-surface: #152A2A;
+  --ps-card: #1A3333;
+  --ps-border: #264040;
+  --ps-border-glow: rgba(0,206,209,0.18);
+  --ps-teal: #00CED1;
+  --ps-teal-soft: rgba(0,206,209,0.12);
+  --ps-gold: #D4A574;
+  --ps-gold-soft: rgba(212,165,116,0.12);
+  --ps-red: #E8625C;
+  --ps-red-soft: rgba(232,98,92,0.10);
+  --ps-green: #5BD9A4;
+  --ps-green-soft: rgba(91,217,164,0.10);
+  --ps-text: #E8EDE8;
+  --ps-muted: #8A9E9E;
+  --ps-dim: #5C7070;
+  --ps-font: 'DM Sans', -apple-system, sans-serif;
+  --ps-mono: 'Space Mono', monospace;
+  --ps-serif: 'Instrument Serif', Georgia, serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--ps-bg);
+  color: var(--ps-text);
+  font-family: var(--ps-font);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.grain {
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:9999;opacity:0.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.page { max-width:960px; margin:0 auto; padding:48px 24px 80px; }
+
+/* AMBIENT GLOW */
+.glow-orb {
+  position:fixed; border-radius:50%; filter:blur(80px); pointer-events:none; opacity:0.06;
+}
+.glow-1 { top:-10%; left:-5%; width:500px; height:500px; background:var(--ps-teal); }
+.glow-2 { bottom:10%; right:-10%; width:400px; height:400px; background:var(--ps-gold); }
+
+/* HEADER */
+.header { margin-bottom:52px; position:relative; }
+
+.topline {
+  display:flex; align-items:center; gap:10px; margin-bottom:20px; flex-wrap:wrap;
+}
+.topline-badge {
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:var(--ps-mono); font-size:10px; font-weight:700;
+  letter-spacing:1.8px; text-transform:uppercase;
+  padding:5px 14px; border-radius:4px;
+}
+.badge-teal { background:var(--ps-teal-soft); color:var(--ps-teal); border:1px solid rgba(0,206,209,0.2); }
+.badge-gold { background:var(--ps-gold-soft); color:var(--ps-gold); border:1px solid rgba(212,165,116,0.2); }
+.badge-red { background:var(--ps-red-soft); color:var(--ps-red); border:1px solid rgba(232,98,92,0.2); }
+
+.header h1 {
+  font-family:var(--ps-serif); font-size:48px; font-weight:400;
+  line-height:1.1; letter-spacing:-1px; margin-bottom:16px;
+}
+.header h1 em { font-style:italic; color:var(--ps-teal); }
+
+.header-sub {
+  font-size:16px; color:var(--ps-muted); max-width:680px; margin-bottom:24px;
+}
+
+.meta-strip {
+  display:flex; gap:24px; flex-wrap:wrap;
+  padding:16px 0; border-top:1px solid var(--ps-border);
+}
+.meta-item { font-size:12px; color:var(--ps-dim); }
+.meta-item strong { color:var(--ps-muted); font-weight:600; }
+
+/* SECTIONS */
+.sec { margin-bottom:48px; }
+.sec-label {
+  font-family:var(--ps-mono); font-size:10px; font-weight:700;
+  letter-spacing:2px; text-transform:uppercase; color:var(--ps-teal);
+  margin-bottom:10px;
+}
+.sec h2 {
+  font-family:var(--ps-serif); font-size:30px; font-weight:400;
+  letter-spacing:-0.5px; margin-bottom:16px;
+}
+.sec h2 em { font-style:italic; color:var(--ps-gold); }
+
+/* REALITY BOX */
+.reality-box {
+  background:var(--ps-surface);
+  border:1px solid var(--ps-border);
+  border-left:3px solid var(--ps-gold);
+  border-radius:8px;
+  padding:24px 28px;
+  margin-bottom:28px;
+}
+.reality-box h3 {
+  font-size:15px; font-weight:700; margin-bottom:10px;
+  display:flex; align-items:center; gap:8px;
+}
+.reality-box p {
+  font-size:14px; color:var(--ps-muted); margin-bottom:10px; line-height:1.7;
+}
+.reality-box p:last-child { margin-bottom:0; }
+.reality-box strong { color:var(--ps-text); }
+
+/* DELIVERABLE CARDS */
+.deliv-stack { display:flex; flex-direction:column; gap:14px; margin-bottom:32px; }
+
+.deliv-row {
+  display:grid; grid-template-columns:44px 1fr auto; gap:16px; align-items:start;
+  background:var(--ps-surface); border:1px solid var(--ps-border); border-radius:8px;
+  padding:18px 22px; transition:border-color 0.2s;
+}
+.deliv-row:hover { border-color:var(--ps-border-glow); }
+
+.deliv-num {
+  font-family:var(--ps-mono); font-size:20px; font-weight:700;
+  color:var(--ps-teal); line-height:1;
+}
+.deliv-content h4 { font-size:15px; font-weight:700; margin-bottom:4px; }
+.deliv-content p { font-size:13px; color:var(--ps-muted); line-height:1.6; }
+.deliv-tag {
+  font-family:var(--ps-mono); font-size:9px; font-weight:700;
+  letter-spacing:1px; text-transform:uppercase; padding:3px 10px;
+  border-radius:3px; white-space:nowrap; margin-top:2px;
+}
+.tag-evan { background:var(--ps-teal-soft); color:var(--ps-teal); }
+.tag-matt { background:var(--ps-gold-soft); color:var(--ps-gold); }
+.tag-both { background:var(--ps-green-soft); color:var(--ps-green); }
+.tag-internal { background:rgba(255,255,255,0.05); color:var(--ps-dim); }
+
+@media (max-width:640px) {
+  .deliv-row { grid-template-columns:1fr; }
+  .deliv-num { font-size:14px; }
+  .header h1 { font-size:32px; }
+}
+
+/* WEEK BLOCKS */
+.week-block {
+  background:var(--ps-surface); border:1px solid var(--ps-border);
+  border-radius:10px; margin-bottom:16px; overflow:hidden;
+}
+.week-bar {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 24px; cursor:pointer; user-select:none;
+}
+.week-bar-left { display:flex; align-items:center; gap:12px; }
+.week-tag {
+  font-family:var(--ps-mono); font-size:10px; font-weight:700;
+  letter-spacing:1.2px; text-transform:uppercase; padding:4px 10px;
+  border-radius:4px;
+}
+.wk1 .week-tag { background:var(--ps-teal-soft); color:var(--ps-teal); }
+.wk2 .week-tag { background:var(--ps-gold-soft); color:var(--ps-gold); }
+.wk3 .week-tag { background:var(--ps-green-soft); color:var(--ps-green); }
+.wk4 .week-tag { background:var(--ps-red-soft); color:var(--ps-red); }
+.week-bar h3 { font-size:16px; font-weight:700; }
+.week-chevron { color:var(--ps-dim); font-size:16px; transition:transform 0.2s; }
+.week-block.open .week-chevron { transform:rotate(180deg); }
+
+.week-body { display:none; padding:0 24px 24px; }
+.week-block.open .week-body { display:block; }
+
+.week-obj {
+  font-size:13px; color:var(--ps-muted); margin-bottom:18px;
+  padding:12px 16px; background:rgba(0,0,0,0.2); border-radius:6px;
+  border-left:2px solid var(--ps-border);
+}
+
+.task-list { display:flex; flex-direction:column; gap:10px; }
+
+.task {
+  display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:start;
+  padding:12px 16px; background:var(--ps-card); border:1px solid var(--ps-border);
+  border-radius:6px;
+}
+.task-type {
+  font-family:var(--ps-mono); font-size:9px; font-weight:700;
+  letter-spacing:1px; text-transform:uppercase; padding:3px 8px;
+  border-radius:3px; margin-top:2px;
+}
+.t-build { background:var(--ps-teal-soft); color:var(--ps-teal); }
+.t-audit { background:var(--ps-gold-soft); color:var(--ps-gold); }
+.t-agent { background:var(--ps-red-soft); color:var(--ps-red); }
+.t-research { background:rgba(88,166,255,0.1); color:#58A6FF; }
+.t-deliver { background:var(--ps-green-soft); color:var(--ps-green); }
+.t-sync { background:rgba(188,140,255,0.1); color:#BC8CFF; }
+
+.task-body h4 { font-size:13px; font-weight:700; margin-bottom:2px; }
+.task-body p { font-size:12px; color:var(--ps-muted); line-height:1.55; }
+.task-who {
+  font-size:10px; font-family:var(--ps-mono); color:var(--ps-dim);
+  white-space:nowrap; margin-top:2px;
+}
+
+/* AGENTIC BOX */
+.agent-section {
+  background: linear-gradient(135deg, rgba(0,206,209,0.05), rgba(212,165,116,0.04));
+  border:1px solid var(--ps-border-glow); border-radius:10px;
+  padding:28px; margin-bottom:32px;
+}
+.agent-section h3 { font-size:16px; font-weight:700; margin-bottom:16px; }
+
+.agent-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+@media (max-width:640px) { .agent-grid { grid-template-columns:1fr; } }
+
+.agent-card {
+  background:rgba(0,0,0,0.3); border:1px solid var(--ps-border);
+  border-radius:6px; padding:14px 16px;
+}
+.agent-card .a-label {
+  font-family:var(--ps-mono); font-size:9px; color:var(--ps-teal);
+  letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;
+}
+.agent-card h4 { font-size:13px; font-weight:700; margin-bottom:4px; }
+.agent-card p { font-size:11px; color:var(--ps-muted); line-height:1.55; }
+
+/* CTO BOX */
+.cto-box {
+  background:var(--ps-surface); border:1px solid var(--ps-border);
+  border-radius:10px; padding:24px 28px; margin-bottom:32px;
+}
+.cto-box h3 { font-size:15px; font-weight:700; margin-bottom:12px; }
+.cto-box p { font-size:13px; color:var(--ps-muted); margin-bottom:10px; line-height:1.65; }
+.cto-note {
+  font-size:12px; color:var(--ps-dim); font-style:italic;
+  padding-top:12px; border-top:1px solid var(--ps-border);
+}
+
+/* METRICS BOX */
+.metrics-bar {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:12px;
+  margin-bottom:32px;
+}
+@media (max-width:640px) { .metrics-bar { grid-template-columns:1fr 1fr; } }
+
+.metric-card {
+  background:var(--ps-surface); border:1px solid var(--ps-border);
+  border-radius:8px; padding:16px; text-align:center;
+}
+.metric-val {
+  font-family:var(--ps-mono); font-size:24px; font-weight:700;
+  color:var(--ps-teal); margin-bottom:4px;
+}
+.metric-label { font-size:11px; color:var(--ps-muted); }
+
+/* FOOTER */
+.footer {
+  text-align:center; padding-top:32px; margin-top:48px;
+  border-top:1px solid var(--ps-border);
+}
+.footer-brand {
+  font-family:var(--ps-mono); font-size:11px; color:var(--ps-dim);
+  letter-spacing:1px;
+}
+.footer-brand span { color:var(--ps-teal); }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="glow-orb glow-1"></div>
+<div class="glow-orb glow-2"></div>
+
+<div class="page">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="topline">
+    <span class="topline-badge badge-teal">Phase 1 Sprint</span>
+    <span class="topline-badge badge-gold">RECOVER-First</span>
+    <span class="topline-badge badge-red">Tonight Delivery</span>
+  </div>
+  <h1>PaySitters <em>Architecture Sprint</em></h1>
+  <p class="header-sub">RECOVER MVP as the entry point. Prove the product with singles and doubles. Independent deliverables that remove ambiguity, demonstrate capability, and create momentum toward the $2M bridge round.</p>
+  <div class="meta-strip">
+    <div class="meta-item"><strong>Architect:</strong> Chris McCarthy / OB.1 AI</div>
+    <div class="meta-item"><strong>Duration:</strong> 4 Weeks</div>
+    <div class="meta-item"><strong>Ref:</strong> Portica RECOVER Demo</div>
+    <div class="meta-item"><strong>Target:</strong> Arrears MVP Live</div>
+  </div>
+</div>
+
+<!-- ITERATIVE APPROACH -->
+<div class="sec">
+  <div class="sec-label">01 / PaySitters Team Priorities</div>
+  <h2>Iterative Approach for <em>Compounding Returns</em></h2>
+
+  <div class="reality-box">
+    <h3>&#9670; RECOVER Ships First</h3>
+    <p><strong>Self-service arrears resolution is the highest-leverage module.</strong> It validates the behavioral thesis, generates immediate revenue, and creates the traction data that unlocks everything downstream. Singles and doubles first -- prove the product before the enterprise data stack comes online.</p>
+    <p>The current React Native app served the initial 1,000-member cohort but <strong>the next version serves 100K.</strong> Clean-slate rebuild. Deep-link simplicity: consumer gets link, enters name/email, account pulls up, pays instantly. Every screen serves that flow.</p>
+  </div>
+
+  <div class="reality-box">
+    <h3>&#9670; Compounding Delivery Model</h3>
+    <p>Each week builds on the previous. <strong>Audit findings feed wireframe decisions. Wireframes inform mockups. Mockups shape the pitch deck. The pitch deck frames the SOW.</strong> Nothing is throwaway -- every deliverable becomes input for the next. Seven independent assets delivered iteratively, each standing on its own.</p>
+    <p>Data-driven throughout: form completion rates, user flow analytics, conversion funnel visibility, vendor onboarding pipeline tracking. SOC 2 compliance scoped into architecture from day one.</p>
+  </div>
+
+  <div class="reality-box">
+    <h3>&#9670; Validated Traction</h3>
+    <p><strong>Platform traction:</strong> ~1,000 users, 40 states, 0% defaults, 0% churn, 83% profile completion (vs 38% industry avg), ~27,000 waitlist (capped by float capital, not demand), 54x demand ahead of supply. <strong>Revenue target:</strong> 50,000 active loans, $10M revenue, 20,000 monthly loans for profitability. <strong>Bridge round:</strong> $2M SAFE note, $20M valuation cap. RECOVER fees + interchange cover ops by Month 18.</p>
+  </div>
+</div>
+
+<!-- VALIDATED METRICS -->
+<div class="metrics-bar">
+  <div class="metric-card">
+    <div class="metric-val">83%</div>
+    <div class="metric-label">Profile Completion<br>(vs 38% industry)</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-val">0%</div>
+    <div class="metric-label">Default Rate on<br>$2.5M+ Originated</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-val">54x</div>
+    <div class="metric-label">Demand vs<br>Supply Capacity</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-val">38x</div>
+    <div class="metric-label">LTV/CAC Ratio<br>(vs ~13x best class)</div>
+  </div>
+</div>
+
+<!-- DELIVERABLES -->
+<div class="sec">
+  <div class="sec-label">02 / Deliverables</div>
+  <h2>Sprint <em>Output Package</em></h2>
+  <p style="font-size:14px; color:var(--ps-muted); margin-bottom:24px;">Seven independent assets. Each stands on its own, requires no live walkthrough, and maps directly to the RECOVER MVP launch path.</p>
+
+  <div class="deliv-stack">
+    <div class="deliv-row">
+      <div class="deliv-num">01</div>
+      <div class="deliv-content">
+        <h4>RECOVER UX Audit + Gap Analysis</h4>
+        <p>Side-by-side analysis of the Portica demo against the current live experience. Severity-rated findings (Critical/High/Medium). Annotated screenshots. Deep-link flow evaluation. Mobile-first assessment across the consumer arrears journey: link received, identity entered, balance displayed, payment plan selected, payment confirmed.</p>
+      </div>
+    </div>
+
+    <div class="deliv-row">
+      <div class="deliv-num">02</div>
+      <div class="deliv-content">
+        <h4>RECOVER MVP Wireframes + Flow Architecture</h4>
+        <p>Clean wireframes of the rebuilt RECOVER consumer experience. Covers: deep-link entry, consumer identity verification, balance/arrears display, self-service payment slider (settlement, 3-payment, custom 1-12 months), payment confirmation, Cover Link viral share. Every screen annotated with behavioral science rationale -- IKEA Effect on self-directed plans, shame-avoidance framing, autonomy-preserving language.</p>
+      </div>
+    </div>
+
+    <div class="deliv-row">
+      <div class="deliv-num">03</div>
+      <div class="deliv-content">
+        <h4>Current vs. Proposed Pitch Deck</h4>
+        <p>Visual slide deck showing the existing experience alongside the proposed RECOVER redesign. Includes: market positioning (the competitive table showing PaySitters as the only closed-loop architecture), moat visualization (NCTUE + Work Number data exclusivity), unit economics ($18.75/mo net margin, 38x LTV/CAC), and the dignity-first engagement framework. Built for investor-grade or partner-grade audiences.</p>
+      </div>
+    </div>
+
+    <div class="deliv-row">
+      <div class="deliv-num">04</div>
+      <div class="deliv-content">
+        <h4>System Audit + Scalability Assessment</h4>
+        <p>Technical audit of the existing infrastructure -- current React Native app, Finicity bank verification integration, DEC bill data extraction, AWS environments. Identifies gaps against the broader product vision. Evaluates scalability from 1,000 users to 100K. SOC 2 readiness assessment. Recommends clean-slate vs. refactor decision with supporting rationale. Maps to the 24-week phased build timeline.</p>
+      </div>
+    </div>
+
+    <div class="deliv-row">
+      <div class="deliv-num">05</div>
+      <div class="deliv-content">
+        <h4>Vendor Onboarding Portal Spec</h4>
+        <p>Architecture spec for vendor-agnostic data ingestion across all four verticals (utilities, ISP, insurance, services). Same portal, same schema, same platform for every biller/agency. CSV + API ingestion pathways. Portfolio data file specifications for ARM agency onboarding. BYO API approach to reduce single-vendor dependency. Private-labelable architecture for FCRA compliance.</p>
+      </div>
+    </div>
+
+    <div class="deliv-row">
+      <div class="deliv-num">06</div>
+      <div class="deliv-content">
+        <h4>Analytics + Conversion Instrumentation Plan</h4>
+        <p>PostHog + Supabase implementation spec for tracking every funnel stage. Form completion rates, user flow analytics, drop-off analysis at each conversion point. Session replay configuration for UX optimization. Feature flag setup for phased rollout. Dashboard mockup showing: conversion funnel visibility, vendor onboarding pipeline tracking. Hotjar recommended as supplementary UX analytics layer.</p>
+      </div>
+    </div>
+
+    <div class="deliv-row">
+      <div class="deliv-num">07</div>
+      <div class="deliv-content">
+        <h4>Competitive Intelligence Brief</h4>
+        <p>YNAB, Monarch, DailyPay, Rocket Money, and collections-adjacent fintech. Where PaySitters wins (closed behavioral loop, 0% APR, NCTUE data exclusivity) and where UX gaps exist. App Store/Play Store review synthesis. Market sentiment from Reddit, Trustpilot, BBB. Cross-referenced against live audit observations.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AGENTIC WORKFLOWS -->
+<div class="sec">
+  <div class="sec-label">03 / Execution Method</div>
+  <h2>Agentic <em>Workflow Architecture</em></h2>
+  <p style="font-size:14px; color:var(--ps-muted); margin-bottom:20px;">Orchestrated AI execution at scale. Chris architects and directs. The agents execute.</p>
+
+  <div class="agent-section">
+    <h3>Sprint Agent Stack</h3>
+    <div class="agent-grid">
+      <div class="agent-card">
+        <div class="a-label">Claude-in-Chrome</div>
+        <h4>Live Site + Portica Audit</h4>
+        <p>Automated crawl of paysitters.com and recover.dev.portica.nevado.ai. Screenshots every screen at mobile viewports (iPhone 14, Pixel 7). Accessibility scan (axe-core). Navigation path mapping. Trust signal inventory. Output: annotated screenshot library + raw UX data for the audit doc.</p>
+      </div>
+      <div class="agent-card">
+        <div class="a-label">Research Agent</div>
+        <h4>Competitive + Market Intel</h4>
+        <p>Parallel web search: App Store/Play Store reviews, Reddit, Trustpilot, BBB, competitor product pages. Structured extraction into comparison matrix. Sentiment scoring. Fintech regulatory landscape scan. Output: competitive brief + market positioning data.</p>
+      </div>
+      <div class="agent-card">
+        <div class="a-label">Claude Code</div>
+        <h4>Document + Deck Generation</h4>
+        <p>Transforms raw audit data + research into production-ready deliverables. DOCX audit report, PPTX pitch deck, branded PDFs. Design system extraction from the Portica demo. PaySitters brand kit applied (deep teal, cyan/gold accents). Output: all 7 deliverables in final format.</p>
+      </div>
+      <div class="agent-card">
+        <div class="a-label">Data Pipeline Agent</div>
+        <h4>Analytics Architecture</h4>
+        <p>PostHog + Supabase configuration spec. Event taxonomy for every funnel stage. Session replay setup. Feature flag framework. Dashboard wireframe for key operational metrics. Output: analytics instrumentation plan + dashboard mockup ready for dev implementation.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WEEKLY SPRINT -->
+<div class="sec">
+  <div class="sec-label">04 / Sprint Timeline</div>
+  <h2>Four Weeks to <em>Arrears MVP</em></h2>
+
+  <!-- WEEK 1 -->
+  <div class="week-block wk1 open" onclick="this.classList.toggle('open')">
+    <div class="week-bar">
+      <div class="week-bar-left">
+        <span class="week-tag">Week 1</span>
+        <h3>Audit + RECOVER Deep Dive</h3>
+      </div>
+      <span class="week-chevron">&#9662;</span>
+    </div>
+    <div class="week-body">
+      <div class="week-obj">
+        <strong>Objective:</strong> Complete the live audit of both paysitters.com and the Portica RECOVER demo. Deploy research agents. Coordinate technical onboarding for repo + infrastructure access. Deliver Week 1 summary brief to PaySitters team.
+      </div>
+      <div class="task-list">
+        <div class="task">
+          <span class="task-type t-audit">Audit</span>
+          <div class="task-body">
+            <h4>Portica RECOVER Demo Analysis</h4>
+            <p>Walk the full deep-link consumer journey on the Portica RECOVER demo. Document: link entry, identity flow, balance display, payment plan selection (settlement/3-payment/custom slider), payment confirmation. Map where the demo reflects the intended product vision and where it diverges. This is the UX baseline for the rebuild.</p>
+          </div>
+          <span class="task-who">Chris</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-audit">Audit</span>
+          <div class="task-body">
+            <h4>Live Site Mobile Walkthrough</h4>
+            <p>Two-persona evaluation of paysitters.com: (1) consumer in bill crisis within 30 days, (2) consumer in arrears trying to resolve. Claude-in-Chrome handles automated screenshot capture, accessibility scan, and mobile viewport simulation. DevTools: iPhone 14, Pixel 7.</p>
+          </div>
+          <span class="task-who">Agent</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-agent">Agent</span>
+          <div class="task-body">
+            <h4>Competitive Intelligence Sweep</h4>
+            <p>Research agent deployed across YNAB, Monarch, DailyPay, Rocket Money, collections fintech. App Store + Play Store reviews (recent, sorted by critical). Reddit, Trustpilot, BBB mentions. Structured into comparison matrix with trust/UX/value prop scoring.</p>
+          </div>
+          <span class="task-who">Agent</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-research">Research</span>
+          <div class="task-body">
+            <h4>Build Brief Gap Mapping</h4>
+            <p>Cross-reference Phase 1 Build Brief against live product + Portica demo. Identify highest-leverage divergences. Flag RECOVER-specific gaps: does the current experience communicate the IKEA Effect slider? Is the Cover Link viral mechanic present? Where does dignity-first framing break down?</p>
+          </div>
+          <span class="task-who">Chris</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-sync">Sync</span>
+          <div class="task-body">
+            <h4>Technical Onboarding</h4>
+            <p>Coordinate access to BitBucket repo, AWS environments, and technical documentation. Assess current codebase state, Finicity integration, DEC bill data extraction. Form independent technical opinion on rebuild scope and architecture requirements.</p>
+          </div>
+          <span class="task-who">Chris + CTO</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-deliver">Deliver</span>
+          <div class="task-body">
+            <h4>Week 1 Summary Brief</h4>
+            <p>Standalone document: raw audit findings, competitive intel highlights, brief gap analysis draft, and initial technical assessment. Formatted for detail-first review. No live walkthrough required.</p>
+          </div>
+          <span class="task-who">Chris &#8594; Team</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div class="week-block wk2" onclick="this.classList.toggle('open')">
+    <div class="week-bar">
+      <div class="week-bar-left">
+        <span class="week-tag">Week 2</span>
+        <h3>RECOVER Wireframes + System Audit</h3>
+      </div>
+      <span class="week-chevron">&#9662;</span>
+    </div>
+    <div class="week-body">
+      <div class="week-obj">
+        <strong>Objective:</strong> Synthesize Week 1 data into severity-rated findings. Build RECOVER wireframes with behavioral science annotations. Complete system audit. Deliver: audit doc draft + wireframes to PaySitters team.
+      </div>
+      <div class="task-list">
+        <div class="task">
+          <span class="task-type t-audit">Analysis</span>
+          <div class="task-body">
+            <h4>Severity Rating + Prioritization</h4>
+            <p>Categorize every finding as Critical/High/Medium. Weight by: (1) conversion impact on the RECOVER arrears flow, (2) alignment with the deep-link simplicity directive, (3) feasibility within a weeks-not-months timeline. RECOVER-specific findings get highest priority.</p>
+          </div>
+          <span class="task-who">Chris</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-build">Build</span>
+          <div class="task-body">
+            <h4>RECOVER Consumer Flow Wireframes</h4>
+            <p>Clean mobile wireframes: deep-link entry &#8594; identity verification &#8594; balance/arrears display &#8594; self-service payment slider (settlement / 3-payment / custom 1-12 months) &#8594; payment confirmation &#8594; Cover Link share. Each screen annotated with behavioral science rationale. "Velvet covered brick" design language: paradoxically simple yet robust.</p>
+          </div>
+          <span class="task-who">Chris</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-audit">Audit</span>
+          <div class="task-body">
+            <h4>System Audit + Scalability Assessment</h4>
+            <p>Current React Native codebase evaluation. Finicity + DEC integration state. AWS infrastructure mapping. Clean-slate vs. refactor recommendation with supporting data. SOC 2 gap analysis. Maps 1,000 users &#8594; 100K scaling requirements. Identifies what Shyam's Apple-grade security expertise adds to the architecture.</p>
+          </div>
+          <span class="task-who">Chris + CTO</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-agent">Agent</span>
+          <div class="task-body">
+            <h4>UX Audit Document Generation</h4>
+            <p>Claude Code generates the formatted audit document from raw findings. Severity-rated, annotated screenshots, RECOVER-first recommendations. PaySitters brand kit applied (deep teal #1A3A3A, cyan #00CED1, gold #D4A574). Draft for team review.</p>
+          </div>
+          <span class="task-who">Agent</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-build">Build</span>
+          <div class="task-body">
+            <h4>Analytics Instrumentation Plan</h4>
+            <p>PostHog + Supabase event taxonomy. Every RECOVER funnel stage tracked. Session replay for UX optimization. Feature flags for phased rollout. Dashboard mockup showing key operational metrics: form completion rates, conversion funnel, vendor onboarding pipeline.</p>
+          </div>
+          <span class="task-who">Chris</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-deliver">Deliver</span>
+          <div class="task-body">
+            <h4>Audit Doc Draft + Wireframes &#8594; Team</h4>
+            <p>Package: UX audit document (draft), RECOVER wireframes (annotated), system audit summary. Each piece stands alone. Team reviews and marks up before proceeding to high-fidelity in Week 3.</p>
+          </div>
+          <span class="task-who">Chris &#8594; Team</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 3 -->
+  <div class="week-block wk3" onclick="this.classList.toggle('open')">
+    <div class="week-bar">
+      <div class="week-bar-left">
+        <span class="week-tag">Week 3</span>
+        <h3>High-Fidelity + Pitch Deck Assembly</h3>
+      </div>
+      <span class="week-chevron">&#9662;</span>
+    </div>
+    <div class="week-body">
+      <div class="week-obj">
+        <strong>Objective:</strong> Elevate RECOVER wireframes to high-fidelity mockups. Build the current-vs-proposed pitch deck. Draft vendor onboarding portal spec. Deliver: mockups + deck + competitive brief to Evan for internal review.
+      </div>
+      <div class="task-list">
+        <div class="task">
+          <span class="task-type t-build">Build</span>
+          <div class="task-body">
+            <h4>High-Fidelity RECOVER Mockups</h4>
+            <p>Full-resolution mobile screens in the PaySitters brand language. Deep-link entry, identity flow, Goldilocks Zone preview, RECOVER slider, payment confirmation, Cover Link share. Design tokens extracted from Portica demo refined into production-ready visual direction. Fintech trust-appropriate: modern, credible, warm.</p>
+          </div>
+          <span class="task-who">Chris</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-agent">Agent</span>
+          <div class="task-body">
+            <h4>Pitch Deck Pipeline</h4>
+            <p>Claude Code builds PPTX: market context, current vs. proposed side-by-sides, competitive positioning table (the closed-loop visual), moat visualization (NCTUE + Work Number), unit economics ($18.75 net margin, 38x LTV/CAC), RECOVER flow walkthrough. PaySitters brand kit. Slides that carry themselves.</p>
+          </div>
+          <span class="task-who">Agent</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-build">Build</span>
+          <div class="task-body">
+            <h4>Vendor Onboarding Portal Spec</h4>
+            <p>Architecture spec for vendor-agnostic data ingestion. Same portal, same schema across utilities/ISP/insurance/services. CSV + API pathways. ARM agency onboarding flow. Private-label config for FCRA compliance. BYO API approach per the team's technical direction. 48-hr white-label deployment target.</p>
+          </div>
+          <span class="task-who">Chris</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-research">Research</span>
+          <div class="task-body">
+            <h4>Competitive Intelligence Brief</h4>
+            <p>Final formatted brief: YNAB, Monarch, DailyPay, Rocket Money, ARM/collections fintech. Trust signals, UX, value prop comparison. Cross-referenced with live audit findings. The "No competitor has this loop" visual. Market sentiment synthesis.</p>
+          </div>
+          <span class="task-who">Chris + Agent</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-build">Build</span>
+          <div class="task-body">
+            <h4>Top 5 Recommendations</h4>
+            <p>Highest-ROI changes ranked by effort, impact, and alignment with fast MVP deployment. Each: problem statement, proposed solution, effort estimate, expected conversion impact. RECOVER arrears flow improvements lead. Website updates framed as a parallel weekend project.</p>
+          </div>
+          <span class="task-who">Chris</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-deliver">Deliver</span>
+          <div class="task-body">
+            <h4>Full Package Review &#8594; Team</h4>
+            <p>Complete delivery: mockups, pitch deck, competitive brief, vendor spec, Top 5 recommendations. One round of revisions built into Week 4.</p>
+          </div>
+          <span class="task-who">Chris &#8594; Team</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 4 -->
+  <div class="week-block wk4" onclick="this.classList.toggle('open')">
+    <div class="week-bar">
+      <div class="week-bar-left">
+        <span class="week-tag">Week 4</span>
+        <h3>Polish + Presentation + Phase 2 SOW</h3>
+      </div>
+      <span class="week-chevron">&#9662;</span>
+    </div>
+    <div class="week-body">
+      <div class="week-obj">
+        <strong>Objective:</strong> Finalize all deliverables. Present to PaySitters leadership. Position Phase 2 engagement: PRD, sprint roadmap, Excalidraw architecture diagram, and dev implementation. The revenue milestone.
+      </div>
+      <div class="task-list">
+        <div class="task">
+          <span class="task-type t-build">Polish</span>
+          <div class="task-body">
+            <h4>Final Deliverable Package</h4>
+            <p>Incorporate team feedback from Week 3 review. Final pass on all 7 deliverables. Ensure every recommendation traces to a specific audit finding. Every metric sourced from validated traction data. Production-ready for investor or partner audiences.</p>
+          </div>
+          <span class="task-who">Chris + Agent</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-deliver">Present</span>
+          <div class="task-body">
+            <h4>Leadership Presentation</h4>
+            <p>45-min session with PaySitters leadership. Walk the pitch deck, demo mockups, present Top 5 recommendations, share system audit findings. Frame through measurable outcomes: conversion metrics, institutional readiness, scalability path. Record for async review.</p>
+          </div>
+          <span class="task-who">Chris + Team</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-build">Build</span>
+          <div class="task-body">
+            <h4>Phase 2 SOW: RECOVER Build Sprint</h4>
+            <p>Scope the dev engagement: PRD for RECOVER MVP, sprint roadmap (targeting rapid MVP deployment), Excalidraw architecture diagram, React rebuild framework, Supabase + PostHog stack. Pricing aligned with $2M bridge round budget (35% of proceeds = technical integration). Position OB.1 as architecture lead with clear implementation swim lanes.</p>
+          </div>
+          <span class="task-who">Chris</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-sync">Sync</span>
+          <div class="task-body">
+            <h4>Architecture Handoff</h4>
+            <p>Post-presentation technical deep-dive with CTO. Share the system audit, vendor portal spec, and analytics plan. Clear swim lanes for implementation. Chris remains architecture lead. Integration points identified and documented for handoff.</p>
+          </div>
+          <span class="task-who">Chris + CTO</span>
+        </div>
+        <div class="task">
+          <span class="task-type t-deliver">Outcome</span>
+          <div class="task-body">
+            <h4>Signed Engagement + Equity Terms</h4>
+            <p>Target: Phase 2 SOW signed with engagement framework defined. Minimum: verbal commitment + kickoff scheduled. The sprint proved the value. The SOW captures it.</p>
+          </div>
+          <span class="task-who">All</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTO ROLE -->
+<div class="sec">
+  <div class="sec-label">04 / Team Dynamics</div>
+  <h2>How Shyam <em>Fits</em></h2>
+
+  <div class="cto-box">
+    <h3>CTO as Technical Resource, Not Decision Gate</h3>
+    <p>Shyam Toprani (ex-Apple 16 yrs, 6+ patents, ex-Google LearnX) is the implementation CTO. His strengths: security architecture (device authentication patents, token-based auth), mobile platform engineering (iPod/iPhone/iPad lifecycle), and AI product development (Google's Learn About tool). He brings serious technical depth.</p>
+    <p><strong>But the decision flow is Evan &#8594; Matt.</strong> Shyam provides technical feasibility input and implementation capacity. He doesn't gate product direction or engagement scope. Matt facilitated the introduction for tech onboarding (BitBucket, AWS), not for architectural approval.</p>
+    <p>Chris's approach: get Shyam's technical assessment in Week 1, incorporate his security-first perspective into the system audit, and build a working relationship where Chris architects and Shyam implements. By Week 4, the swim lanes should be clear and collaborative.</p>
+    <p class="cto-note">Note: Shyam's CTO role is not yet publicly confirmed. His LinkedIn still shows Apple. Treat as insider intel. Don't lead with assumptions about his title or authority -- let the relationship develop naturally through the technical onboarding.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand"><span>OB.1</span> AI SOLUTIONS &bull; PAYSITTERS PHASE 1 ARCHITECTURE SPRINT</div>
+  <p style="font-size:11px; color:var(--ps-dim); margin-top:6px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fa9992889389ba9598cb9b93d49995">[email&#160;protected]</a> &bull; 234.602.0500 &bull; ob1ai.co</p>
+  <p style="font-size:10px; color:var(--ps-border); margin-top:8px;">Compiled from: Granola meeting notes (3/30-4/7), Fireflies transcripts (4/3, 4/6), CAIO Ref
