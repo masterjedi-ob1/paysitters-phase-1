@@ -1,0 +1,148 @@
+PaySitters Platform: RECOVER-First Architecture Sprint
+Post-Meeting Synthesis  |  To: Evan Rains -- Matt Stephenson (CEO) & PaySitters Team
+From: Chris McCarthy   |  OB.1 AI Solutions  |  chris@ob1ai.co
+MEETING RECAP
+Matt, Team: thank you for a productive series of sessions over the past week. Between the deep-dives on behavioral science methodology, product rebuild scope, and the three-way alignment call, we have strong shared direction on what needs to happen next.
+This document captures what was heard, synthesizes it into a RECOVER-first build framework, and proposes a 4-week sprint focused on one priority: a self-service arrears resolution MVP that proves traction before the Equifax integration becomes relevant. Singles and doubles first.
+WHAT WE HEARD: SHARED PRIORITIES
+Equifax is a future accelerant, not a prerequisite. Prove the product with singles and doubles first. Enterprise data stack comes online once traction exists.
+The current app is not prime-time ready. Clean-slate rebuild. React Native v1 served the 1,000-member cohort; the next version serves 100K.
+RECOVER ships first. Self-service arrears resolution is the highest-leverage module. It validates the behavioral thesis, generates immediate revenue, and creates the traction data that unlocks everything else.
+Core UX: deep-link simplicity. Consumer gets link, enters name/email, account pulls up, pays instantly. Every screen serves that flow.
+Vendor-agnostic data ingestion. Biller/agency data must be compliant, structured, no single-vendor dependency. BYO API architecture.
+Pattern recognition over autonomous agents. Every interaction feeds real-time behavioral insights. AI synthesizes and surfaces. Humans decide.
+Data priorities: form completion rates, user flow analytics, conversion funnel visibility, vendor onboarding pipeline tracking.
+SOC 2 compliance scoped into architecture from day one, not bolted on.
+RECOVER MVP ARCHITECTURE
+RECOVER is the entry point. The self-service arrears resolution module proves the core thesis: consumers want to resolve debt when the framing preserves dignity and gives them control. Payment arrangements break at ~65% industry-wide because they are forced, not chosen. RECOVER inverts this.
+The MVP consumer journey is a single linear flow with six defined stages:
+STAGE
+NAME
+DESCRIPTION
+KEY METRIC
+1
+ENTRY
+Consumer receives branded deep-link from biller or ARM agency. Zero app download. No login wall. SMS, email, mail, or QR.
+Link click-through rate by channel (SMS, email, mail, QR)
+2
+IDENTIFY
+Minimal data capture (name + email). Account auto-populates from biller/agency data file. Friction measured in seconds, not screens.
+Profile completion rate (target: 83%+, validated against 1K-user cohort)
+3
+RESOLVE
+Arrears consumer enters RECOVER. Balance displayed. Self-service payment slider: settlement, 3-payment, or custom (1-12 months). Consumer chooses. IKEA Effect: self-directed plans stick.
+Settlement acceptance rate; custom plan completion rate
+4
+PAY
+Daily micro-repayment: one tap, calibrated amount, confirmed. Core engine: amount calibrated to real-time balance and pay cadence.
+Daily active rate; repayment velocity; streak %
+5
+SHARE
+Cover Link viral mechanic. Consumer shares link with network for payment support. Extends reach without additional CAC.
+Cover Link share rate; viral coefficient
+
+
+Analytics instrumented at every stage. Every funnel transition is a tracked event with drop-off analysis. PostHog (product analytics, session replay, feature flags) + Supabase (transactional DB, RLS tier gating) form the measurement backbone.
+Behavioral science is infrastructure, not decoration. Scripting, timing, colors, and framing are proprietary IP baked into the platform. Dignity-first language. Consumer-controlled plans. Shame-avoidance architecture throughout.
+MULTI-VERTICAL VENDOR FRAMEWORK
+PaySitters serves four vendor verticals. Each has distinct consumer pain points, data requirements, and integration patterns, but all funnel through the same platform architecture:
+VERTICAL
+VENDOR TYPE
+CONSUMER PAIN
+PAYSITTERS ACTION
+DATA INPUTS
+Utilities
+Electric, gas, water, sewer
+Disconnection threats, $31B+ national arrears
+Bridge payment on bill date; RECOVER self-service for arrears resolution
+Bill amount, due date, account status, pay cadence
+ISP / Telecom
+Cable, internet, wireless, streaming bundles
+Service interruption, early termination fees, credit damage
+Timing-gap bridge; auto-enrollment via biller deep link
+Monthly charge, billing cycle, service tier, payment history
+Insurance
+Auto, renters, health deductibles, premium finance
+Policy lapse, coverage gaps, premium spikes
+SHIELD emergency guarantee; structured factoring
+Premium amount, policy dates, deductible, claim triggers
+Services
+Medical, dental, auto repair, childcare, property mgmt
+Unexpected bills, payment plan friction, collections escalation
+Vendor network + pre-authorized SHIELD; RECOVER for existing arrears
+Invoice amount, vendor ID, service date, member authorization
+
+
+Design principle: the platform is vendor-agnostic. A utility biller and an auto insurance provider both onboard through the same portal, submit data in the same schema, and deliver consumers into the same payment experience. White-labeled per partner for FCRA compliance.
+4-WEEK ARCHITECTURE SPRINT
+This sprint delivers seven independent assets. Each stands on its own, requires no live walkthrough, and maps directly to the RECOVER MVP launch path. Iterative delivery at the end of each week creates compounding returns: Week 1 audit findings inform Week 2 wireframes, which shape Week 3 mockups, which drive the Week 4 SOW.
+WEEK
+FOCUS
+DELIVERABLES
+TARGET
+DAYS
+OWNER
+Week 1
+Audit + Intelligence
+RECOVER UX audit (severity-rated); Portica gap analysis; competitive intel sweep (YNAB, Monarch, DailyPay, Rocket Money, ARM fintech); build brief gap mapping; Week 1 summary brief
+Apr 7-11
+5
+Chris
+Week 2
+Wireframes + System Audit
+RECOVER consumer flow wireframes (6 screens, annotated with behavioral science rationale); system audit + scalability assessment; analytics instrumentation plan (PostHog + Supabase); UX audit document (formatted)
+Apr 14-18
+5
+Chris
+Week 3
+High-Fidelity + Deck
+High-fidelity RECOVER mockups (production-ready mobile screens); current vs. proposed pitch deck; vendor onboarding portal spec; competitive intelligence brief (formatted); Top 5 recommendations (ranked by ROI)
+Apr 21-25
+5
+Chris
+Week 4
+Polish + SOW
+Final deliverable package (all 7 assets production-ready); leadership presentation (45 min); Phase 2 SOW: PRD, sprint roadmap, Excalidraw architecture diagram, dev handoff spec
+Apr 28-May 2
+5
+Chris
+
+
+
+
+
+
+
+
+20 Days
+
+
+
+
+Budget framing: All scoping guided by the $2M bridge round as total budget envelope. Phase 1 sprint demonstrates capability and creates the assets that inform Phase 2 pricing and scope. Phase 2 (RECOVER build) targets rapid MVP deployment within weeks of SOW signature.
+Iterative compounding: Each week builds on the previous. Audit findings feed wireframe decisions. Wireframes inform mockups. Mockups shape the pitch deck. The pitch deck frames the SOW. Nothing is throwaway; every deliverable becomes input for the next.
+AGENTIC EXECUTION MODEL
+This sprint leverages AI-orchestrated workflows to deliver at a speed and depth that traditional consulting cannot match. Four agent roles run in parallel:
+Live Audit Agent (Claude-in-Chrome): Automated site crawl of the current product and Portica demo. Screenshots every screen at mobile viewports (iPhone 14, Pixel 7). Accessibility scan. Navigation path mapping. Trust signal inventory. Output: annotated screenshot library + raw UX data.
+Research Agent: Parallel web search across App Store reviews, Reddit, Trustpilot, BBB, and competitor product pages. Structured extraction into comparison matrices. Sentiment analysis. Output: competitive intelligence brief + market positioning data.
+Document Generation (Claude Code): Transforms raw audit data + research into formatted deliverables. DOCX reports, PPTX decks, branded PDFs. Design system extraction. PaySitters brand language applied. Output: all 7 deliverables in production-ready format.
+Data Pipeline Agent: PostHog + Supabase configuration spec. Event taxonomy for every funnel stage. Session replay setup. Feature flag framework. Dashboard wireframe for the specific metrics requested: conversion funnel visibility, vendor onboarding pipeline tracking. Output: analytics instrumentation plan.
+SPRINT DELIVERABLES (7 INDEPENDENT ASSETS)
+1. RECOVER UX Audit + Portica Gap Analysis: Side-by-side analysis of the Portica demo against the current live experience. Severity-rated findings (Critical/High/Medium). Annotated screenshots. Deep-link flow evaluation. Mobile-first assessment across the full consumer arrears journey.
+2. RECOVER MVP Wireframes + Flow Architecture: Clean mobile wireframes covering: deep-link entry, identity verification, balance display, self-service payment slider (settlement / 3-payment / custom 1-12 months), payment confirmation, Cover Link share. Every screen annotated with behavioral science rationale.
+3. Current vs. Proposed Pitch Deck: Visual slide deck. Market positioning, moat visualization (NCTUE + Work Number), unit economics, competitive comparison table, RECOVER flow walkthrough. Built for investor-grade or partner-grade audiences.
+4. System Audit + Scalability Assessment: Technical audit of existing infrastructure. React Native codebase evaluation. Finicity + DEC integration state. Clean-slate vs. refactor recommendation. SOC 2 gap analysis. Scaling requirements from 1K to 100K users. 24-week phased build alignment.
+5. Vendor Onboarding Portal Spec: Architecture spec for vendor-agnostic data ingestion. Same portal, same schema across all four verticals. CSV + API pathways. ARM agency onboarding flow. Private-label configuration for FCRA compliance. BYO API approach. 48-hr white-label deployment target.
+6. Analytics + Conversion Instrumentation Plan: PostHog + Supabase implementation spec. Event taxonomy. Session replay configuration. Feature flag setup for phased rollout. Dashboard mockup showing: form completion rates, conversion funnel, vendor onboarding pipeline tracking.
+7. Competitive Intelligence Brief: YNAB, Monarch, DailyPay, Rocket Money, ARM fintech. Trust signals, UX, value prop comparison. App Store/Play Store review synthesis. Market sentiment. Cross-referenced against live audit findings.
+IMMEDIATE NEXT STEPS
+Chris: Begin RECOVER UX audit and Portica gap analysis this week. Deploy research agents for competitive intelligence. Deliver Week 1 summary brief by Friday.
+Matt: Confirm whether usage analytics are currently active. Facilitate CTO introduction for technical onboarding (BitBucket, AWS access). Provide access to real usage data.
+PaySitters Team: Rank vendor vertical priorities (Utilities, ISP, Insurance, Services). Share any pre-existing digital assets, previous FDD/DevOps records, and technical documentation. Share consumer experience flow documentation.
+Joint: Schedule weekly build cadence (30 min). Align on RECOVER MVP launch target. Evaluate current state of all integration points.
+
+
+Looking forward to building this.
+
+Chris McCarthy
+GTM Architecture  |  OB.1 AI Solutions  |  chris@ob1ai.co  |  234.602.0500
