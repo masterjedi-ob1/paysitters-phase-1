@@ -1,0 +1,1539 @@
+<!-- Welcome Landing -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Resolution - Welcome Landing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:wght@700&amp;family=Playfair+Display:ital,wght@0,700;1,700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#456556",
+                    "outline": "#727974",
+                    "on-secondary-container": "#755700",
+                    "surface-bright": "#fef9f2",
+                    "background": "#fef9f2",
+                    "primary-fixed": "#c7ebd8",
+                    "on-surface-variant": "#414844",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#002113",
+                    "tertiary-container": "#003d27",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "secondary-fixed-dim": "#eec058",
+                    "inverse-primary": "#accebc",
+                    "inverse-surface": "#32302c",
+                    "surface": "#fef9f2",
+                    "on-primary": "#ffffff",
+                    "secondary": "#795900",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#2e4d3f",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e6e2db",
+                    "surface-container-high": "#ece7e1",
+                    "on-primary-fixed": "#012115",
+                    "on-surface": "#1d1c18",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "surface-container-low": "#f8f3ec",
+                    "surface-dim": "#ded9d3",
+                    "primary-fixed-dim": "#accebc",
+                    "on-secondary-fixed": "#261a00",
+                    "primary": "#042419",
+                    "surface-container": "#f2ede6",
+                    "tertiary": "#002516",
+                    "outline-variant": "#c1c8c2",
+                    "on-background": "#1d1c18",
+                    "secondary-fixed": "#ffdf9f",
+                    "primary-container": "#1b3a2d",
+                    "surface-variant": "#e6e2db",
+                    "tertiary-fixed-dim": "#88d6af",
+                    "inverse-on-surface": "#f5f0e9",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#5fac87",
+                    "on-primary-container": "#83a493",
+                    "secondary-container": "#fece65",
+                    "tertiary-fixed": "#a4f3ca"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif", "serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #FAF5EE;
+            color: #4A4A42;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopAppBar -->
+<header class="bg-[#FAF5EE] dark:bg-[#1B3A2D] fixed top-0 w-full z-50">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#1B3A2D] dark:text-[#FAF5EE]">arrow_back</span>
+<span class="font-serif font-bold text-xl tracking-tight text-[#1B3A2D] dark:text-[#FAF5EE]">Resolution</span>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[#1B3A2D] dark:text-[#FAF5EE]">account_balance</span>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-32">
+<!-- Header Banner Section -->
+<section class="bg-primary-container px-6 py-12 text-on-primary-container">
+<div class="max-w-screen-xl mx-auto">
+<div class="flex items-center gap-2 mb-8 opacity-80">
+<span class="font-label text-xs font-semibold tracking-widest uppercase">PaySitters</span>
+<span class="h-1 w-1 rounded-full bg-secondary"></span>
+<span class="font-label text-xs font-semibold tracking-widest uppercase italic">PaySitters RECOVER</span>
+</div>
+<h1 class="font-headline text-4xl md:text-5xl lg:text-6xl text-[#FAF5EE] mb-4 leading-tight">
+                    Let's get started, <span class="opacity-60 font-light">Marcus.</span>
+</h1>
+<p class="text-on-primary-container opacity-80 max-w-md text-lg">
+                    We've simplified your path to financial freedom. Take the first step today.
+                </p>
+</div>
+</section>
+<!-- Main Content Canvas -->
+<div class="max-w-screen-xl mx-auto px-6 -mt-10">
+<!-- Balance Card -->
+<div class="bg-surface-container-lowest rounded-lg shadow-[0_8px_24px_rgba(74,74,66,0.06)] p-8 border-l-8 border-[#2E7D5B] mb-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center p-2">
+<img alt="AT&amp;T" class="w-full h-auto grayscale contrast-125" data-alt="clean monochrome AT&amp;T corporate logo on a minimal white circular background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJc04fqm5hIDCmySHLy5olP9Ghng4LPAYtKToi8Slbo3N4LowroqrExjEKpoaTnMyLaQxVGKgpFVFbDLvVowmXxQe9Vijz6tbgF3Axdt9kZPNNrCzFnSYRbqOiuta5O8_hku7HCjJkOBEZLaAtq62iXp5GlqXw_Hv5R4aGKxcqPU5e2cYbq-cbu9mvAY4gvVjtok5bnFNGBBPDxScnbxfUG7aNS5kY1JwURk59SO14O4poYPwPHca9H3OAMqlBWp6-0-Jl8OIwxET9"/>
+</div>
+<div>
+<span class="inline-block bg-[#E8EFE8] text-[#2E7D5B] font-label text-[10px] font-bold tracking-widest px-3 py-1 rounded-full mb-1">READY TO RESOLVE</span>
+<h3 class="font-label text-xs font-medium text-outline">OUTSTANDING BALANCE</h3>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-start md:items-end">
+<div class="text-[#D4A843] text-5xl font-bold tracking-tighter">
+                        $347.52
+                    </div>
+<div class="text-outline font-label text-[10px] tracking-wide mt-1 uppercase">Total amount due</div>
+</div>
+</div>
+<!-- Value Props Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+<div class="col-span-full mb-4">
+<h2 class="font-headline text-2xl text-primary">Your tailored path forward</h2>
+<p class="text-outline text-lg">We'll set up a custom plan that fits your budget and timeline.</p>
+</div>
+<!-- Prop 1 -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col gap-6 items-start transition-all hover:bg-surface-container">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[#FAF5EE]" data-icon="block">block</span>
+</div>
+<div>
+<h4 class="font-label font-bold text-primary tracking-wide mb-2">No phone calls</h4>
+<p class="text-sm leading-relaxed opacity-70">Resolve everything entirely online, on your own terms, without uncomfortable calls.</p>
+</div>
+</div>
+<!-- Prop 2 -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col gap-6 items-start transition-all hover:bg-surface-container">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[#FAF5EE]" data-icon="credit_score">credit_score</span>
+</div>
+<div>
+<h4 class="font-label font-bold text-primary tracking-wide mb-2">No credit check</h4>
+<p class="text-sm leading-relaxed opacity-70">Entering a plan does not require a hard inquiry and won't impact your credit score.</p>
+</div>
+</div>
+<!-- Prop 3 -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col gap-6 items-start transition-all hover:bg-surface-container">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[#FAF5EE]" data-icon="percent">percent</span>
+</div>
+<div>
+<h4 class="font-label font-bold text-primary tracking-wide mb-2">$0 interest</h4>
+<p class="text-sm leading-relaxed opacity-70">Pay exactly what you owe. We never charge interest or hidden fees on your balance.</p>
+</div>
+</div>
+</div>
+<!-- Editorial Quote / Trust Section -->
+<div class="py-12 border-t border-outline-variant flex flex-col md:flex-row items-center gap-12">
+<div class="flex-1">
+<blockquote class="font-headline text-3xl italic text-primary opacity-90 leading-snug">
+                        "Financial recovery isn't just about paying back—it's about regaining your peace of mind."
+                    </blockquote>
+<p class="font-label text-xs uppercase tracking-[0.2em] mt-6 text-outline">— The Atelier Team</p>
+</div>
+<div class="w-full md:w-64 h-64 rounded-lg overflow-hidden grayscale">
+<img alt="Office building" class="w-full h-full object-cover" data-alt="architectural close-up of a modern corporate glass building facade with geometric patterns and soft reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuod1nVjaCfmAVuSWg_UYf_69e3PIoeuAJ_ggoZD-5bKKnWg42PSbyazleNsmJhfV0tKRKyv6rgWlcMoDz8mW0DKpclC6Q5qh0g1KUEKKB249Gzw7hRecNVWhdls20JlQ5pJaL7eHaYR8BT6H3wY46uugbD0dupP78pAW5MvzNlZrRfwLJ6gGKiT6R8Guv0ZRuMt2Gv4jX63wpN__1ke4zDiJbYNsbSY7vaqPDcevhhWSwYRp0vPwLOlBQaW_tsdplFuRBcNLMQgce"/>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar (Transactional Suppression Check: Not suppressed, this is a landing) -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-[#FAF5EE] bg-opacity-80 backdrop-blur-xl px-6 py-8 flex flex-col items-center shadow-[0_-12px_40px_rgba(74,74,66,0.1)]">
+<div class="w-full max-w-screen-xl flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="hidden md:block">
+<p class="text-sm font-medium opacity-70">Ready to move forward, Marcus?</p>
+<p class="text-xs text-outline italic">Recovery starts with a single click.</p>
+</div>
+<div class="flex flex-col items-center gap-3 w-full md:w-auto">
+<button class="bg-primary text-[#FAF5EE] h-[56px] px-12 rounded-full font-label font-bold text-lg flex items-center justify-center gap-3 hover:bg-[#1B3A2D] transition-all transform active:scale-95 w-full md:w-auto shadow-lg shadow-primary/20">
+                    Get Started 
+                    <span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+<span class="text-xs font-label uppercase tracking-widest text-outline">Takes about 2 minutes</span>
+</div>
+</div>
+</div>
+<!-- BottomNavBar (Hidden for focused Landing Screen intent) -->
+<!-- Suppressed to prioritize the Get Started CTA -->
+</body></html>
+
+<!-- Build Your Plan -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@700&amp;family=Noto+Serif:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#456556",
+                        "outline": "#727974",
+                        "on-secondary-container": "#755700",
+                        "surface-bright": "#fef9f2",
+                        "background": "#fef9f2",
+                        "primary-fixed": "#c7ebd8",
+                        "on-surface-variant": "#414844",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#002113",
+                        "tertiary-container": "#003d27",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "secondary-fixed-dim": "#eec058",
+                        "inverse-primary": "#accebc",
+                        "inverse-surface": "#32302c",
+                        "surface": "#fef9f2",
+                        "on-primary": "#ffffff",
+                        "secondary": "#795900",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#2e4d3f",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e6e2db",
+                        "surface-container-high": "#ece7e1",
+                        "on-primary-fixed": "#012115",
+                        "on-surface": "#1d1c18",
+                        "on-secondary-fixed-variant": "#5b4300",
+                        "surface-container-low": "#f8f3ec",
+                        "surface-dim": "#ded9d3",
+                        "primary-fixed-dim": "#accebc",
+                        "on-secondary-fixed": "#261a00",
+                        "primary": "#042419",
+                        "surface-container": "#f2ede6",
+                        "tertiary": "#002516",
+                        "outline-variant": "#c1c8c2",
+                        "on-background": "#1d1c18",
+                        "secondary-fixed": "#ffdf9f",
+                        "primary-container": "#1b3a2d",
+                        "surface-variant": "#e6e2db",
+                        "tertiary-fixed-dim": "#88d6af",
+                        "inverse-on-surface": "#f5f0e9",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#5fac87",
+                        "on-primary-container": "#83a493",
+                        "secondary-container": "#fece65",
+                        "tertiary-fixed": "#a4f3ca"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-range::-webkit-slider-runnable-track {
+            background: #e6e2db;
+            height: 4px;
+            border-radius: 2px;
+        }
+        .custom-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #1B3A2D;
+            margin-top: -10px;
+            border: 4px solid #FAF5EE;
+            box-shadow: 0 4px 12px rgba(74, 74, 66, 0.15);
+        }
+        .editorial-shadow {
+            box-shadow: 0 8px 32px rgba(74, 74, 66, 0.06);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body min-h-screen pb-24">
+<!-- Top Navigation -->
+<nav class="bg-[#FAF5EE] fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#1B3A2D] cursor-pointer scale-95 active:duration-150" data-icon="arrow_back">arrow_back</span>
+<h1 class="font-headline font-bold text-xl tracking-tight text-[#1B3A2D]">Build Your Plan</h1>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[#1B3A2D] hover:bg-[#e6e2db] p-2 rounded-full transition-colors" data-icon="account_balance">account_balance</span>
+</div>
+</nav>
+<main class="pt-24 px-6 max-w-lg mx-auto">
+<!-- Payment Summary Card (Forest bg) -->
+<section class="bg-primary-container text-white rounded-lg p-8 relative overflow-hidden mb-10 editorial-shadow">
+<div class="absolute -right-4 -top-4 w-32 h-32 bg-secondary opacity-10 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<span class="font-label text-[10px] uppercase tracking-widest text-on-primary-container block mb-2">Projected Monthly Payment</span>
+<div class="flex items-baseline gap-2 mb-8">
+<h2 class="text-secondary-container font-headline text-5xl font-bold tracking-tight">$115.84</h2>
+<span class="font-label text-sm text-on-primary-container">/ mo</span>
+</div>
+<div class="grid grid-cols-2 gap-6 pt-6 border-t border-white/10">
+<div>
+<span class="font-label text-[10px] uppercase tracking-widest text-on-primary-container block mb-1">Duration</span>
+<p class="font-headline text-lg text-white">3 payments</p>
+</div>
+<div>
+<span class="font-label text-[10px] uppercase tracking-widest text-on-primary-container block mb-1">Interest</span>
+<div class="flex items-center gap-2">
+<p class="font-headline text-lg text-on-tertiary-container">$0 interest</p>
+<span class="material-symbols-outlined text-[14px] text-on-tertiary-container" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Timeline Selector -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline text-2xl text-primary">Customize duration</h3>
+<span class="font-headline text-xl text-primary">3 <span class="text-sm font-sans uppercase tracking-widest opacity-50">months</span></span>
+</div>
+<!-- Custom Range Slider -->
+<div class="px-2 mb-10">
+<input class="w-full h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer custom-range" max="12" min="1" type="range" value="3"/>
+<div class="flex justify-between mt-4 font-label text-[10px] uppercase tracking-widest text-outline">
+<span>1 mo</span>
+<span>6 mo</span>
+<span>12 mo</span>
+</div>
+</div>
+<!-- Quick Select Chips -->
+<div class="flex flex-wrap gap-3">
+<button class="px-6 py-3 rounded-full border border-outline-variant font-label text-xs font-medium text-primary hover:bg-surface-container-low transition-colors">1</button>
+<button class="px-6 py-3 rounded-full bg-primary-container text-white font-label text-xs font-bold ring-4 ring-primary-container/10">3</button>
+<button class="px-6 py-3 rounded-full border border-outline-variant font-label text-xs font-medium text-primary hover:bg-surface-container-low transition-colors">6</button>
+<button class="px-6 py-3 rounded-full border border-outline-variant font-label text-xs font-medium text-primary hover:bg-surface-container-low transition-colors">9</button>
+<button class="px-6 py-3 rounded-full border border-outline-variant font-label text-xs font-medium text-primary hover:bg-surface-container-low transition-colors">12</button>
+</div>
+</section>
+<!-- Motivational Callout (Sage/Tonal bg) -->
+<div class="bg-surface-container-low rounded-lg p-6 flex gap-4 items-start mb-12 border-l-4 border-primary">
+<div class="bg-primary/5 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h4 class="font-headline text-lg text-primary mb-1">The Curator's Choice</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Self-built plans are 40% more likely to reach full resolution. You're designing a future of financial freedom on your own terms.</p>
+</div>
+</div>
+<!-- Plan Illustration -->
+<div class="relative w-full h-48 rounded-lg overflow-hidden mb-12">
+<img alt="Professional financial planning tools" class="w-full h-full object-cover grayscale opacity-40 mix-blend-multiply" data-alt="Close-up of elegant fountain pen resting on premium cream-colored textured paper with architectural blueprints in soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_p60NtRqJ3W50bjmid3_xrwVY9YB2Vs3ZgPE9OwkWjxyR_qFSj4osiV0LmgGcYfaRdny-2ENmA9OJl882YW2HHaJaNwd61eyRY9IxJe0PmKiR8HfJcZNiL_z7uu-TSKIDXp6nhF_VC4i60VHHp6kQZraGahQAVKwD_WGW0P0TLl3iBIoss3DSWLLMYApePEYi81m-IidhgU1Ds7puEJuzgSLpABiMKvnQtYvs6pTipQBeLSUS_VkHKGBDmfVaZ-7dPIuPvAm4LrmG"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+<!-- CTA -->
+<button class="w-full bg-primary text-surface py-5 rounded-full font-label font-bold text-sm tracking-widest uppercase flex items-center justify-center gap-3 shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+            Use This Plan
+            <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</main>
+<!-- Bottom Navigation Shell -->
+<footer class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#1B3A2D]/90 backdrop-blur-md rounded-t-3xl shadow-[0_-8px_24px_rgba(74,74,66,0.06)]">
+<div class="flex flex-col items-center justify-center text-[#FAF5EE]/70 p-2 hover:text-[#D4A843] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 duration-300" data-icon="home">home</span>
+<span class="font-sans text-[10px] font-medium uppercase tracking-widest">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#FAF5EE]/70 p-2 hover:text-[#D4A843] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 duration-300" data-icon="receipt_long">receipt_long</span>
+<span class="font-sans text-[10px] font-medium uppercase tracking-widest">Bills</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#FAF5EE]/70 p-2 hover:text-[#D4A843] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 duration-300" data-icon="payments">payments</span>
+<span class="font-sans text-[10px] font-medium uppercase tracking-widest">Paybacks</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#FAF5EE]/70 p-2 hover:text-[#D4A843] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 duration-300" data-icon="menu">menu</span>
+<span class="font-sans text-[10px] font-medium uppercase tracking-widest">More</span>
+</div>
+</footer>
+</body></html>
+
+<!-- Verify Identity -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:wght@700&amp;family=Playfair+Display:ital,wght@0,700;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .serif-display { font-family: 'Playfair Display', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        .underline-input:focus-within label {
+            transform: translateY(-1.5rem) scale(0.85);
+            color: #1B3A2D;
+        }
+        .underline-input input:not(:placeholder-shown) + label {
+            transform: translateY(-1.5rem) scale(0.85);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#456556",
+                        "outline": "#727974",
+                        "on-secondary-container": "#755700",
+                        "surface-bright": "#fef9f2",
+                        "background": "#fef9f2",
+                        "primary-fixed": "#c7ebd8",
+                        "on-surface-variant": "#414844",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#002113",
+                        "tertiary-container": "#003d27",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "secondary-fixed-dim": "#eec058",
+                        "inverse-primary": "#accebc",
+                        "inverse-surface": "#32302c",
+                        "surface": "#fef9f2",
+                        "on-primary": "#ffffff",
+                        "secondary": "#795900",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#2e4d3f",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e6e2db",
+                        "surface-container-high": "#ece7e1",
+                        "on-primary-fixed": "#012115",
+                        "on-surface": "#1d1c18",
+                        "on-secondary-fixed-variant": "#5b4300",
+                        "surface-container-low": "#f8f3ec",
+                        "surface-dim": "#ded9d3",
+                        "primary-fixed-dim": "#accebc",
+                        "on-secondary-fixed": "#261a00",
+                        "primary": "#1B3A2D",
+                        "surface-container": "#f2ede6",
+                        "tertiary": "#002516",
+                        "outline-variant": "#c1c8c2",
+                        "on-background": "#1d1c18",
+                        "secondary-fixed": "#ffdf9f",
+                        "primary-container": "#1B3A2D",
+                        "surface-variant": "#e6e2db",
+                        "tertiary-fixed-dim": "#88d6af",
+                        "inverse-on-surface": "#f5f0e9",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#5fac87",
+                        "on-primary-container": "#83a493",
+                        "secondary-container": "#fece65",
+                        "tertiary-fixed": "#a4f3ca"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-sans text-on-surface min-h-screen">
+<!-- Top Navigation Bar (Linear/Transactional Context: Shell Suppressed, Custom Header Used) -->
+<nav class="fixed top-0 w-full z-50 bg-surface-bright/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-6 py-5 w-full max-w-screen-xl mx-auto">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-highest transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="serif-display font-bold text-xl tracking-tight text-primary">Verify Your Identity</h1>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</div>
+</nav>
+<main class="pt-24 pb-12 px-6 max-w-lg mx-auto">
+<!-- Progress Indicator -->
+<div class="mb-10">
+<div class="flex justify-between items-end mb-3">
+<span class="font-sans text-[10px] font-medium uppercase tracking-widest text-outline">STEP 1 OF 3</span>
+<span class="font-sans text-[10px] font-bold text-primary">33% Complete</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 33%"></div>
+</div>
+</div>
+<!-- Editorial Banner Card -->
+<div class="relative overflow-hidden bg-primary-container rounded-lg p-8 mb-12 shadow-[0_-8px_24px_rgba(74,74,66,0.04)]">
+<div class="relative z-10">
+<p class="serif-display italic text-on-primary text-xl leading-relaxed opacity-95">
+                    "We found a better way to manage your financial recovery. Let's confirm it's really you to unlock your tailored plan."
+                </p>
+</div>
+<!-- Decorative Grain Texture (Simulated via SVG overlay) -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB6_NlW_dnpNFGC22PuwyiT1PLy6Tr07uD_FxcX8ZZBb_KVu2jR7vEiyhUwfmH7Vq4fyfeU2dptJXnpvZKaOSbVgOyfqGbkcQT_UgCzBSkiobMsagu0lK4O9Y-QgXu-l_pc5g6UNUwDxI83-PMVXuAqgnPF8XyOn2QRqLnB1bzZYSD8lIYxoLqY_KKDg64Co9BB7iftfw61aBqXlrLAVbhDrODowdMiP5UlHxxp-muNCXyHlFokjPd8UM5Ngd9aCGqh4s0WrxfXektc');"></div>
+</div>
+<!-- Identity Form -->
+<form class="space-y-10">
+<!-- SSN Field -->
+<div class="underline-input relative">
+<input class="peer block w-full border-0 border-b border-outline-variant bg-transparent px-0 py-3 text-lg font-medium text-on-surface focus:border-primary focus:ring-0 placeholder-transparent transition-all" id="ssn" name="ssn" placeholder=" " type="password"/>
+<label class="absolute top-3 left-0 -z-10 origin-[0] -translate-y-0 text-outline duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-85 peer-focus:text-primary font-medium text-xs uppercase tracking-widest" for="ssn">Last 4 SSN</label>
+</div>
+<!-- DOB Field -->
+<div class="underline-input relative">
+<input class="peer block w-full border-0 border-b border-outline-variant bg-transparent px-0 py-3 text-lg font-medium text-on-surface focus:border-primary focus:ring-0 placeholder-transparent transition-all" id="dob" name="dob" placeholder="MM / DD / YYYY" type="text"/>
+<label class="absolute top-3 left-0 -z-10 origin-[0] -translate-y-0 text-outline duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-85 peer-focus:text-primary font-medium text-xs uppercase tracking-widest" for="dob">Date of Birth</label>
+</div>
+<!-- Postal Code -->
+<div class="underline-input relative">
+<input class="peer block w-full border-0 border-b border-outline-variant bg-transparent px-0 py-3 text-lg font-medium text-on-surface focus:border-primary focus:ring-0 placeholder-transparent transition-all" id="zip" name="zip" placeholder=" " type="text"/>
+<label class="absolute top-3 left-0 -z-10 origin-[0] -translate-y-0 text-outline duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-85 peer-focus:text-primary font-medium text-xs uppercase tracking-widest" for="zip">Postal Code</label>
+</div>
+<!-- Trust Badge -->
+<div class="flex items-center justify-center gap-3 py-6 px-4 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-outline text-xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+<p class="font-sans text-[11px] font-medium text-outline uppercase tracking-wider">Your information is encrypted &amp; secure</p>
+</div>
+<!-- CTA Button -->
+<div class="pt-8">
+<button class="group w-full h-14 bg-primary text-on-primary rounded-full font-sans font-bold flex items-center justify-center gap-2 hover:bg-opacity-95 transition-all shadow-[0_8px_24px_rgba(27,58,45,0.12)] active:scale-95 duration-150" type="submit">
+                    Find My Account
+                    <span class="material-symbols-outlined text-xl transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<!-- Disabled Style Representation (Visual Hint for Designer) -->
+<button class="hidden w-full h-14 mt-4 bg-outline-variant/30 text-outline rounded-full font-sans font-bold items-center justify-center cursor-not-allowed" disabled="" type="button">
+                    Find My Account
+                </button>
+</div>
+</form>
+<!-- Aesthetic Footer Image / Texture -->
+<div class="mt-20 flex flex-col items-center">
+<div class="w-16 h-px bg-outline-variant/50 mb-8"></div>
+<img alt="Sophisticated abstract financial symbol" class="w-12 h-12 opacity-40 mix-blend-multiply" data-alt="minimalist gold leaf line art of a shield and scale on a cream background with soft paper texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4_7QIRC1rIZp8eJeS0RetaO_yxeYytOi3ecSUPPmgMQHWz6Cj9Id3OFAGMqpiZUeIh6pIEulXpxkW-zzfLfzDE4o1tzjNEbuJZyP3MKM9tux6SNSWkM8AeQMgIlRt7HQzXaDOtWzwgVtAND1mWDd6Gi9WbepiqkB7rEl-eZ9wpqJXAIE3BmNs_7L-6kJjOuhMuBnGKew24-TAYCZr1CEymhh4IZYjgvRZF4w2tV-eknpQl0ya_UFQWbM2JFFvL2fKf2edO3tWP60r"/>
+</div>
+</main>
+<!-- Bottom Padding for focused view -->
+<div class="h-12"></div>
+</body></html>
+
+<!-- Plan Selection -->
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Resolution - Plan Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@700&amp;family=Noto+Serif:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#456556",
+                    "outline": "#727974",
+                    "on-secondary-container": "#755700",
+                    "surface-bright": "#fef9f2",
+                    "background": "#fef9f2",
+                    "primary-fixed": "#c7ebd8",
+                    "on-surface-variant": "#414844",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#002113",
+                    "tertiary-container": "#003d27",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "secondary-fixed-dim": "#eec058",
+                    "inverse-primary": "#accebc",
+                    "inverse-surface": "#32302c",
+                    "surface": "#fef9f2",
+                    "on-primary": "#ffffff",
+                    "secondary": "#795900",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#2e4d3f",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e6e2db",
+                    "surface-container-high": "#ece7e1",
+                    "on-primary-fixed": "#012115",
+                    "on-surface": "#1d1c18",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "surface-container-low": "#f8f3ec",
+                    "surface-dim": "#ded9d3",
+                    "primary-fixed-dim": "#accebc",
+                    "on-secondary-fixed": "#261a00",
+                    "primary": "#042419",
+                    "surface-container": "#f2ede6",
+                    "tertiary": "#002516",
+                    "outline-variant": "#c1c8c2",
+                    "on-background": "#1d1c18",
+                    "secondary-fixed": "#ffdf9f",
+                    "primary-container": "#1b3a2d",
+                    "surface-variant": "#e6e2db",
+                    "tertiary-fixed-dim": "#88d6af",
+                    "inverse-on-surface": "#f5f0e9",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#5fac87",
+                    "on-primary-container": "#83a493",
+                    "secondary-container": "#fece65",
+                    "tertiary-fixed": "#a4f3ca"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        display: inline-block;
+        line-height: 1;
+      }
+      body {
+        background-color: #FAF5EE;
+        color: #4A4A42;
+        font-family: 'Inter', sans-serif;
+      }
+      .serif-display {
+        font-family: 'Playfair Display', serif;
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface selection:bg-secondary-container">
+
+    <!-- TopAppBar -->
+    <nav class="bg-[#1B3A2D] dark:bg-[#1B3A2D] fixed top-0 w-full z-50">
+        <div class="flex justify-between items-center px-6 py-4 w-full max-w-screen-xl mx-auto">
+            <div class="flex items-center gap-4">
+                <button class="text-[#FAF5EE] hover:bg-[#e6e2db]/10 transition-colors p-2 rounded-full scale-95 active:duration-150">
+                    <span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                </button>
+            </div>
+            <h1 class="font-serif font-bold text-xl tracking-tight text-[#FAF5EE]">Resolution</h1>
+            <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-[#FAF5EE]" data-icon="account_balance">account_balance</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-32 px-6 max-w-2xl mx-auto">
+        <!-- Progress Indicator -->
+        <div class="mb-8">
+            <div class="flex justify-between items-end mb-2">
+                <span class="text-[10px] font-medium uppercase tracking-[0.15em] text-primary-container opacity-60">Step 3 of 3</span>
+                <span class="text-[10px] font-medium uppercase tracking-[0.15em] text-primary-container">Finalizing Recovery</span>
+            </div>
+            <div class="h-1 w-full bg-[#E8EFE8] rounded-full overflow-hidden">
+                <div class="h-full bg-[#2E7D5B] w-full"></div>
+            </div>
+        </div>
+
+        <!-- Hero Header -->
+        <header class="mb-10">
+            <h2 class="serif-display text-4xl font-bold text-primary-container leading-tight mb-2">We found your account, Marcus.</h2>
+            <p class="text-on-surface-variant/80 font-body">Your outstanding balance with AT&amp;T has been verified. Choose the recovery path that best fits your financial atelier.</p>
+        </header>
+
+        <!-- Account Card -->
+        <div class="bg-surface-container-lowest rounded-DEFAULT p-6 mb-10 shadow-[0_8px_24px_rgba(74,74,66,0.06)] border-none relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-4">
+                <div class="flex items-center gap-2 bg-[#FAF5EE] px-3 py-1 rounded-full border border-outline-variant/30">
+                    <span class="w-2 h-2 bg-[#E89F3C] rounded-full"></span>
+                    <span class="text-[10px] font-semibold uppercase tracking-wider text-on-surface">47 days past due</span>
+                </div>
+            </div>
+            
+            <div class="flex items-start gap-4 mb-8">
+                <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center p-3">
+                    <img src="https://logo.clearbit.com/att.com" alt="AT&T" class="w-full h-full object-contain" data-alt="Official AT&T logo in minimalist blue and white globe style on a clean white background">
+                </div>
+                <div>
+                    <h3 class="text-sm font-medium uppercase tracking-widest text-on-surface-variant opacity-60 mb-1">Total Balance Due</h3>
+                    <p class="text-4xl font-bold text-[#D4A843] serif-display">$347.52</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 pt-6 border-t border-surface-container">
+                <div>
+                    <span class="block text-[10px] font-semibold uppercase tracking-wider opacity-40 mb-1">Account Number</span>
+                    <span class="text-sm font-medium text-primary">**** 8291</span>
+                </div>
+                <div>
+                    <span class="block text-[10px] font-semibold uppercase tracking-wider opacity-40 mb-1">Status</span>
+                    <span class="text-sm font-medium text-primary">Active Recovery</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plan Selection -->
+        <section class="space-y-4">
+            <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary-container mb-6 opacity-60">Select Recovery Path</h4>
+
+            <!-- Option 1: Settle Now -->
+            <label class="group relative flex items-center justify-between p-6 bg-surface-container-low rounded-DEFAULT cursor-pointer hover:bg-surface-container-high transition-all border-2 border-transparent has-[:checked]:bg-surface-container-lowest has-[:checked]:border-[#E8EFE8] has-[:checked]:shadow-lg">
+                <input type="radio" name="plan" class="hidden peer">
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-1">
+                        <span class="text-lg font-bold text-primary font-serif">Settle Now</span>
+                    </div>
+                    <p class="text-sm text-on-surface-variant/70">One-time payment to close account immediately.</p>
+                </div>
+                <div class="text-right">
+                    <span class="block text-[10px] font-bold text-[#2E7D5B] uppercase tracking-tighter mb-1 line-through opacity-50">$347.52</span>
+                    <span class="text-2xl font-bold text-[#D4A843] serif-display">$295.39</span>
+                </div>
+            </label>
+
+            <!-- Option 2: Installments (Best Value) -->
+            <label class="group relative flex flex-col p-6 bg-surface-container-low rounded-DEFAULT cursor-pointer hover:bg-surface-container-high transition-all border-2 border-transparent has-[:checked]:bg-surface-container-lowest has-[:checked]:border-[#E8EFE8] has-[:checked]:shadow-lg">
+                <input type="radio" name="plan" checked class="hidden peer">
+                
+                <div class="absolute -top-3 left-6">
+                    <span class="bg-[#D4A843] text-[#1B3A2D] text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm">Best Value</span>
+                </div>
+
+                <div class="flex items-center justify-between w-full">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-1">
+                            <span class="text-lg font-bold text-primary font-serif">Pay in 3 Installments</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant/70">Interest-free monthly payments.</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-2xl font-bold text-[#D4A843] serif-display">$115.84</span>
+                        <span class="block text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest">per month</span>
+                    </div>
+                </div>
+
+                <!-- Expandable Detail (Selected State) -->
+                <div class="mt-6 pt-6 border-t border-surface-container overflow-hidden hidden peer-checked:block">
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="text-center p-3 bg-surface-container rounded-lg">
+                            <span class="block text-[8px] font-bold uppercase tracking-tighter opacity-50 mb-1">Today</span>
+                            <span class="text-xs font-bold text-primary">$115.84</span>
+                        </div>
+                        <div class="text-center p-3 bg-surface-container rounded-lg">
+                            <span class="block text-[8px] font-bold uppercase tracking-tighter opacity-50 mb-1">Month 2</span>
+                            <span class="text-xs font-bold text-primary">$115.84</span>
+                        </div>
+                        <div class="text-center p-3 bg-surface-container rounded-lg">
+                            <span class="block text-[8px] font-bold uppercase tracking-tighter opacity-50 mb-1">Month 3</span>
+                            <span class="text-xs font-bold text-primary">$115.84</span>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-[11px] text-on-surface-variant/60 leading-relaxed italic">
+                        Selecting this plan will immediately pause collection activities and report your account as "In Good Standing" to credit bureaus.
+                    </p>
+                </div>
+            </label>
+
+            <!-- Option 3: Build Your Own -->
+            <label class="group relative flex items-center justify-between p-6 bg-surface-container-low rounded-DEFAULT cursor-pointer hover:bg-surface-container-high transition-all border-2 border-transparent has-[:checked]:bg-surface-container-lowest has-[:checked]:border-[#E8EFE8] has-[:checked]:shadow-lg">
+                <input type="radio" name="plan" class="hidden peer">
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-1">
+                        <span class="text-lg font-bold text-primary font-serif">Build Your Own</span>
+                    </div>
+                    <p class="text-sm text-on-surface-variant/70">Customize terms to match your budget.</p>
+                </div>
+                <div class="text-right">
+                    <span class="material-symbols-outlined text-[#D4A843]" data-icon="tune">tune</span>
+                </div>
+            </label>
+        </section>
+
+        <!-- Action Area -->
+        <div class="mt-12 flex flex-col gap-4">
+            <button class="w-full h-12 bg-[#1B3A2D] text-[#FAF5EE] rounded-full font-bold tracking-tight hover:bg-primary-container/90 transition-all active:scale-95 duration-150 shadow-md">
+                Confirm Selection
+            </button>
+            <button class="w-full h-12 bg-transparent text-[#D4A843] rounded-full font-bold tracking-tight hover:bg-secondary-container/10 transition-all border border-[#D4A843]/20">
+                Speak with a Counselor
+            </button>
+        </div>
+
+        <!-- Legal Footer -->
+        <footer class="mt-12 mb-8 text-center px-4">
+            <p class="text-[10px] text-on-surface-variant/50 uppercase tracking-widest leading-relaxed">
+                By confirming, you agree to our <a href="#" class="underline decoration-secondary/30">Terms of Recovery</a>. This is a communication from a debt collector. We are required by law to inform you that this is an attempt to collect a debt and any information obtained will be used for that purpose.
+            </p>
+        </footer>
+    </main>
+
+    <!-- BottomNavBar (Hidden on desktop as per Shell Visibility rules for task-focused pages, but here for UI demonstration) -->
+    <!-- Note: Task focus implies suppression, but following the mandate for standard top-level destinations when applicable. Using it here as a sub-persistent element. -->
+    <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#1B3A2D]/90 backdrop-blur-md rounded-t-3xl shadow-[0_-8px_24px_rgba(74,74,66,0.06)] md:hidden">
+        <a href="#" class="flex flex-col items-center justify-center text-[#FAF5EE]/70 p-2 hover:text-[#D4A843] transition-all">
+            <span class="material-symbols-outlined" data-icon="home">home</span>
+            <span class="font-sans text-[10px] font-medium uppercase tracking-widest mt-1">Home</span>
+        </a>
+        <a href="#" class="flex flex-col items-center justify-center text-[#FAF5EE]/70 p-2 hover:text-[#D4A843] transition-all">
+            <span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+            <span class="font-sans text-[10px] font-medium uppercase tracking-widest mt-1">Bills</span>
+        </a>
+        <a href="#" class="flex flex-col items-center justify-center bg-[#D4A843] text-[#1B3A2D] rounded-full p-2 h-12 w-12 scale-110 duration-300 ease-out">
+            <span class="material-symbols-outlined" data-icon="payments">payments</span>
+            <!-- Label hidden for active circle style -->
+        </a>
+        <a href="#" class="flex flex-col items-center justify-center text-[#FAF5EE]/70 p-2 hover:text-[#D4A843] transition-all">
+            <span class="material-symbols-outlined" data-icon="menu">menu</span>
+            <span class="font-sans text-[10px] font-medium uppercase tracking-widest mt-1">More</span>
+        </a>
+    </nav>
+
+</body>
+</html>```</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body></body></html>
+
+<!-- Confirm Details -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Noto+Serif:wght@700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#456556",
+                    "outline": "#727974",
+                    "on-secondary-container": "#755700",
+                    "surface-bright": "#fef9f2",
+                    "background": "#fef9f2",
+                    "primary-fixed": "#c7ebd8",
+                    "on-surface-variant": "#414844",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#002113",
+                    "tertiary-container": "#003d27",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "secondary-fixed-dim": "#eec058",
+                    "inverse-primary": "#accebc",
+                    "inverse-surface": "#32302c",
+                    "surface": "#fef9f2",
+                    "on-primary": "#ffffff",
+                    "secondary": "#795900",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#2e4d3f",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e6e2db",
+                    "surface-container-high": "#ece7e1",
+                    "on-primary-fixed": "#012115",
+                    "on-surface": "#1d1c18",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "surface-container-low": "#f8f3ec",
+                    "surface-dim": "#ded9d3",
+                    "primary-fixed-dim": "#accebc",
+                    "on-secondary-fixed": "#261a00",
+                    "primary": "#042419",
+                    "surface-container": "#f2ede6",
+                    "tertiary": "#002516",
+                    "outline-variant": "#c1c8c2",
+                    "on-background": "#1d1c18",
+                    "secondary-fixed": "#ffdf9f",
+                    "primary-container": "#1b3a2d",
+                    "surface-variant": "#e6e2db",
+                    "tertiary-fixed-dim": "#88d6af",
+                    "inverse-on-surface": "#f5f0e9",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#5fac87",
+                    "on-primary-container": "#83a493",
+                    "secondary-container": "#fece65",
+                    "tertiary-fixed": "#a4f3ca"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #fef9f2; color: #1d1c18; }
+        h1, h2, .font-serif { font-family: 'Noto Serif', serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface selection:bg-secondary-container/30">
+<!-- TopAppBar Execution -->
+<header class="fixed top-0 w-full z-50 bg-[#FAF5EE] dark:bg-[#1B3A2D] flex justify-between items-center px-6 py-4 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="hover:bg-[#e6e2db] transition-colors p-2 rounded-full scale-95 active:duration-150">
+<span class="material-symbols-outlined text-[#1B3A2D] dark:text-[#FAF5EE]">arrow_back</span>
+</button>
+<h1 class="font-serif font-bold text-xl tracking-tight text-[#1B3A2D] dark:text-[#FAF5EE]">Confirm Details</h1>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[#1B3A2D] dark:text-[#FAF5EE]">account_balance</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto">
+<!-- Progress Section -->
+<div class="mb-10">
+<div class="flex justify-between items-end mb-3">
+<span class="font-label text-[10px] font-medium uppercase tracking-[0.1em] text-outline">Step 02 of 03</span>
+<span class="font-label text-[10px] font-medium uppercase tracking-[0.1em] text-secondary">66% Complete</span>
+</div>
+<div class="h-[4px] w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full w-[66%] bg-surface-tint rounded-full"></div>
+</div>
+</div>
+<!-- Matching Banner: Bento-style glass highlight -->
+<section class="relative overflow-hidden mb-12 p-8 rounded-lg bg-primary-container text-surface-bright shadow-lg">
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">verified</span>
+<h2 class="text-lg font-serif font-bold">Identity Verified</h2>
+</div>
+<p class="text-on-primary-container leading-relaxed opacity-90 max-w-md">
+                    We found a match in our secure ledger. Please review your recovered details below to ensure accuracy before final resolution.
+                </p>
+</div>
+<!-- Decorative Abstract Shape -->
+<div class="absolute -right-12 -top-12 w-48 h-48 bg-secondary-container/10 rounded-full blur-3xl"></div>
+</section>
+<!-- Form Section -->
+<form class="space-y-10">
+<div class="grid grid-cols-1 gap-y-10">
+<!-- Full Name -->
+<div class="group relative">
+<label class="block font-label text-[10px] font-medium uppercase tracking-widest text-outline mb-1 group-focus-within:text-primary transition-colors">Full Name</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-2 px-0 focus:ring-0 focus:border-primary text-primary font-medium text-lg transition-all" placeholder="Enter your full name" type="text" value="Marcus Johnson"/>
+</div>
+<!-- Email Address -->
+<div class="group relative">
+<label class="block font-label text-[10px] font-medium uppercase tracking-widest text-outline mb-1 group-focus-within:text-primary transition-colors">Email Address</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-2 px-0 focus:ring-0 focus:border-primary text-primary font-medium text-lg transition-all" placeholder="Enter email" type="email" value="m.johnson@atelier.financial"/>
+</div>
+<!-- Phone Number -->
+<div class="group relative">
+<label class="block font-label text-[10px] font-medium uppercase tracking-widest text-outline mb-1 group-focus-within:text-primary transition-colors">Phone Number</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-2 px-0 focus:ring-0 focus:border-primary text-primary font-medium text-lg transition-all" placeholder="Enter phone number" type="tel" value="+1 (555) 012-3456"/>
+</div>
+<!-- Residential Address -->
+<div class="group relative">
+<label class="block font-label text-[10px] font-medium uppercase tracking-widest text-outline mb-1 group-focus-within:text-primary transition-colors">Residential Address</label>
+<textarea class="w-full bg-transparent border-0 border-b border-outline-variant py-2 px-0 focus:ring-0 focus:border-primary text-primary font-medium text-lg transition-all resize-none" placeholder="Enter your address" rows="2">4220 Heritage Way, Suite 400, San Francisco, CA 94105</textarea>
+</div>
+</div>
+<!-- Terms & Privacy -->
+<div class="flex items-start gap-4 pt-4 group cursor-pointer">
+<div class="relative flex items-center">
+<input checked="" class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20 transition-all cursor-pointer" id="terms" type="checkbox"/>
+</div>
+<label class="text-sm text-on-surface-variant leading-snug cursor-pointer" for="terms">
+                    I confirm that the information above is correct and I agree to the <span class="text-primary font-bold underline underline-offset-4 decoration-secondary/30">Terms of Recovery</span> and <span class="text-primary font-bold underline underline-offset-4 decoration-secondary/30">Privacy Policy</span>.
+                </label>
+</div>
+<!-- CTA Execution -->
+<div class="pt-6">
+<button class="w-full h-[56px] bg-primary text-surface rounded-full font-bold flex items-center justify-center gap-3 shadow-xl shadow-primary/10 hover:shadow-primary/20 transition-all scale-100 active:scale-95 group" type="submit">
+<span>Confirm &amp; Continue</span>
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Profile Insight Card (Editorial Detail) -->
+<div class="mt-16 p-6 rounded-lg bg-surface-container-low border border-outline-variant/10 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest flex-shrink-0">
+<img alt="Marcus Johnson" class="w-full h-full object-cover" data-alt="Close-up professional portrait of a confident man with a warm smile, soft natural lighting, high-end editorial aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhsptIiIQ77IlpehzECwMuCBAq79BlDWnxFyLzEgHq0-fG9STcVVbFGNhOVEMsEcWqfw1CjTSZyV9ONXBQDkWTb9irnD8AkQiyqwDR2tI-MW-jU2DB56bOl0KDE8paLCNqvNx4RV1paIy7xbP_HvyrD0MzQ3lfg3lPZVRYBQxJfTkjT9usmGmBUMhXBUyHCd3INkZcLRrGX0-uFs9EkQBENXBNcz82JKpjAj-EiYSbWN0o29uumWUqEY38XYdX-Dv8spjACnTA4TE1"/>
+</div>
+<div>
+<p class="font-label text-[10px] font-medium uppercase tracking-widest text-secondary">Verified Profile</p>
+<p class="text-sm text-on-surface-variant italic">"Precision in detail is the foundation of financial recovery."</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Suppression Rule: Task-Focused Screen (Linear Flow) -->
+<!-- Navigation hidden to prioritize the focused detail confirmation task -->
+</body></html>
+
+<!-- Review & Pay -->
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review &amp; Pay | Resolution</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@700&amp;family=Noto+Serif:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#456556",
+                    "outline": "#727974",
+                    "on-secondary-container": "#755700",
+                    "surface-bright": "#fef9f2",
+                    "background": "#fef9f2",
+                    "primary-fixed": "#c7ebd8",
+                    "on-surface-variant": "#414844",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#002113",
+                    "tertiary-container": "#003d27",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "secondary-fixed-dim": "#eec058",
+                    "inverse-primary": "#accebc",
+                    "inverse-surface": "#32302c",
+                    "surface": "#fef9f2",
+                    "on-primary": "#ffffff",
+                    "secondary": "#795900",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#2e4d3f",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e6e2db",
+                    "surface-container-high": "#ece7e1",
+                    "on-primary-fixed": "#012115",
+                    "on-surface": "#1d1c18",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "surface-container-low": "#f8f3ec",
+                    "surface-dim": "#ded9d3",
+                    "primary-fixed-dim": "#accebc",
+                    "on-secondary-fixed": "#261a00",
+                    "primary": "#042419",
+                    "surface-container": "#f2ede6",
+                    "tertiary": "#002516",
+                    "outline-variant": "#c1c8c2",
+                    "on-background": "#1d1c18",
+                    "secondary-fixed": "#ffdf9f",
+                    "primary-container": "#1b3a2d",
+                    "surface-variant": "#e6e2db",
+                    "tertiary-fixed-dim": "#88d6af",
+                    "inverse-on-surface": "#f5f0e9",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#5fac87",
+                    "on-primary-container": "#83a493",
+                    "secondary-container": "#fece65",
+                    "tertiary-fixed": "#a4f3ca"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .font-serif-display { font-family: 'Playfair Display', serif; }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary-container antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#FAF5EE] dark:bg-[#1B3A2D] flex justify-between items-center px-6 py-4 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="hover:bg-[#e6e2db] transition-colors scale-95 active:duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined text-[#1B3A2D] dark:text-[#FAF5EE]">arrow_back</span>
+</button>
+<h1 class="font-serif font-bold text-xl tracking-tight text-[#1B3A2D] dark:text-[#FAF5EE]">Resolution</h1>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[#1B3A2D] dark:text-[#FAF5EE]">account_balance</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-lg mx-auto min-h-screen">
+<!-- Header Section -->
+<section class="mb-10">
+<h2 class="font-serif-display text-4xl font-bold tracking-tight mb-2">Review &amp; Pay</h2>
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant font-medium">AT&amp;T</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-secondary font-bold">$347.52 balance</span>
+</div>
+</section>
+<!-- Plan Review Card -->
+<section class="mb-8 relative">
+<div class="bg-surface-container-low rounded-lg p-6 overflow-hidden relative">
+<!-- Subtle Gradient Accent -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="text-[10px] font-medium uppercase tracking-[0.1em] text-on-surface-variant block mb-1">Selected Plan</span>
+<h3 class="text-2xl font-serif-display font-bold text-primary">3-Payment Plan</h3>
+</div>
+<div class="bg-primary-fixed px-3 py-1 rounded-full">
+<span class="text-[10px] font-bold uppercase tracking-wider text-on-primary-fixed-variant">$0 fees</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center border-b border-outline-variant/20 pb-4">
+<span class="text-on-surface-variant">Installment amount</span>
+<span class="text-xl font-serif-display font-bold text-secondary">$115.84 <span class="text-sm font-sans font-medium text-on-surface-variant">x 3</span></span>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="font-medium text-primary">Total Commitment</span>
+<span class="font-bold text-primary">$347.52</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Payment Selection -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-6">
+<h4 class="font-serif-display text-xl font-bold">Connect your payment method</h4>
+</div>
+<div class="space-y-4">
+<!-- ACH Radio Card -->
+<label class="block relative cursor-pointer group">
+<input checked="" class="sr-only peer" name="payment_method" type="radio"/>
+<div class="bg-surface-container-lowest border-2 border-transparent peer-checked:border-primary-container p-5 rounded-lg transition-all duration-300 flex items-center gap-4 shadow-sm hover:shadow-md">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="font-bold text-primary">ACH Bank Transfer</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full">Recommended</span>
+</div>
+<p class="text-xs text-on-surface-variant">Direct from your checking or savings</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant peer-checked:border-primary-container flex items-center justify-center">
+<div class="w-3 h-3 rounded-full bg-primary-container opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+</div>
+</div>
+</label>
+<!-- Debit Card Radio Card -->
+<label class="block relative cursor-pointer group">
+<input class="sr-only peer" name="payment_method" type="radio"/>
+<div class="bg-surface-container-lowest border-2 border-transparent peer-checked:border-primary-container p-5 rounded-lg transition-all duration-300 flex items-center gap-4 shadow-sm hover:shadow-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">credit_card</span>
+</div>
+<div class="flex-1">
+<span class="font-bold text-primary">Debit Card</span>
+<p class="text-xs text-on-surface-variant">Visa, Mastercard, or Discover</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<div class="w-3 h-3 rounded-full bg-primary-container opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+</div>
+</div>
+</label>
+</div>
+</section>
+<!-- Security Footer -->
+<footer class="text-center space-y-4">
+<div class="flex items-center justify-center gap-2 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span class="text-[11px] font-medium uppercase tracking-widest">PCI-DSS Compliant Secure Encryption</span>
+</div>
+<p class="text-[10px] text-on-surface-variant/40 max-w-xs mx-auto leading-relaxed">
+                Your financial data is encrypted and never stored on our servers. Resolution uses bank-level security to protect your information.
+            </p>
+</footer>
+</main>
+<!-- Fixed CTA Button Area -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/80 backdrop-blur-xl px-6 pt-4 pb-10 z-40 border-t border-outline-variant/10">
+<div class="max-w-lg mx-auto">
+<button class="w-full h-[56px] rounded-full bg-outline-variant text-surface font-bold text-base shadow-lg cursor-not-allowed transition-all opacity-50 flex items-center justify-center gap-2" disabled="">
+<span>Select a payment method</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar (Hidden on this focused transactional screen but required per instructions - suppressed via logic check) -->
+<!-- [SUPPRESSED: Transactional Journey] -->
+</body></html>
+
+<!-- Confirmation & Dashboard -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Resolution - Confirmation &amp; Dashboard</title>
+<!-- Google Fonts: Playfair Display for Serifs, Inter for Sans -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,700;1,700&amp;family=Noto+Serif:wght@700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#456556",
+                        "outline": "#727974",
+                        "on-secondary-container": "#755700",
+                        "surface-bright": "#fef9f2",
+                        "background": "#fef9f2",
+                        "primary-fixed": "#c7ebd8",
+                        "on-surface-variant": "#414844",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#002113",
+                        "tertiary-container": "#003d27",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "secondary-fixed-dim": "#eec058",
+                        "inverse-primary": "#accebc",
+                        "inverse-surface": "#32302c",
+                        "surface": "#fef9f2",
+                        "on-primary": "#ffffff",
+                        "secondary": "#795900",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#2e4d3f",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e6e2db",
+                        "surface-container-high": "#ece7e1",
+                        "on-primary-fixed": "#012115",
+                        "on-surface": "#1d1c18",
+                        "on-secondary-fixed-variant": "#5b4300",
+                        "surface-container-low": "#f8f3ec",
+                        "surface-dim": "#ded9d3",
+                        "primary-fixed-dim": "#accebc",
+                        "on-secondary-fixed": "#261a00",
+                        "primary": "#042419",
+                        "surface-container": "#f2ede6",
+                        "tertiary": "#002516",
+                        "outline-variant": "#c1c8c2",
+                        "on-background": "#1d1c18",
+                        "secondary-fixed": "#ffdf9f",
+                        "primary-container": "#1b3a2d",
+                        "surface-variant": "#e6e2db",
+                        "tertiary-fixed-dim": "#88d6af",
+                        "inverse-on-surface": "#f5f0e9",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#5fac87",
+                        "on-primary-container": "#83a493",
+                        "secondary-container": "#fece65",
+                        "tertiary-fixed": "#a4f3ca"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .serif-display { font-family: 'Playfair Display', serif; }
+        .glass-panel {
+            background: rgba(27, 58, 45, 0.9);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+<!-- Screen 6: Confirmation Splash -->
+<!-- (Normally these would be separate routes, but for the task I'll place them in a scrollable flow or side-by-side) -->
+<section class="min-h-screen flex flex-col items-center justify-center p-6 bg-surface" id="confirmation-screen">
+<div class="w-full max-w-md text-center">
+<!-- Animated Checkmark Container -->
+<div class="mb-8 inline-flex items-center justify-center w-24 h-24 rounded-full bg-primary-container text-secondary-fixed">
+<span class="material-symbols-outlined !text-5xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="serif-display text-4xl font-bold text-primary mb-2 tracking-tight">You're all set, Marcus.</h1>
+<p class="text-on-surface-variant mb-12">Receipt sent to email</p>
+<!-- Plan Summary Card -->
+<div class="bg-surface-container-low p-8 rounded-lg mb-12 text-left space-y-6">
+<div class="flex justify-between items-center">
+<span class="text-xs font-medium uppercase tracking-widest text-on-surface-variant">Provider</span>
+<span class="font-semibold text-primary">AT&amp;T Mobile</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs font-medium uppercase tracking-widest text-on-surface-variant">Plan Status</span>
+<span class="inline-flex items-center gap-2 px-3 py-1 bg-primary-fixed text-on-primary-fixed rounded-full text-xs font-bold uppercase tracking-tighter">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                        Active
+                    </span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs font-medium uppercase tracking-widest text-on-surface-variant">Next Auto-Pay</span>
+<span class="font-semibold text-primary">Oct 24, 2023</span>
+</div>
+<div class="pt-6 border-t border-outline-variant flex justify-between items-center">
+<span class="text-sm font-bold text-primary">Monthly Total</span>
+<span class="text-xl font-bold text-secondary">$115.84</span>
+</div>
+</div>
+<button class="w-full bg-primary text-surface-bright h-12 rounded-full font-bold text-sm tracking-wide uppercase hover:bg-primary-container transition-all active:scale-95" onclick="document.getElementById('confirmation-screen').classList.add('hidden'); document.getElementById('dashboard-screen').classList.remove('hidden');">
+                View My Dashboard
+            </button>
+</div>
+</section>
+<!-- Screen 7: Dashboard (Hidden by default, shown via mock navigation) -->
+<section class="hidden min-h-screen bg-surface pb-32" id="dashboard-screen">
+<!-- TopAppBar (Shared Component Logic) -->
+<header class="bg-[#FAF5EE] dark:bg-[#1B3A2D] fixed top-0 w-full z-50">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-secondary-fixed font-bold font-serif">M</div>
+</div>
+<h1 class="Resolution font-serif font-bold text-xl tracking-tight text-[#1B3A2D] dark:text-[#FAF5EE]">Resolution</h1>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined p-2 text-[#1B3A2D] dark:text-[#FAF5EE] hover:bg-[#e6e2db] transition-colors rounded-full">notifications</button>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-md mx-auto">
+<!-- Hero Welcome -->
+<div class="mb-10">
+<h2 class="serif-display text-3xl font-bold text-primary mb-2">Good afternoon, Marcus. 👋</h2>
+<p class="text-on-surface-variant text-sm">Your recovery journey is ahead of schedule.</p>
+</div>
+<!-- Active Plan Card (Editorial Bento Style) -->
+<div class="relative overflow-hidden bg-primary-container text-surface-bright rounded-lg p-8 mb-8 shadow-xl">
+<div class="flex justify-between items-start mb-8">
+<div>
+<span class="text-[10px] font-medium uppercase tracking-[0.2em] text-on-primary-container block mb-1">Active Carrier</span>
+<h3 class="text-2xl font-bold tracking-tight">AT&amp;T Wireless</h3>
+</div>
+<div class="px-3 py-1 bg-primary text-primary-fixed rounded-full text-[10px] font-bold uppercase flex items-center gap-1.5 border border-primary-fixed/20">
+<span class="w-1.5 h-1.5 rounded-full bg-[#2E7D5B]"></span>
+                        Plan Active
+                    </div>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-[10px] font-medium uppercase tracking-[0.2em] text-on-primary-container mb-1">Next Payment</p>
+<p class="text-lg font-semibold">In 15 days</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-medium uppercase tracking-[0.2em] text-on-primary-container mb-1">Statement</p>
+<p class="text-3xl font-bold text-secondary-fixed">$115.84</p>
+</div>
+</div>
+<!-- Progress Dots (Simplified Editorial Track) -->
+<div class="mt-8 flex gap-1 items-center">
+<div class="h-1 flex-1 bg-secondary-fixed rounded-full"></div>
+<div class="h-1 flex-1 bg-on-primary-container rounded-full"></div>
+<div class="h-1 flex-1 bg-on-primary-container rounded-full"></div>
+<div class="h-1 flex-1 bg-on-primary-container rounded-full"></div>
+<div class="h-1 flex-1 bg-on-primary-container rounded-full"></div>
+</div>
+</div>
+<!-- Cross-sell Section (Editorial Grid) -->
+<div class="mb-6 flex justify-between items-end px-2">
+<h4 class="text-xs font-bold uppercase tracking-[0.2em] text-on-surface-variant">Spotted for You</h4>
+<a class="text-xs font-bold text-primary underline underline-offset-4" href="#">Browse All</a>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<!-- T-Mobile Card -->
+<div class="bg-surface-container-low rounded-lg p-6 flex items-center justify-between group cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="cell_tower">cell_tower</span>
+</div>
+<div>
+<p class="font-bold text-primary">T-Mobile Magenta</p>
+<p class="text-xs text-on-surface-variant italic">Estimated $82/mo savings</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">arrow_forward_ios</span>
+</div>
+<!-- Xfinity Card -->
+<div class="bg-surface-container-low rounded-lg p-6 flex items-center justify-between group cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="router">router</span>
+</div>
+<div>
+<p class="font-bold text-primary">Xfinity Fiber</p>
+<p class="text-xs text-on-surface-variant italic">Bundle &amp; Save $45/mo</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">arrow_forward_ios</span>
+</div>
+</div>
+<!-- Editorial Feature Card -->
+<div class="mt-12 relative h-48 rounded-lg overflow-hidden flex items-end">
+<img alt="Financial planning" class="absolute inset-0 w-full h-full object-cover" data-alt="Close up of high quality paper with architectural sketches and expensive fountain pen in soft golden morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAygH8bakFakmbuYiNEmBSqfE-NXu4jIE99alCyVqhpW8bTwnND_NStbPobC19QK00dBhBGhLN-VvnlSJ4UL16WK3BmeK5cubzTiYEaz4q9WwtnKH4rFzFaI5UohxMMw8DC2fWupMjo1mZFHRvJI6h5mKOG3XdmZQ4wAeeo9uEktX2epm30HdfX_cO-ngp2btP-6pwjqPBDwVn7Dkh3P2F5Bx3rKORdySCSdqTh7vEEm8R0Y8MCia5MztF3Fve3TW14bxfYuxmLA3oJ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div class="relative p-6">
+<h5 class="text-surface-bright font-serif text-xl italic mb-1">The Art of Recovery</h5>
+<p class="text-on-primary-container text-xs">A curated guide to debt-free luxury living.</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Shared Component Logic) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#1B3A2D]/90 backdrop-blur-md rounded-t-3xl shadow-[0_-8px_24px_rgba(74,74,66,0.06)]">
+<!-- Home (Active) -->
+<div class="flex flex-col items-center justify-center bg-[#D4A843] text-[#1B3A2D] rounded-full p-2 h-12 w-12 transition-all duration-300 ease-out scale-110">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="hidden">Home</span>
+</div>
+<!-- Bills -->
+<div class="flex flex-col items-center justify-center text-[#FAF5EE]/70 p-2 hover:text-[#D4A843] transition-colors">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-sans text-[10px] font-medium uppercase tracking-widest mt-1">Bills</span>
+</div>
+<!-- Paybacks -->
+<div class="flex flex-col items-center justify-center text-[#FAF5EE]/70 p-2 hover:text-[#D4A843] transition-colors">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-sans text-[10px] font-medium uppercase tracking-widest mt-1">Paybacks</span>
+</div>
+<!-- More -->
+<div class="flex flex-col items-center justify-center text-[#FAF5EE]/70 p-2 hover:text-[#D4A843] transition-colors">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-sans text-[10px] font-medium uppercase tracking-widest mt-1">More</span>
+</div>
+</nav>
+</section>
+</body></html>
