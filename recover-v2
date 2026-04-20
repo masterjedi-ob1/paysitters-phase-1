@@ -1,0 +1,1619 @@
+<!-- Verify Identity (v2) -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verify Identity - RECOVER</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Noto Serif & Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:wght@700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-tertiary-fixed-variant": "#005236",
+                "on-surface": "#1d1c18",
+                "on-secondary-fixed": "#261a00",
+                "tertiary-fixed": "#a4f3ca",
+                "on-primary-container": "#83a493",
+                "on-error-container": "#93000a",
+                "surface-container-high": "#ece7e1",
+                "primary-fixed-dim": "#accebc",
+                "on-primary-fixed": "#012115",
+                "surface-variant": "#e6e2db",
+                "error-container": "#ffdad6",
+                "secondary-fixed-dim": "#eec058",
+                "tertiary-fixed-dim": "#88d6af",
+                "surface-tint": "#456556",
+                "surface": "#fef9f2",
+                "on-secondary": "#ffffff",
+                "on-secondary-container": "#755700",
+                "on-primary-fixed-variant": "#2e4d3f",
+                "surface-container": "#f2ede6",
+                "primary-fixed": "#c7ebd8",
+                "on-tertiary-fixed": "#002113",
+                "surface-bright": "#fef9f2",
+                "on-tertiary-container": "#5fac87",
+                "tertiary": "#002516",
+                "primary": "#042419",
+                "surface-container-highest": "#e6e2db",
+                "error": "#ba1a1a",
+                "surface-container-low": "#f8f3ec",
+                "background": "#fef9f2",
+                "inverse-primary": "#accebc",
+                "on-error": "#ffffff",
+                "on-primary": "#ffffff",
+                "inverse-surface": "#32302c",
+                "on-secondary-fixed-variant": "#5b4300",
+                "secondary-container": "#fece65",
+                "inverse-on-surface": "#f5f0e9",
+                "outline-variant": "#c1c8c2",
+                "on-background": "#1d1c18",
+                "secondary-fixed": "#ffdf9f",
+                "outline": "#727974",
+                "primary-container": "#1b3a2d",
+                "surface-dim": "#ded9d3",
+                "on-tertiary": "#ffffff",
+                "secondary": "#795900",
+                "surface-container-lowest": "#ffffff",
+                "on-surface-variant": "#414844",
+                "tertiary-container": "#003d27"
+            },
+            "borderRadius": {
+                "DEFAULT": "1rem",
+                "lg": "2rem",
+                "xl": "3rem",
+                "full": "9999px"
+            },
+            "fontFamily": {
+                "headline": ["Noto Serif", "serif"],
+                "display": ["Playfair Display", "serif"],
+                "body": ["Inter", "sans-serif"],
+                "label": ["Inter", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .floating-label-underline:focus-within label {
+            transform: translateY(-1.5rem) scale(0.85);
+            color: #1B3A2D;
+        }
+        .floating-label-underline input:not(:placeholder-shown) + label {
+            transform: translateY(-1.5rem) scale(0.85);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col items-center">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-[#FAF5EE] shadow-sm">
+<div class="flex items-center justify-between px-6 py-4 w-full max-w-screen-xl mx-auto">
+<button class="text-[#1B3A2D] hover:opacity-80 transition-opacity active:transition-transform scale-95">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-xl font-bold text-[#1B3A2D] tracking-tighter font-['Noto_Serif']">RECOVER</h1>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="User profile" data-alt="close-up professional portrait of a person with a warm smile, soft natural studio lighting, minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc8Se-Lo-4-tNsiQvuvAYbPRJF2S9Xk1lnR1Le8s-t4RX8ahT8ayDWmir7Q5Jo72L0DsKvTuIoYgXrXYqXcoyfdjzIE6ne1sqYdTt2tuRcbIVdtSGpPGd9DUy2DvLs3NeI6fzVMV0cljLxTt8mY9FuFGsUv9oikcbB41_F18sqJ8TXkMJUKMIczYeXPxks_RzSy9QwZwnv2ANmQJc6CKhnfmpVXgJia83YUKF4rgR6Iy0aJtbbqBJ0VCMdI-In5TqA9FWdi8qzdsJl"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-lg px-6 py-12 flex-grow">
+<!-- Step Indicator -->
+<div class="mb-8 text-center">
+<span class="font-label text-[10px] font-medium uppercase tracking-widest text-outline">Step 1 of 3</span>
+<div class="mt-2 flex justify-center gap-2">
+<div class="h-1 w-12 bg-primary-container rounded-full"></div>
+<div class="h-1 w-12 bg-surface-container-high rounded-full"></div>
+<div class="h-1 w-12 bg-surface-container-high rounded-full"></div>
+</div>
+</div>
+<!-- Motivational Banner -->
+<section class="mb-12 relative overflow-hidden rounded-lg bg-primary-container p-8 text-on-primary">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-secondary" data-icon="shield_lock" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+<span class="font-label text-[10px] font-medium uppercase tracking-widest opacity-80">Security Protocol</span>
+</div>
+<h2 class="font-display text-2xl font-bold mb-2 leading-tight">Your future self will thank you for this moment.</h2>
+<p class="text-on-primary-container text-sm font-body opacity-90">Verification ensures your recovery path remains exclusively yours.</p>
+</div>
+<!-- Decorative Grain/Gradient -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container to-tertiary-container opacity-50"></div>
+</section>
+<!-- Identity Form -->
+<section class="space-y-12">
+<div class="text-center mb-8">
+<h3 class="font-display text-3xl font-bold text-primary mb-2">Verify Identity</h3>
+<p class="text-on-surface-variant text-sm">Please provide your legal details as they appear on official documents.</p>
+</div>
+<form class="space-y-10">
+<!-- SSN Field -->
+<div class="relative floating-label-underline group">
+<input autocomplete="off" class="block w-full border-0 border-b border-outline-variant bg-transparent px-0 py-2 text-primary focus:ring-0 focus:border-primary-container transition-all peer font-body text-lg tracking-[0.2em]" id="ssn" placeholder=" " type="text"/>
+<label class="absolute left-0 top-2 text-outline pointer-events-none transition-all duration-200 origin-left uppercase text-[10px] tracking-widest font-medium" for="ssn">Social Security Number (Last 4)</label>
+<div class="absolute right-0 top-2 text-outline peer-focus:text-primary-container">
+<span class="material-symbols-outlined text-sm" data-icon="visibility_off">visibility_off</span>
+</div>
+</div>
+<!-- DOB Field -->
+<div class="relative floating-label-underline group">
+<input autocomplete="off" class="block w-full border-0 border-b border-outline-variant bg-transparent px-0 py-2 text-primary focus:ring-0 focus:border-primary-container transition-all peer font-body text-lg" id="dob" placeholder=" " type="text"/>
+<label class="absolute left-0 top-2 text-outline pointer-events-none transition-all duration-200 origin-left uppercase text-[10px] tracking-widest font-medium" for="dob">Date of Birth (MM/DD/YYYY)</label>
+<div class="absolute right-0 top-2 text-outline">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+</div>
+</div>
+<!-- Postal Code Field -->
+<div class="relative floating-label-underline group">
+<input autocomplete="off" class="block w-full border-0 border-b border-outline-variant bg-transparent px-0 py-2 text-primary focus:ring-0 focus:border-primary-container transition-all peer font-body text-lg" id="postal" placeholder=" " type="text"/>
+<label class="absolute left-0 top-2 text-outline pointer-events-none transition-all duration-200 origin-left uppercase text-[10px] tracking-widest font-medium" for="postal">Postal Code</label>
+<div class="absolute right-0 top-2 text-outline">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+</div>
+</div>
+<!-- Security Assurance -->
+<div class="bg-surface-container-low rounded-DEFAULT p-4 flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary mt-0.5" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+<div>
+<p class="text-[11px] font-medium uppercase tracking-wide text-primary">Bank-Grade Encryption</p>
+<p class="text-xs text-on-surface-variant leading-relaxed">Your data is encrypted with AES-256 and is never stored locally on this device.</p>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-4">
+<button class="w-full bg-primary-container text-surface py-4 rounded-full font-label font-semibold uppercase tracking-widest text-sm shadow-lg hover:opacity-90 active:scale-[0.98] transition-all" type="submit">
+                        Continue to Step 2
+                    </button>
+<button class="w-full mt-4 text-outline font-label uppercase tracking-widest text-[10px] font-semibold hover:text-primary transition-colors" type="button">
+                        I'll do this later
+                    </button>
+</div>
+</form>
+</section>
+<!-- Asymmetric Decorative Element -->
+<div class="mt-16 relative h-32 flex items-center justify-center opacity-40 grayscale group hover:grayscale-0 transition-all duration-700">
+<div class="absolute w-24 h-24 rounded-full bg-tertiary-fixed-dim blur-3xl -left-10"></div>
+<div class="absolute w-32 h-32 rounded-full bg-secondary-fixed-dim blur-3xl -right-10"></div>
+<span class="material-symbols-outlined text-6xl text-primary-container/20" data-icon="fingerprint">fingerprint</span>
+</div>
+</main>
+<!-- Suppressed Shell: BottomNavBar is hidden because this is a Focused Transactional Journey (Step 1 of 3) -->
+</body></html>
+
+<!-- Plan Selection (v2) -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Plan Selection - RECOVER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&amp;family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#005236",
+                      "on-surface": "#1d1c18",
+                      "on-secondary-fixed": "#261a00",
+                      "tertiary-fixed": "#a4f3ca",
+                      "on-primary-container": "#83a493",
+                      "on-error-container": "#93000a",
+                      "surface-container-high": "#ece7e1",
+                      "primary-fixed-dim": "#accebc",
+                      "on-primary-fixed": "#012115",
+                      "surface-variant": "#e6e2db",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#eec058",
+                      "tertiary-fixed-dim": "#88d6af",
+                      "surface-tint": "#456556",
+                      "surface": "#fef9f2",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-container": "#755700",
+                      "on-primary-fixed-variant": "#2e4d3f",
+                      "surface-container": "#f2ede6",
+                      "primary-fixed": "#c7ebd8",
+                      "on-tertiary-fixed": "#002113",
+                      "surface-bright": "#fef9f2",
+                      "on-tertiary-container": "#5fac87",
+                      "tertiary": "#002516",
+                      "primary": "#042419",
+                      "surface-container-highest": "#e6e2db",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#f8f3ec",
+                      "background": "#fef9f2",
+                      "inverse-primary": "#accebc",
+                      "on-error": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "inverse-surface": "#32302c",
+                      "on-secondary-fixed-variant": "#5b4300",
+                      "secondary-container": "#fece65",
+                      "inverse-on-surface": "#f5f0e9",
+                      "outline-variant": "#c1c8c2",
+                      "on-background": "#1d1c18",
+                      "secondary-fixed": "#ffdf9f",
+                      "outline": "#727974",
+                      "primary-container": "#1b3a2d",
+                      "surface-dim": "#ded9d3",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#795900",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface-variant": "#414844",
+                      "tertiary-container": "#003d27"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Noto Serif"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 8px 32px rgba(74, 74, 66, 0.06);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-[#FAF5EE] dark:bg-stone-950 shadow-sm dark:shadow-none">
+<div class="flex items-center justify-between px-6 py-4 w-full max-w-screen-xl mx-auto">
+<button class="text-[#1B3A2D] dark:text-emerald-500 hover:opacity-80 transition-opacity scale-95 active:transition-transform">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-xl font-bold text-[#1B3A2D] dark:text-emerald-500 tracking-tighter font-['Noto_Serif']">RECOVER</h1>
+<div class="w-8 h-8 rounded-full overflow-hidden hover:opacity-80 transition-opacity">
+<img alt="user profile avatar" data-alt="professional corporate headshot of a person with a warm smile, soft natural lighting, studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACAeEF0MJ-hUBIl8j58sDqdXmpvzlXI1SL73JAtXHhiLigzB6sebowGgTiWgFNSjaHbxz2ivD0RU6LqVERFDtfvrfI11YjmRnO5rjzYWV5N_I8DjTGuKuaOpuY80SA-zHEKu2c_Hia6RMRv7Ezf435_uCn8koZV-OzcHbvJfkiS_AJjeg8udQaWRaLLP6LcycUszH2mJ7ouoyxUG8iRqTSCq5JNlLzRM3Ny_O8B9MO4VXNdXWqK8YF8W4nsi0VD0eVw-l4XOwiS3Qj"/>
+</div>
+</div>
+</header>
+<main class="max-w-screen-md mx-auto px-6 pt-8 pb-32">
+<!-- Step Indicator -->
+<div class="flex items-center gap-4 mb-8">
+<div class="flex-1 h-1 bg-primary-container rounded-full"></div>
+<div class="flex-1 h-1 bg-primary-container rounded-full"></div>
+<div class="flex-1 h-1 bg-primary-container rounded-full"></div>
+<span class="text-[10px] font-medium uppercase tracking-widest text-on-surface-variant">Step 3 of 3</span>
+</div>
+<!-- Hero Headline -->
+<section class="mb-12">
+<h2 class="text-5xl font-bold font-['Playfair_Display'] tracking-tight mb-4 leading-tight">Choose your recovery path.</h2>
+<p class="text-on-surface-variant max-w-md">Select the plan that best fits your financial comfort. All options are designed to protect your credit and clear your balance.</p>
+</section>
+<!-- Inset Account Detail Card -->
+<div class="bg-surface-container-low rounded-lg p-6 mb-12 flex items-center justify-between editorial-shadow">
+<div>
+<span class="text-[10px] font-medium uppercase tracking-widest text-on-surface-variant block mb-1">Current Account</span>
+<h3 class="text-xl font-semibold text-primary-container">Legacy Credit — 4482</h3>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-medium uppercase tracking-widest text-on-surface-variant block mb-1">Outstanding</span>
+<span class="text-2xl font-bold text-secondary">$2,450.00</span>
+</div>
+</div>
+<!-- Plan Options (Radio Card Bento Style) -->
+<div class="space-y-6">
+<!-- Option 1: Settle Now -->
+<label class="group relative block cursor-pointer">
+<input checked="" class="peer sr-only" name="plan" type="radio"/>
+<div class="p-8 rounded-lg bg-surface-container-lowest transition-all duration-300 peer-checked:ring-2 peer-checked:ring-primary-container editorial-shadow group-hover:bg-surface-container-high">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-primary-container peer-checked:bg-primary-container transition-colors">
+<div class="w-2.5 h-2.5 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+</div>
+<div>
+<h4 class="text-2xl font-bold font-['Playfair_Display']">Settle Now</h4>
+<span class="text-xs font-semibold text-on-tertiary-fixed-variant bg-tertiary-fixed px-2 py-0.5 rounded-full uppercase tracking-tighter">Save 40%</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-3xl font-bold text-secondary">$1,470</span>
+<span class="block text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">One-time payment</span>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/30 flex items-center justify-between">
+<p class="text-sm text-on-surface-variant max-w-xs">Cleanest resolution. Instantly marks your account as 'Paid in Full' across all credit bureaus.</p>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</label>
+<!-- Option 2: Installments (Best Value) -->
+<label class="group relative block cursor-pointer">
+<input class="peer sr-only" name="plan" type="radio"/>
+<div class="p-8 rounded-lg bg-surface-container-lowest transition-all duration-300 peer-checked:ring-2 peer-checked:ring-primary-container editorial-shadow group-hover:bg-surface-container-high overflow-hidden">
+<!-- Featured Badge -->
+<div class="absolute top-0 right-0 bg-primary-container text-surface px-6 py-1 rounded-bl-lg">
+<span class="text-[10px] font-bold uppercase tracking-widest">Best Value</span>
+</div>
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-primary-container peer-checked:bg-primary-container transition-colors">
+<div class="w-2.5 h-2.5 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+</div>
+<div>
+<h4 class="text-2xl font-bold font-['Playfair_Display']">Installments</h4>
+<span class="text-xs font-semibold text-on-secondary-fixed-variant bg-secondary-fixed px-2 py-0.5 rounded-full uppercase tracking-tighter">6 Months Plan</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-3xl font-bold text-secondary">$325</span>
+<span class="block text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">Per month</span>
+</div>
+</div>
+<!-- Expanded Content Style (Visible conceptually) -->
+<div class="mt-4 bg-surface-container-low p-4 rounded-DEFAULT space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Payment frequency</span>
+<span class="font-medium">Monthly</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Total repayment</span>
+<span class="font-medium">$1,950</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Interest rate</span>
+<span class="font-medium text-on-tertiary-fixed-variant">0% Fixed</span>
+</div>
+</div>
+<div class="pt-6 mt-6 border-t border-outline-variant/30 flex items-center justify-between">
+<p class="text-sm text-on-surface-variant max-w-xs">Balance the load. Keep your monthly cashflow steady while making consistent progress.</p>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="expand_less">expand_less</span>
+</div>
+</div>
+</label>
+<!-- Option 3: Build Your Own -->
+<label class="group relative block cursor-pointer">
+<input class="peer sr-only" name="plan" type="radio"/>
+<div class="p-8 rounded-lg bg-surface-container-lowest transition-all duration-300 peer-checked:ring-2 peer-checked:ring-primary-container editorial-shadow group-hover:bg-surface-container-high">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-primary-container peer-checked:bg-primary-container transition-colors">
+<div class="w-2.5 h-2.5 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+</div>
+<div>
+<h4 class="text-2xl font-bold font-['Playfair_Display']">Build Your Own</h4>
+<span class="text-xs font-semibold text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full uppercase tracking-tighter">Flexible</span>
+</div>
+</div>
+<div class="text-right">
+<span class="material-symbols-outlined text-secondary scale-150" data-icon="tune">tune</span>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/30 flex items-center justify-between">
+<p class="text-sm text-on-surface-variant max-w-xs">You tell us what works. Set your own timeline and payment amounts to match your budget.</p>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</label>
+</div>
+<!-- Sticky Bottom CTA Area -->
+<div class="mt-12 flex flex-col items-center gap-4">
+<button class="w-full max-w-xs h-[48px] bg-primary-container text-[#FAF5EE] rounded-full font-semibold hover:opacity-90 transition-all hover:shadow-lg active:scale-95">
+                Confirm &amp; Activate Plan
+            </button>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Securely processed by Recover Systems</p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-8 pb-8 pt-4 bg-[#1B3A2D]/90 dark:bg-stone-900/95 backdrop-blur-xl rounded-t-[32px] shadow-[0_-8px_32px_rgba(27,58,45,0.15)]">
+<a class="flex flex-col items-center justify-center text-[#FAF5EE]/60 hover:text-[#D4A843] transition-colors tap-highlight-none active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#FAF5EE]/60 hover:text-[#D4A843] transition-colors tap-highlight-none active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="rebase_edit">rebase_edit</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Recovery</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#D4A843] scale-110 transition-transform tap-highlight-none active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Plans</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#FAF5EE]/60 hover:text-[#D4A843] transition-colors tap-highlight-none active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+</body></html>
+
+<!-- Welcome Landing (v2) -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RECOVER - Financial Atelier</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Noto Serif & Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:wght@700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-surface": "#1d1c18",
+                    "on-secondary-fixed": "#261a00",
+                    "tertiary-fixed": "#a4f3ca",
+                    "on-primary-container": "#83a493",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#ece7e1",
+                    "primary-fixed-dim": "#accebc",
+                    "on-primary-fixed": "#012115",
+                    "surface-variant": "#e6e2db",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#eec058",
+                    "tertiary-fixed-dim": "#88d6af",
+                    "surface-tint": "#456556",
+                    "surface": "#fef9f2",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#755700",
+                    "on-primary-fixed-variant": "#2e4d3f",
+                    "surface-container": "#f2ede6",
+                    "primary-fixed": "#c7ebd8",
+                    "on-tertiary-fixed": "#002113",
+                    "surface-bright": "#fef9f2",
+                    "on-tertiary-container": "#5fac87",
+                    "tertiary": "#002516",
+                    "primary": "#042419",
+                    "surface-container-highest": "#e6e2db",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f8f3ec",
+                    "background": "#fef9f2",
+                    "inverse-primary": "#accebc",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#32302c",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "secondary-container": "#fece65",
+                    "inverse-on-surface": "#f5f0e9",
+                    "outline-variant": "#c1c8c2",
+                    "on-background": "#1d1c18",
+                    "secondary-fixed": "#ffdf9f",
+                    "outline": "#727974",
+                    "primary-container": "#1b3a2d",
+                    "surface-dim": "#ded9d3",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#795900",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#414844",
+                    "tertiary-container": "#003d27"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif", "serif"],
+                    "display": ["Playfair Display", "serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #fef9f2; }
+        .editorial-shadow { box-shadow: 0 8px 32px rgba(74, 74, 66, 0.06); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased pb-32">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-[#FAF5EE] dark:bg-stone-950 shadow-sm dark:shadow-none">
+<div class="flex items-center justify-between px-6 py-4 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#1B3A2D] dark:text-emerald-500 cursor-pointer">menu</span>
+<h1 class="text-xl font-bold text-[#1B3A2D] dark:text-emerald-500 tracking-tighter font-['Noto_Serif']">RECOVER</h1>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Close up portrait of a professional woman with a calm expression in a bright minimalist office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-TmN-WeE5m5-7P0v6l_e_lpKelcVhO81K429J-Cgm-Sb3EwFoJ6E5ORwxrCFciEypywmruXmlVTh_sKmbisqvWEcC2dqJJTrvIbMzVfT-JWP0ijc_JIZ4cSm-7U8eAD1fGQka83asWI8I8kUg_BNRxiy0YdEBPvrMXjnnfbsy0tBoLLeDGz0Vxm-6UDniPXrnU0KVqaQm8ZKoVT6bgnbOt9Z9st-UgeBnkgHIA8S9IL9sJU1O7tUannTC9oI327rsT95dA6OUHM5M"/>
+</div>
+</div>
+</header>
+<main class="max-w-screen-xl mx-auto px-6 pt-8 space-y-10">
+<!-- Hero Section & Co-branding -->
+<section class="relative overflow-hidden rounded-xl bg-primary-container p-8 md:p-12 text-on-primary">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+<svg class="w-full h-full" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<path d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,77.4,-44.7C85.6,-31.3,90.9,-15.7,91.8,0.5C92.7,16.7,89.2,33.4,80.5,47.2C71.8,61,58,71.9,43.2,78.8C28.4,85.7,12.7,88.6,-2.4,92.8C-17.5,97,-35,102.5,-49.2,96.1C-63.4,89.7,-74.3,71.4,-81.4,53.8C-88.5,36.2,-91.8,19.3,-89.9,3.3C-88,-12.7,-80.9,-27.8,-71.4,-40.8C-61.9,-53.8,-50,-64.7,-36.5,-71.8C-23,-78.9,-7.9,-82.2,7.4,-95C22.7,-107.8,31.3,-83.6,44.7,-76.4Z" fill="#FAF5EE" transform="translate(100 100)"></path>
+</svg>
+</div>
+<div class="relative z-10 space-y-6">
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 bg-surface-container-lowest/10 rounded-full text-[10px] font-medium uppercase tracking-[0.2em] border border-surface-container-lowest/20">Official Partnership</span>
+</div>
+<h2 class="text-4xl md:text-6xl font-display font-bold leading-tight max-w-2xl tracking-tight">
+                    Restoring your financial <span class="italic text-secondary">harmony</span>.
+                </h2>
+<p class="text-on-primary-container text-lg md:text-xl max-w-xl font-body opacity-90 leading-relaxed">
+                    We've partnered with AT&amp;T to help you resolve your outstanding balance with dignity and ease.
+                </p>
+</div>
+</section>
+<!-- Balance Card - High End Asymmetry -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-lg p-8 editorial-shadow border-l-4 border-secondary">
+<div class="flex justify-between items-start mb-12">
+<div class="space-y-1">
+<p class="text-[10px] font-medium uppercase tracking-widest text-outline">Merchant Provider</p>
+<div class="flex items-center gap-3">
+<img alt="AT&amp;T Logo" class="h-8 object-contain" data-alt="Modern blue AT&amp;T globe logo on a white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBimcofGdG_ZAll7-R6PQ4GMGYyWanIpK_AX0pz9wcEAbqkz-XDLAnBQ2qfTHX59sIryczsGPhKasOnxHgvKYrerxx8Vcp1OSng9qaeittd0pZPqQhvT-i3tT4eRAFWQWczsofeoY-RNNRdCzqFm8uXUv7pwgDzAQYKupOmG30gGLp0k2f0QyYyWHcl0Vyga4pgqJAQeGZVcFJJ3ISl_dP23XiO82YPoTeTflhrbMZsGmV4J-wufJmKMrlLQNmBZ2kK6JIThM8lMkt-"/>
+<span class="text-xl font-headline font-bold tracking-tight">AT&amp;T</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-medium uppercase tracking-widest text-outline">Statement Date</p>
+<p class="font-medium text-sm">Oct 24, 2023</p>
+</div>
+</div>
+<div class="space-y-2">
+<p class="text-[12px] font-medium uppercase tracking-[0.1em] text-outline">Total Outstanding Balance</p>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-display font-bold text-primary tracking-tighter">$347.52</span>
+<span class="text-secondary font-medium text-lg">USD</span>
+</div>
+</div>
+<div class="mt-10 pt-10 border-t border-surface-variant flex flex-wrap gap-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<p class="text-[10px] font-medium uppercase text-outline">Status</p>
+<p class="font-semibold text-sm">Pre-Verified</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<p class="text-[10px] font-medium uppercase text-outline">Resolution</p>
+<p class="font-semibold text-sm">Immediate</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento-style value props -->
+<div class="lg:col-span-5 grid grid-cols-1 gap-4">
+<div class="bg-surface-container-low p-6 rounded-lg space-y-3">
+<span class="material-symbols-outlined text-secondary scale-125">shield</span>
+<h3 class="font-headline font-bold text-lg">Secure &amp; Confidential</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Your data is encrypted using military-grade protocols and never shared with third parties.</p>
+</div>
+<div class="bg-surface-container p-6 rounded-lg space-y-3">
+<span class="material-symbols-outlined text-secondary scale-125">payments</span>
+<h3 class="font-headline font-bold text-lg">Flexible Recovery</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Choose from tailored repayment paths that align with your current financial capacity.</p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-12 flex flex-col items-center text-center space-y-8">
+<div class="max-w-2xl space-y-4">
+<h3 class="text-3xl font-display font-bold">Ready to take the first step?</h3>
+<p class="text-on-surface-variant font-body">Begin your journey back to financial wellness in less than two minutes. No credit impact for checking your options.</p>
+</div>
+<button class="pill-shaped h-[56px] px-12 bg-primary-container text-surface rounded-full font-semibold text-lg editorial-shadow hover:bg-primary transition-all active:scale-95 flex items-center gap-3 group">
+                Get Started
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="flex items-center gap-6 pt-4 grayscale opacity-40">
+<img alt="Trust Logo" data-alt="TrustE security certification logo in monochrome grey" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi2PA_5usaqvSY8DoaqxpJi5qwBQleP7mJClkD0xyRyPIVyuMsN8poX_k5zAwCaT2jeHUgWD5nyhkxAD-pZMILB5Q_a-ElvI6Y_PMeOIJiVOr0O7Zu8NiDVmDcEcPggxmdbjLuZpUfFUgt1MoHho0YSpxHjygv8EiAR2L9Pz_VPAXYZqrVBQoWk8n4pi2tu0-49sOULc5cMro6C9daiN-D60OXaW-3_nv1kInYjCJgrkKJ9GN2e0WYbKg1tQC2L-pjJ-SJTEbZjyht"/>
+<img alt="Security Logo" data-alt="Norton Secured logo in monochrome grey" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBND8sznCOShQNZP_0MADCY8fDfhcKdY_SvTRaFi9Q85nxOJNRDtbann6tSZgZkpgQfJZLrMyUQvqNJkgxUI5f4Y46lFRhjSzFLHi-fBgZaCWZpVVpGCgEIt8h_YC1QSqwl_V4xwqn-u8e1cNEwTfb-ybSRGrs5w-6QERlDVy1BblrJM6ig79HlFZ93U1VlTTe36Evb4-sUE1zuN64tsYrckqEJyBZg8bTI-TwOC8rGesl2bqXcDbwmc-_HXNzshbE857l2BnTjNID7"/>
+<img alt="BBB Logo" data-alt="Better Business Bureau accredited business logo in monochrome grey" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIjMlkCDBi3J5BVnxl9DRP4Imc-48ce8mQvu2Sn2ZQZiYFawyoHl1RTJZyr8Z2KSZBufVkVQM_RpV4AJwl7CHvYIhZLlFB_OXPdH7RBeJ1Yec6mqulMfcWyXwEX9hlEiGkBgWmZV5Zr5qK75PStHIFbeFGsimsNhuHiJQzm2-OjCA-4pV2AvMaHPH-uqktPmbhPiecqSL-nS_nT2lY3DvrZDXjN3CiDOP8cE5uHKUeSGTpbaWDB_c8T7oaDqDhWKuMyBdgg26pyoEj"/>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-8 pb-8 pt-4 bg-[#1B3A2D]/90 dark:bg-stone-900/95 backdrop-blur-xl rounded-t-[32px] shadow-[0_-8px_32px_rgba(27,58,45,0.15)] no-border">
+<div class="flex flex-col items-center justify-center text-[#D4A843] scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#FAF5EE]/60 hover:text-[#D4A843] transition-colors">
+<span class="material-symbols-outlined">rebase_edit</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Recovery</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#FAF5EE]/60 hover:text-[#D4A843] transition-colors">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Plans</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#FAF5EE]/60 hover:text-[#D4A843] transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Profile</span>
+</div>
+</nav>
+</body></html>
+
+<!-- Confirmation (v2) -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Confirmation | RECOVER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-surface": "#1d1c18",
+                    "on-secondary-fixed": "#261a00",
+                    "tertiary-fixed": "#a4f3ca",
+                    "on-primary-container": "#83a493",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#ece7e1",
+                    "primary-fixed-dim": "#accebc",
+                    "on-primary-fixed": "#012115",
+                    "surface-variant": "#e6e2db",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#eec058",
+                    "tertiary-fixed-dim": "#88d6af",
+                    "surface-tint": "#456556",
+                    "surface": "#fef9f2",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#755700",
+                    "on-primary-fixed-variant": "#2e4d3f",
+                    "surface-container": "#f2ede6",
+                    "primary-fixed": "#c7ebd8",
+                    "on-tertiary-fixed": "#002113",
+                    "surface-bright": "#fef9f2",
+                    "on-tertiary-container": "#5fac87",
+                    "tertiary": "#002516",
+                    "primary": "#042419",
+                    "surface-container-highest": "#e6e2db",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f8f3ec",
+                    "background": "#fef9f2",
+                    "inverse-primary": "#accebc",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#32302c",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "secondary-container": "#fece65",
+                    "inverse-on-surface": "#f5f0e9",
+                    "outline-variant": "#c1c8c2",
+                    "on-background": "#1d1c18",
+                    "secondary-fixed": "#ffdf9f",
+                    "outline": "#727974",
+                    "primary-container": "#1b3a2d",
+                    "surface-dim": "#ded9d3",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#795900",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#414844",
+                    "tertiary-container": "#003d27"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fef9f2;
+        }
+        .serif-headline {
+            font-family: 'Noto Serif', serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-[#FAF5EE] dark:bg-stone-950 shadow-sm dark:shadow-none">
+<div class="flex items-center justify-between px-6 py-4 w-full max-w-screen-xl mx-auto">
+<button class="text-[#1B3A2D] dark:text-emerald-500 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-['Noto_Serif'] font-bold tracking-tight text-xl text-[#1B3A2D] dark:text-emerald-500 tracking-tighter">RECOVER</h1>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Profile Avatar" data-alt="close-up portrait of a professional man with a friendly expression, soft studio lighting, clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJRddReA4KAHWON5XGppoJvrpfQkaSsihvVsL26mAyiPzonEkd8g9YqU9j81_67sd5PhTpXPaOf4RuBH0Y27UerBFRwA5CB-8H8mh0fy_ZLQWQIgWylE2oFwygGMXFbeARZUDytMQsSK4oKLwQRgh1za996qUTeA96jzbtJoFhOvi0QWfDahMvwFnUsoHE5OhUcMDyXACUC2c8vHAEjlNbSusfdtoNPGs14JsJQ0DyaQFxR_hIh6oYHbvIFVL-zVUwppvYGdQRZLDp"/>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center px-6 py-12 max-w-2xl mx-auto w-full">
+<!-- Success State Hero -->
+<div class="text-center mb-12">
+<div class="relative inline-block mb-8">
+<div class="w-24 h-24 bg-tertiary-fixed rounded-full flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant text-5xl" style="font-variation-settings: 'wght' 600;">check_circle</span>
+</div>
+<!-- Decorative Asymmetric Element -->
+<div class="absolute -top-2 -right-2 w-8 h-8 bg-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<h2 class="serif-headline text-4xl md:text-5xl text-primary-container mb-4 tracking-tight">You're all set, Marcus.</h2>
+<p class="text-on-surface-variant text-lg max-w-md mx-auto leading-relaxed">Your recovery journey is officially underway. We’ve locked in your personalized plan.</p>
+</div>
+<!-- Plan Summary Card (Tonal Layering) -->
+<div class="w-full bg-surface-container-lowest rounded-lg p-8 shadow-[0_8px_32px_rgba(74,74,66,0.06)] border border-surface-variant/30 mb-8">
+<div class="flex justify-between items-start mb-8">
+<div>
+<p class="text-[10px] font-medium uppercase tracking-widest text-on-surface-variant mb-1">Active Plan</p>
+<h3 class="serif-headline text-2xl text-primary-container">Debt-Free Milestone</h3>
+</div>
+<div class="bg-on-tertiary-fixed-variant/10 px-3 py-1 rounded-full">
+<p class="text-[10px] font-bold text-on-tertiary-fixed-variant uppercase tracking-wider">Confirmed</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8 mb-8">
+<div class="space-y-1">
+<p class="text-[10px] font-medium uppercase tracking-widest text-on-surface-variant">Monthly Allocation</p>
+<p class="text-2xl font-bold text-secondary">$840.00</p>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] font-medium uppercase tracking-widest text-on-surface-variant">Est. Recovery</p>
+<p class="text-2xl font-bold text-primary-container">Oct 2025</p>
+</div>
+</div>
+<!-- Trust Grid (Editorial style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-6 border-t border-outline-variant/20">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="percent">percent</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">$0 Interest</p>
+<p class="text-xs text-on-surface-variant">Locked-in fixed rate</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant" data-icon="calendar_today">calendar_today</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Auto-Scheduled</p>
+<p class="text-xs text-on-surface-variant">Payments on the 1st</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Call to Action -->
+<div class="w-full space-y-4 text-center">
+<button class="w-full max-w-sm h-14 bg-primary-container text-surface rounded-full font-bold text-lg hover:opacity-95 transition-all active:scale-95 shadow-lg shadow-primary-container/20">
+                View My Dashboard
+            </button>
+<p class="text-xs text-on-surface-variant/60 font-medium tracking-wide">A confirmation email was sent to marcus.w@design.com</p>
+</div>
+<!-- Bottom Graphic Asymmetry -->
+<div class="mt-16 w-full opacity-40 grayscale flex justify-around">
+<img alt="Trust Badge 1" class="h-8" data-alt="minimalist clean architectural logo of a luxury financial firm, thin lines, high contrast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuhluPf8EtwhcjxpyecmJYjHAlxNFwNDVptPZ181ZOlUXjLpLCUPJRY-IseSr1KeVWY6cYQUIASgGeDzOgMObCjDvLTYn0vZEUZrAZvoqbpj01o2BYurtKHlbYirnSZWTpQ3TJzHqWjcr1hhLDsPwWNkuRdRVTsotU4WiErR22_8Oq5jBWIIMs7QbzhoEV-15CEXzFnMMAxooCU1WrJt6Uxm9qHsCwEpx5QJ84FhPwn0ik6kTTzmoPgetTsJWjub2ld3kox8Sachnc"/>
+<img alt="Trust Badge 2" class="h-8" data-alt="minimalist geometric shield logo representing digital security, elegant serif font, deep green and gold accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHZgDckRJn0bUPOqrJ-Agc3kgdVZ5qU87TTgRe2ThIy9oOkPSdS3cEMgO8m-8k_s2LMB0iRHR9bsKW1aP-sfazV-uza4bcQfiM6TqLQ_KytJXEI7cT9zEBj0McPFgsh1m0wzokQIJk5529PKCwYX1BeuSlpDcqZu85Ik2S2HBMMpsXU6I8ioZsz6W_wyugq5JtrCmsYbxS6JrUmu-uv2IQRuNVw8K0R7xIh2XyNFWpIYZCCy7iJjzop9qv-ON14TWo7ca0fil2TdoE"/>
+</div>
+</main>
+<!-- Navigation suppressed for Confirmation screen as per UX guidelines -->
+<!-- Floating Trust Indicator (Minimalist) -->
+<div class="fixed bottom-8 right-8 hidden md:flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full border border-outline-variant/30">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant text-sm" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">Bank-Grade Encryption</span>
+</div>
+</body></html>
+
+<!-- Build Your Plan (v2) -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RECOVER - Build Your Plan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&amp;family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-surface": "#1d1c18",
+                    "on-secondary-fixed": "#261a00",
+                    "tertiary-fixed": "#a4f3ca",
+                    "on-primary-container": "#83a493",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#ece7e1",
+                    "primary-fixed-dim": "#accebc",
+                    "on-primary-fixed": "#012115",
+                    "surface-variant": "#e6e2db",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#eec058",
+                    "tertiary-fixed-dim": "#88d6af",
+                    "surface-tint": "#456556",
+                    "surface": "#fef9f2",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#755700",
+                    "on-primary-fixed-variant": "#2e4d3f",
+                    "surface-container": "#f2ede6",
+                    "primary-fixed": "#c7ebd8",
+                    "on-tertiary-fixed": "#002113",
+                    "surface-bright": "#fef9f2",
+                    "on-tertiary-container": "#5fac87",
+                    "tertiary": "#002516",
+                    "primary": "#042419",
+                    "surface-container-highest": "#e6e2db",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f8f3ec",
+                    "background": "#fef9f2",
+                    "inverse-primary": "#accebc",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#32302c",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "secondary-container": "#fece65",
+                    "inverse-on-surface": "#f5f0e9",
+                    "outline-variant": "#c1c8c2",
+                    "on-background": "#1d1c18",
+                    "secondary-fixed": "#ffdf9f",
+                    "outline": "#727974",
+                    "primary-container": "#1b3a2d",
+                    "surface-dim": "#ded9d3",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#795900",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#414844",
+                    "tertiary-container": "#003d27"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "display": ["Playfair Display"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input[type='range'] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type='range']::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #E8EFE8;
+            border-radius: 2px;
+        }
+        input[type='range']::-webkit-slider-thumb {
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #1B3A2D;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -10px;
+            box-shadow: 0 4px 12px rgba(27,58,45,0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-[#FAF5EE] dark:bg-stone-950 shadow-sm dark:shadow-none">
+<div class="flex items-center justify-between px-6 py-4 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="text-[#1B3A2D] dark:text-emerald-500 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+</div>
+<h1 class="text-xl font-bold text-[#1B3A2D] dark:text-emerald-500 tracking-tighter font-['Noto_Serif']">RECOVER</h1>
+<div class="w-10 h-10 rounded-full overflow-hidden">
+<img alt="user profile avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a professional woman in a neutral cream-colored studio with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzz6CNar_SI1fxdBpMDJCQ_N6Z2sj8zcHyCRxgYmP1oIlnijhrh34lLyO1BBQ759l3OW_MvQ6tcYGrIi4vaQ1VStY8dhZvwl3Y_hrR8GSdl3KMGyXpYA5itXsh5Hyk0B3IUr4zFiOLOkmrE1XKz_bcO3xMZ6Zefg0zZMrrWE4c4hOTRmVJlSNSHwnZaitrbP62HAccXsVDNo5hxoFi_AcNvNywOEApiXk5cU4TlwmURLDhYiGtbX4e7Tq2DmSwacH4aHXaClo-pIBa"/>
+</div>
+</div>
+</header>
+<main class="max-w-screen-xl mx-auto px-6 py-8">
+<div class="flex flex-col md:flex-row gap-8 lg:gap-12">
+<!-- Left Column: Configuration -->
+<div class="flex-1 space-y-12">
+<section>
+<h2 class="text-4xl lg:text-5xl font-display font-bold text-primary tracking-tight leading-tight mb-4">Craft Your Financial Path</h2>
+<p class="text-on-surface-variant text-lg max-w-xl">Adjust your recovery timeline to find the perfect balance between speed and sustainable growth.</p>
+</section>
+<!-- Plan Customization Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Slider Card -->
+<div class="md:col-span-2 bg-surface-container-lowest p-8 rounded-lg">
+<div class="flex justify-between items-end mb-8">
+<div>
+<span class="text-[10px] font-medium uppercase tracking-[0.15em] text-secondary mb-2 block">Timeline</span>
+<h3 class="text-2xl font-display font-bold text-primary">Duration</h3>
+</div>
+<div class="text-right">
+<span class="text-4xl font-display font-bold text-primary">8</span>
+<span class="text-lg font-display text-on-surface-variant">Months</span>
+</div>
+</div>
+<div class="px-2">
+<input class="w-full" max="12" min="1" type="range" value="8"/>
+<div class="flex justify-between mt-4 text-[10px] font-medium text-outline uppercase tracking-widest">
+<span>1 Month</span>
+<span>12 Months</span>
+</div>
+</div>
+</div>
+<!-- Quick Select Chips -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-between">
+<div>
+<span class="text-[10px] font-medium uppercase tracking-[0.15em] text-secondary mb-2 block">Quick Select</span>
+<h3 class="text-xl font-headline font-bold text-primary mb-6">Common Plans</h3>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="px-5 py-2 rounded-full border border-outline-variant text-sm font-medium hover:bg-primary-fixed-dim transition-colors">3 Months</button>
+<button class="px-5 py-2 rounded-full bg-primary-container text-on-primary text-sm font-medium">6 Months</button>
+<button class="px-5 py-2 rounded-full border border-outline-variant text-sm font-medium hover:bg-primary-fixed-dim transition-colors">12 Months</button>
+</div>
+</div>
+<!-- Strategy Selection -->
+<div class="bg-surface-container-low p-8 rounded-lg">
+<span class="text-[10px] font-medium uppercase tracking-[0.15em] text-secondary mb-2 block">Strategy</span>
+<h3 class="text-xl font-headline font-bold text-primary mb-6">Payment Frequency</h3>
+<div class="flex gap-4">
+<label class="flex-1 cursor-pointer">
+<input checked="" class="hidden peer" name="freq" type="radio"/>
+<div class="p-4 rounded-lg bg-surface border border-transparent peer-checked:border-primary-container text-center transition-all">
+<span class="text-sm font-semibold text-primary">Monthly</span>
+</div>
+</label>
+<label class="flex-1 cursor-pointer">
+<input class="hidden peer" name="freq" type="radio"/>
+<div class="p-4 rounded-lg bg-surface border border-transparent peer-checked:border-primary-container text-center transition-all">
+<span class="text-sm font-semibold text-primary">Bi-Weekly</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Motivational Callout (Sage Background) -->
+<div class="bg-on-tertiary-fixed-variant/5 border border-on-tertiary-fixed-variant/10 p-8 rounded-lg flex items-center gap-6">
+<div class="w-12 h-12 bg-on-tertiary-fixed-variant rounded-full flex items-center justify-center text-on-tertiary shrink-0">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<h4 class="text-lg font-headline font-bold text-on-tertiary-fixed-variant">You're on the right track</h4>
+<p class="text-on-tertiary-fixed-variant/80 text-sm leading-relaxed">By choosing an 8-month window, you're projected to save <span class="font-bold">€1,240</span> in interest compared to the standard recovery trajectory.</p>
+</div>
+</div>
+</div>
+<!-- Right Column: Summary Card -->
+<aside class="w-full md:w-[380px] shrink-0">
+<div class="bg-primary-container text-on-primary p-10 rounded-xl sticky top-24 shadow-2xl">
+<span class="text-[10px] font-medium uppercase tracking-[0.2em] text-on-primary-container mb-8 block">Payment Summary</span>
+<div class="space-y-8">
+<div>
+<span class="text-sm text-on-primary-container block mb-1">Monthly Installment</span>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-display font-bold text-secondary-fixed-dim">€485.00</span>
+<span class="text-sm text-on-primary-container">/mo</span>
+</div>
+</div>
+<div class="pt-8 border-t border-on-primary-fixed-variant/30 space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-primary-container">Total Capital</span>
+<span class="text-base font-semibold">€3,600.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-primary-container">Interest Savings</span>
+<span class="text-base font-semibold text-tertiary-fixed-dim">+€124.50</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-primary-container">Processing Fee</span>
+<span class="text-base font-semibold">€0.00</span>
+</div>
+</div>
+<div class="pt-8 border-t border-on-primary-fixed-variant/30">
+<div class="flex justify-between items-end mb-8">
+<span class="text-sm font-medium uppercase tracking-widest text-on-primary-container">Estimated Total</span>
+<span class="text-2xl font-display font-bold text-white">€3,880.00</span>
+</div>
+<button class="w-full bg-secondary-fixed-dim hover:bg-secondary-fixed text-on-secondary-fixed py-4 rounded-full font-bold text-base tracking-wide transition-all transform active:scale-[0.98]">
+                                Confirm Plan Details
+                            </button>
+<p class="text-[10px] text-center text-on-primary-container mt-6 uppercase tracking-widest">
+                                Secure Bank-Level Encryption
+                            </p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-8 pb-8 pt-4 bg-[#1B3A2D]/90 dark:bg-stone-900/95 backdrop-blur-xl shadow-[0_-8px_32px_rgba(27,58,45,0.15)] rounded-t-[32px]">
+<a class="flex flex-col items-center justify-center text-[#FAF5EE]/60 hover:text-[#D4A843] transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#D4A843] scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">rebase_edit</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Recovery</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#FAF5EE]/60 hover:text-[#D4A843] transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Plans</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#FAF5EE]/60 hover:text-[#D4A843] transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Profile</span>
+</a>
+</nav>
+</body></html>
+
+<!-- Review & Pay (v2) -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review &amp; Pay | RECOVER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-surface": "#1d1c18",
+                    "on-secondary-fixed": "#261a00",
+                    "tertiary-fixed": "#a4f3ca",
+                    "on-primary-container": "#83a493",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#ece7e1",
+                    "primary-fixed-dim": "#accebc",
+                    "on-primary-fixed": "#012115",
+                    "surface-variant": "#e6e2db",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#eec058",
+                    "tertiary-fixed-dim": "#88d6af",
+                    "surface-tint": "#456556",
+                    "surface": "#fef9f2",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#755700",
+                    "on-primary-fixed-variant": "#2e4d3f",
+                    "surface-container": "#f2ede6",
+                    "primary-fixed": "#c7ebd8",
+                    "on-tertiary-fixed": "#002113",
+                    "surface-bright": "#fef9f2",
+                    "on-tertiary-container": "#5fac87",
+                    "tertiary": "#002516",
+                    "primary": "#042419",
+                    "surface-container-highest": "#e6e2db",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f8f3ec",
+                    "background": "#fef9f2",
+                    "inverse-primary": "#accebc",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#32302c",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "secondary-container": "#fece65",
+                    "inverse-on-surface": "#f5f0e9",
+                    "outline-variant": "#c1c8c2",
+                    "on-background": "#1d1c18",
+                    "secondary-fixed": "#ffdf9f",
+                    "outline": "#727974",
+                    "primary-container": "#1b3a2d",
+                    "surface-dim": "#ded9d3",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#795900",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#414844",
+                    "tertiary-container": "#003d27"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fef9f2;
+            color: #4A4A42;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body antialiased min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-[#FAF5EE] dark:bg-stone-950 shadow-sm dark:shadow-none">
+<div class="flex items-center justify-between px-6 py-4 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#1B3A2D] dark:text-emerald-500 hover:opacity-80 transition-opacity">arrow_back</button>
+<h1 class="font-['Noto_Serif'] font-bold tracking-tight text-xl text-[#1B3A2D] dark:text-emerald-500 tracking-tighter">RECOVER</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-high">
+<img alt="user profile avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a professional woman with a soft confident smile, warm studio lighting, neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDajm2xjJYcen6LIwC0n98mMJdmkHPAbLWjRnUYp3-ZRdxyTrsGSUPrhZfamWIcxBLCaTHGY_GCAtzXPOCCJq7wzbzkoU5N2Wn588jCdf1DNfEfscpqXpvkfP54Gvy1yAGpbDX6lh4NP-II9A8TjVroztTq_LmuAdTQDSkGs5q4dUqL5tUWjvpfwX9gJ8Ye4hbkXKSRpNQw15lZxAWcjn96S7SMnLDui7brGEZSxaLnzH4vfLpU4YqBaTOBTBLCpR0ThWH0yafYi-bQ"/>
+</div>
+</div>
+</header>
+<main class="max-w-screen-md mx-auto px-6 pt-12 pb-32">
+<!-- Review Header -->
+<section class="mb-12">
+<span class="font-label text-[0.75rem] font-bold uppercase tracking-[0.1em] text-secondary mb-3 block">Final Review</span>
+<h2 class="font-headline text-4xl text-primary leading-tight">Confirm your <br/>Recovery Plan.</h2>
+</section>
+<!-- Summary Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+<!-- Main Plan Card -->
+<div class="bg-surface-container-lowest p-8 rounded-lg border border-surface-variant/30 md:col-span-2">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-headline text-2xl text-primary mb-1">Debt Freedom Strategy</h3>
+<p class="text-on-surface-variant">Accelerated interest reduction</p>
+</div>
+<div class="bg-tertiary-fixed px-3 py-1 rounded-full">
+<span class="font-label text-[10px] font-bold text-on-tertiary-fixed-variant uppercase tracking-wider">Premium Plan</span>
+</div>
+</div>
+<div class="flex items-end gap-2 mb-8">
+<span class="text-secondary text-4xl font-headline">$4,250.00</span>
+<span class="text-on-surface-variant font-label text-xs mb-2">TOTAL RECOVERY TARGET</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-surface-variant">
+<div>
+<p class="text-on-surface-variant text-[10px] font-label uppercase tracking-widest mb-1">Monthly</p>
+<p class="text-primary font-bold">$340.00</p>
+</div>
+<div>
+<p class="text-on-surface-variant text-[10px] font-label uppercase tracking-widest mb-1">Duration</p>
+<p class="text-primary font-bold">14 Months</p>
+</div>
+<div>
+<p class="text-on-surface-variant text-[10px] font-label uppercase tracking-widest mb-1">APR Saved</p>
+<p class="text-primary font-bold">12.4%</p>
+</div>
+<div>
+<p class="text-on-surface-variant text-[10px] font-label uppercase tracking-widest mb-1">Next Step</p>
+<p class="text-primary font-bold">Oct 01</p>
+</div>
+</div>
+</div>
+<!-- Detail Cards -->
+<div class="bg-surface-container-low p-6 rounded-lg flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+</div>
+<div>
+<p class="text-primary font-semibold">FDIC Insured</p>
+<p class="text-on-surface-variant text-xs">Standard asset protection</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">lock</span>
+</div>
+<div>
+<p class="text-primary font-semibold">256-bit Security</p>
+<p class="text-on-surface-variant text-xs">Bank-grade encryption</p>
+</div>
+</div>
+</div>
+<!-- Payment Selection -->
+<section class="mb-12">
+<h3 class="font-headline text-xl text-primary mb-6">Select Payment Method</h3>
+<div class="space-y-4">
+<!-- ACH Option -->
+<label class="group relative flex items-center p-6 bg-surface-container-lowest rounded-lg border-2 border-transparent hover:border-primary/10 cursor-pointer transition-all has-[:checked]:border-secondary has-[:checked]:bg-secondary/5">
+<input checked="" class="hidden peer" name="payment" type="radio" value="ach"/>
+<div class="flex-1 flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-container-high rounded-full group-hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+</div>
+<div>
+<p class="text-primary font-semibold">ACH Direct Transfer</p>
+<p class="text-on-surface-variant text-xs">Free • 3-5 business days processing</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline peer-checked:border-secondary peer-checked:bg-secondary flex items-center justify-center transition-all">
+<div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+</div>
+</label>
+<!-- Debit Option -->
+<label class="group relative flex items-center p-6 bg-surface-container-lowest rounded-lg border-2 border-transparent hover:border-primary/10 cursor-pointer transition-all has-[:checked]:border-secondary has-[:checked]:bg-secondary/5">
+<input class="hidden peer" name="payment" type="radio" value="debit"/>
+<div class="flex-1 flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-container-high rounded-full group-hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-primary">credit_card</span>
+</div>
+<div>
+<p class="text-primary font-semibold">Debit Card</p>
+<p class="text-on-surface-variant text-xs">Instant • 1.5% processing fee</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline peer-checked:border-secondary peer-checked:bg-secondary flex items-center justify-center transition-all">
+<div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+</div>
+</label>
+</div>
+</section>
+<!-- Final Action -->
+<div class="space-y-6">
+<button class="w-full h-16 rounded-full bg-primary-container text-surface flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all shadow-lg">
+<span class="font-label font-bold uppercase tracking-widest">Select a payment method</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-center text-on-surface-variant text-xs max-w-sm mx-auto leading-relaxed">
+                By confirming, you authorize RECOVER to initiate a pre-authorized withdrawal according to the selected schedule. You can cancel any time 24h before the next payment.
+            </p>
+</div>
+<!-- Security Footer -->
+<footer class="mt-16 pt-8 border-t border-surface-variant/30 flex flex-col items-center gap-6">
+<div class="flex gap-8 items-center grayscale opacity-60">
+<img alt="Norton" class="h-6" data-alt="norton secured seal logo, professional vector graphic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFwovhViajimUZgTRZKU26w9qhyl0bNsuQs-WtxFrVbJMf49RXFr6YTTlTyTELTE4P01X8--39NtRSoaOx1WMCuw00WIOgRyOQvLsyjn227IWK1fwTWaPZog6cLjVOyLR7u0c4fuWrvUjfA1flTJex5pIeZXXxMymidrpbCJ-cqn8_cghegNKnD7C1U9vWv2Xt5nU-zRBcmuy2q-7oyjuTPF_q6g0aO-_KsfaPT2DWoOCsLBehr60Bozn3_JOKO2nHjErZUdpf6yn0"/>
+<img alt="Plaid" class="h-5" data-alt="plaid logo, minimalist modern financial tech branding" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxmEkjcsIfxDeobpKtPdT3p0i6PZNGogFHXiRpK6utULTmbiWhJAqxZmLkEkqe3xaFnH0enomk7y0BngRHMR_a8r9btdJ63wY3edU3Tkn1dtzXp3V6JkcnjZuAVyzWCO3MyTs72wmdSDez7ZaHDMDHVOTLRvXa4AP4KriX8jXg42gCN-l3LTxdTNqIBaBUSkW7HDILMONuHgzcnSdtc9VTLRprVN0qAw3Sala-qewGMorwCMa5bBhYNo3J6BqkSP3hrZRAUyH1uLKd"/>
+<img alt="McAfee" class="h-6" data-alt="mcafee security emblem, tech safety certification" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY66lkWtncPnZ-69pOUfl4VIvyoWR-SMTjdOPj_fSuh8bEVX2MhlO4GBFyc8ueN5R-hLEse1T-LlWXMVSdtHAjlzHPljTAS_SLIBBvZzGdCpEbgLa_JIUSbpdwK6uv5HF8DEgw--DF01NuSfraOA-plksuGwBK3CzzAN9EMfS6nEy320sGdFcXYni1JcbNm9GvBMyrn0uJsE7m6dLMIpvQ_kjdW7sSFZPSY-YPKm6Sh0zjeiFuCG0jXrcQtD8JTlYUQAmCBkVu4OEv"/>
+</div>
+<div class="text-[10px] font-label font-medium uppercase tracking-[0.2em] text-on-surface-variant">
+                Regulated &amp; Secured Financial Environment
+            </div>
+</footer>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-[#1B3A2D]/90 dark:bg-stone-900/95 backdrop-blur-xl flex justify-around items-center px-8 pb-8 pt-4 rounded-t-[32px] shadow-[0_-8px_32px_rgba(27,58,45,0.15)]">
+<a class="flex flex-col items-center justify-center text-[#FAF5EE]/60 hover:text-[#D4A843] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#D4A843] scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="rebase_edit" style="font-variation-settings: 'FILL' 1;">rebase_edit</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Recovery</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#FAF5EE]/60 hover:text-[#D4A843] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Plans</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#FAF5EE]/60 hover:text-[#D4A843] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+</body></html>
+
+<!-- Confirm Details (v2) -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-surface": "#1d1c18",
+                        "on-secondary-fixed": "#261a00",
+                        "tertiary-fixed": "#a4f3ca",
+                        "on-primary-container": "#83a493",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#ece7e1",
+                        "primary-fixed-dim": "#accebc",
+                        "on-primary-fixed": "#012115",
+                        "surface-variant": "#e6e2db",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#eec058",
+                        "tertiary-fixed-dim": "#88d6af",
+                        "surface-tint": "#456556",
+                        "surface": "#fef9f2",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#755700",
+                        "on-primary-fixed-variant": "#2e4d3f",
+                        "surface-container": "#f2ede6",
+                        "primary-fixed": "#c7ebd8",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-bright": "#fef9f2",
+                        "on-tertiary-container": "#5fac87",
+                        "tertiary": "#002516",
+                        "primary": "#042419",
+                        "surface-container-highest": "#e6e2db",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f8f3ec",
+                        "background": "#fef9f2",
+                        "inverse-primary": "#accebc",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#32302c",
+                        "on-secondary-fixed-variant": "#5b4300",
+                        "secondary-container": "#fece65",
+                        "inverse-on-surface": "#f5f0e9",
+                        "outline-variant": "#c1c8c2",
+                        "on-background": "#1d1c18",
+                        "secondary-fixed": "#ffdf9f",
+                        "outline": "#727974",
+                        "primary-container": "#1b3a2d",
+                        "surface-dim": "#ded9d3",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#795900",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#414844",
+                        "tertiary-container": "#003d27"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif", "serif"],
+                        "display": ["Playfair Display", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .luxury-underline {
+            border-bottom: 1px solid #c1c8c2;
+            transition: border-color 0.3s ease;
+        }
+        .luxury-underline:focus-within {
+            border-bottom: 2px solid #1B3A2D;
+        }
+        body {
+            background-color: #fef9f2;
+            color: #1d1c18;
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-[#FAF5EE] dark:bg-stone-950 shadow-sm dark:shadow-none">
+<div class="flex items-center justify-between px-6 py-4 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="scale-95 active:transition-transform hover:opacity-80 transition-opacity text-[#1B3A2D] dark:text-emerald-500">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="text-xl font-bold text-[#1B3A2D] dark:text-emerald-500 tracking-tighter font-['Noto_Serif']">RECOVER</span>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container/10">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Professional headshot of a middle-aged man with a friendly expression in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC990TL4H0wUMj4G6COD1b7KAynjF2qSoUuZiO-0Hv4KJkhymWJE27hHIubDIpYGY3Irznz2_RCjhm3aajSR7KZ-NMwRODhzo0bS_RD_kGkrwiuUU1Qh9qmIC7gNUhPjZqx-QEH0aHFxOCXHHk6OoFijhGBdDca6LeXh8qeSrNd3_kn0WsiKpRXEwaSoNshQJzk4RQowp8wyUZMhwq2ZEFLYTVWH9DBT6YfeQgXiT33hboVzPjYs_YCXEFONPEFrn94rUOdxwHwRE_5"/>
+</div>
+</div>
+</header>
+<main class="max-w-screen-xl mx-auto px-6 py-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Column: Context & Progress -->
+<div class="lg:col-span-4 space-y-8">
+<div>
+<span class="text-[12px] font-medium uppercase tracking-widest text-secondary mb-2 block">Application Flow</span>
+<h1 class="text-5xl font-bold text-primary tracking-tight leading-tight">Confirm Details</h1>
+<p class="mt-6 text-on-surface-variant leading-relaxed text-lg">Please review the information we've curated for your recovery profile. Accuracy ensures a seamless experience.</p>
+</div>
+<!-- Step Indicator -->
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<span class="text-sm font-semibold text-primary">Step 2 of 3</span>
+<span class="text-sm font-medium text-on-surface-variant">66% Complete</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-on-tertiary-container w-2/3"></div>
+</div>
+</div>
+<!-- Decorative Editorial Card -->
+<div class="p-8 bg-primary-container text-surface rounded-lg relative overflow-hidden">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4">verified_user</span>
+<h3 class="text-xl font-bold mb-2">Secure Verification</h3>
+<p class="text-on-primary-container text-sm leading-relaxed">Your data is encrypted with bank-grade security protocols, ensuring your financial privacy remains paramount.</p>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-10">
+<span class="material-symbols-outlined text-9xl">shield</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Form Fields -->
+<div class="lg:col-span-8">
+<div class="bg-surface-container-low p-8 md:p-12 rounded-lg shadow-sm border border-surface-variant/50">
+<form class="space-y-10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+<!-- Name Field -->
+<div class="luxury-underline flex flex-col gap-1 pb-2">
+<label class="text-[10px] font-medium uppercase tracking-widest text-on-surface-variant">Full Name</label>
+<input class="bg-transparent border-none p-0 text-xl font-semibold text-primary focus:ring-0 cursor-default" readonly="" type="text" value="Marcus Johnson"/>
+</div>
+<!-- Email Field -->
+<div class="luxury-underline flex flex-col gap-1 pb-2">
+<label class="text-[10px] font-medium uppercase tracking-widest text-on-surface-variant">Email Address</label>
+<input class="bg-transparent border-none p-0 text-xl font-semibold text-primary focus:ring-0 cursor-default" readonly="" type="email" value="m.johnson@atelier.com"/>
+</div>
+<!-- Phone Field -->
+<div class="luxury-underline flex flex-col gap-1 pb-2">
+<label class="text-[10px] font-medium uppercase tracking-widest text-on-surface-variant">Phone Number</label>
+<input class="bg-transparent border-none p-0 text-xl font-semibold text-primary focus:ring-0 cursor-default" readonly="" type="text" value="+1 (555) 012-3456"/>
+</div>
+<!-- Address Field -->
+<div class="luxury-underline flex flex-col gap-1 pb-2 md:col-span-2">
+<label class="text-[10px] font-medium uppercase tracking-widest text-on-surface-variant">Residential Address</label>
+<input class="bg-transparent border-none p-0 text-xl font-semibold text-primary focus:ring-0 cursor-default" readonly="" type="text" value="724 Fifth Avenue, New York, NY 10019"/>
+</div>
+</div>
+<!-- Terms Checkbox -->
+<div class="pt-6">
+<label class="flex items-start gap-4 cursor-pointer group">
+<div class="relative flex items-center mt-1">
+<input class="peer h-6 w-6 rounded-md border-outline-variant text-primary focus:ring-primary-container/20 transition-all cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">Terms of Service</span>
+<span class="text-on-surface-variant text-sm leading-relaxed max-w-lg">I confirm that the information provided above is accurate and I agree to the <a class="text-secondary underline underline-offset-4 hover:text-primary transition-colors" href="#">Digital Asset Recovery Terms</a> and Privacy Policy.</span>
+</div>
+</label>
+</div>
+<!-- Action Button -->
+<div class="pt-8">
+<button class="w-full md:w-auto px-12 h-[56px] rounded-full bg-primary-container text-[#FAF5EE] font-semibold text-lg hover:shadow-xl hover:translate-y-[-2px] transition-all flex items-center justify-center gap-3" type="submit">
+                                Confirm &amp; Continue
+                                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="mt-4 text-center md:text-left text-on-surface-variant text-[12px] font-medium uppercase tracking-tighter">Secure processing via Atelier Prime</p>
+</div>
+</form>
+</div>
+<!-- Editorial Visual Anchor -->
+<div class="mt-12 grid grid-cols-2 gap-6">
+<div class="aspect-[16/9] rounded-lg overflow-hidden grayscale contrast-125 opacity-40">
+<img alt="Architecture" class="w-full h-full object-cover" data-alt="Modern architectural glass building reflecting the sky in high contrast black and white photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt6cm46nH-vCj_dCN3Nah2N3buD45yIrH35z-52fVFkCHL_V_US6vtuBpJdysuOmI2bkKlE233931QiLlloa8pfN7IHOw1TcP2WDAV_4CNcgj8Xnsl8vKQ1VLb6l8SfiOoA-cCIuJdb_ViUqxq3x6_-Fdqsz6k7jtyjJWIhP4I8hnh6SXl3lAwaGm-H5VPBU-culxNUuR2hLrRrDAlj48v86zkBpCv8pB5bzRwAvldNjHB79OLFt3-ntKwTWkgnEb_fo6QlfZ5x3se"/>
+</div>
+<div class="aspect-[16/9] rounded-lg overflow-hidden grayscale contrast-125 opacity-40">
+<img alt="Financials" class="w-full h-full object-cover" data-alt="Abstract close-up of premium textured paper with subtle shadows and elegant lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeUAS_mqZx7mqbLWUE4qbNCwTmJTWVwlxvMqn3xqyxLiF7FjWmHG49LtMV-PUqFHkE4W-B5KSYXwXZcTYIG2O3P4y8WxeGz0oYryzzx8fg_Hs3r4i25Yc84iwmXQ52afnX7ClHLne4_ANBjbG3Q4OVs2S7FZ3MIq6YVdNeIhGfl5BP-eg0hnRM9MC7k8HECLcpOVlsZKXQ0FLBFAUaK-lVee72aNUBfi9mLNT4fRG28a_JFrDLU8RSi-9IITZcTLc5OFl8nYtqDK-E"/>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-8 pb-8 pt-4 bg-[#1B3A2D]/90 dark:bg-stone-900/95 backdrop-blur-xl rounded-t-[32px] shadow-[0_-8px_32px_rgba(27,58,45,0.15)] md:hidden">
+<a class="flex flex-col items-center justify-center text-[#FAF5EE]/60 hover:text-[#D4A843] transition-colors tap-highlight-none active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#D4A843] scale-110 transition-transform tap-highlight-none active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rebase_edit</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Recovery</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#FAF5EE]/60 hover:text-[#D4A843] transition-colors tap-highlight-none active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Plans</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#FAF5EE]/60 hover:text-[#D4A843] transition-colors tap-highlight-none active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+</body></html>
